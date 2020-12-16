@@ -6,13 +6,13 @@
 /*   By: mouassit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 19:13:43 by mouassit          #+#    #+#             */
-/*   Updated: 2020/12/08 19:28:32 by mouassit         ###   ########.fr       */
+/*   Updated: 2020/12/16 10:23:02 by mouassit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		ft_line_map(const char *str)
+int		ft_line_ma(const char *str)
 {
 	int i;
 	int error;
