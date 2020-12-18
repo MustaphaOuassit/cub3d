@@ -18,27 +18,27 @@ int	main(int argc, char *argv[])
 	int		fd;
 	char	*line;
 	int		error;
-	int y;
-
-	get = malloc(2);
-	*get = '\0';
-	resolution = malloc(2);
-	tile_size = 64;
-	fd = open(argv[1], O_RDONLY);
-	while (get_next_line(fd, &line) == 1)
+	if(argc == 2)
 	{
-		entre = 1;
-		if (ft_check_errors(line) == 0)
+		get = malloc(2);
+		*get = '\0';
+		resolution = malloc(2);
+		tile_size = 64;
+		fd = open(argv[1], O_RDONLY);
+		while (get_next_line(fd, &line) == 1)
 		{
-			error = 1;
-			break ;
-
+			entre = 1;
+			if (ft_check_errors(line) == 0)
+			{
+				error = 1;
+				break ;
+			}
+			else
+				error = 0;
 		}
-		else
-			error = 0;
-	}
-	if (ft_continue(line, error) == 0)
-	{
-		ft_window(resolution);
+		if (ft_continue(line, error) == 0)
+		{
+			ft_window(resolution);
+		}
 	}
 }

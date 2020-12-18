@@ -35,9 +35,17 @@
 		int info;
 		int entre;
 		char **resolution;
+		int x_y[2];
 		int tile_size;
+		float x;
+		float y;
+		float retation_angle;
+		int move_step;
 		int turn_direction;
+		int walk_direction;
 		int stock_direction;
+		int stock_walk;
+		int is_player_change;
 
 	typedef struct  s_data {
 		void        *img;
@@ -46,6 +54,7 @@
     	int         line_length;
     	int         endian;
 }               t_data;
+t_data img;
 
 		int		get_next_line(int fd, char **line);
         char	*ft_strchr(const char*s, int c);
@@ -66,8 +75,8 @@
 		int     ft_continue_check(const char *str, int error);
 		int     ft_endstr(char *endstr);
 		int     ft_continue_line(char **separ_lines);
-		int     ft_zero_space(char **separ_lines, int i, int j, int error);
+		int     ft_zero_space(char **separ_lines, size_t i, int j, int error);
 		void	ft_window(char **resolution);
-		void	ft_draw(char **resolution, int get_y);
+		void	ft_draw();
 		int		ft_atoi(const char *str);
 		#endif

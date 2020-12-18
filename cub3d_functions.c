@@ -14,7 +14,7 @@
 
 int		ft_line_map(const char *str)
 {
-	int i;
+	size_t i;
 	int error;
 
 	i = 0;
@@ -41,7 +41,7 @@ int		ft_line_map(const char *str)
 	return (error);
 }
 
-int		ft_same(char *str, char *stc)
+int		ft_same(char *str)
 {
 	int i;
 	int j;
@@ -56,7 +56,7 @@ int		ft_same(char *str, char *stc)
 int		ft_check_errors(const char *str)
 {
 	char	**no_space;
-	int		i;
+	size_t	i;
 	int		j;
 	int		error;
 
@@ -64,7 +64,7 @@ int		ft_check_errors(const char *str)
 	i = 0;
 	j = 0;
 	error = 0;
-	if ((str[0] == 'R') && (ft_same(no_space[0], "R") == 0))
+	if ((str[0] == 'R') && (ft_same(no_space[0]) == 0))
 	{
 		while (i != ft_strlen(str))
 		{
@@ -87,7 +87,7 @@ int		ft_check_errors(const char *str)
 int		ft_check_one_on_line(char *firstr, char *endstr)
 {
 	int error;
-	int i;
+	size_t i;
 
 	error = 0;
 	i = 0;

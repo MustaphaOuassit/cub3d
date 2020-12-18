@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-int		ft_continue_letter(char **no_space, int i, int j)
+int		ft_continue_letter(char **no_space, int i, size_t j)
 {
 	int	error;
 
@@ -97,7 +97,7 @@ int		ft_check_line_map(const char *str, int info)
 int		ft_pirmission(const char *str)
 {
 	int j;
-	int i;
+	size_t i;
 
 	i = 0;
 	j = 1;

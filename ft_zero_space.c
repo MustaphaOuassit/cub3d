@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-int		ft_break(char **separ_lines, int i, int j, int error)
+int		ft_break(char **separ_lines, size_t i, int j, int error)
 {
 	if ((separ_lines[j][i - 1] == ' ') || (separ_lines[j][i + 1] == ' ')
 			|| (separ_lines[j - 1][i] == ' ') || (separ_lines[j + 1][i] == ' '))
@@ -23,7 +23,7 @@ int		ft_break(char **separ_lines, int i, int j, int error)
 	return (error);
 }
 
-int		ft_zero_space(char **separ_lines, int i, int j, int error)
+int		ft_zero_space(char **separ_lines, size_t i, int j, int error)
 {
 	while (i != ft_strlen(separ_lines[j]))
 	{

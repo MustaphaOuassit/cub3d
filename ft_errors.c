@@ -25,7 +25,7 @@ int		ft_add_string(const char *str, int error)
 
 int		ft_continue_string(const char *str, int error)
 {
-	int		i;
+	size_t	i;
 	int		r;
 
 	i = 0;
@@ -55,7 +55,7 @@ int		ft_continue_check(const char *str, int error)
 
 int		ft_endstr(char *endstr)
 {
-	int i;
+	size_t i;
 	int error;
 
 	i = 0;
