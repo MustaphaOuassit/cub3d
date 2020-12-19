@@ -38,6 +38,8 @@
 		int tile_size;
 		float x;
 		float y;
+		float new_playerx;
+    	float new_playery;
 		float retation_angle;
 		int move_step;
 		int turn_direction;
@@ -76,6 +78,6 @@ t_data img;
 		int     ft_continue_line(char **separ_lines);
 		int     ft_zero_space(char **separ_lines, size_t i, int j, int error);
 		void	ft_window(char **resolution);
-		void	ft_draw();
+		void	ft_drawing();
 		int		ft_atoi(const char *str);
 		#endif

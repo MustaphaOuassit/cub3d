@@ -21,7 +21,7 @@ SRC = main.c \
 	  ft_split_n.c \
 	  ft_errors.c \
 	  ft_zero_space.c \
-	  ft_draw.c \
+	  ft_drawing.c \
 
 all : $(NAME)
 

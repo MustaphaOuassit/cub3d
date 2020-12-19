@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_draw.c                                          :+:      :+:    :+:   */
+/*   ft_drawing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mouassit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/09 10:07:03 by mouassit          #+#    #+#             */
-/*   Updated: 2020/12/09 10:07:05 by mouassit         ###   ########.fr       */
+/*   Created: 2020/12/19 09:53:48 by mouassit          #+#    #+#             */
+/*   Updated: 2020/12/19 09:53:52 by mouassit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int deal_key(int key)
 		turn_direction = 1;
 	if(key == 123)
 		turn_direction = -1;
-	ft_draw();
+	ft_drawing();
 	return(0);
 }
 
@@ -57,12 +57,32 @@ void	ft_draw_line()
 	}
 }
 
+int     ft_has_wallat(float i, float j)
+{
+    int wallat;
+    int position_x;
+    int position_y;
+
+    wallat = 0;
+    position_x = (i / tile_size);
+    position_y = (j / tile_size);
+    if(map[position_y][position_x] == '1')
+        wallat = 1;
+    else
+        wallat = 0;
+    return(wallat);
+}
+
 void	ft_draw_player()
 {
-
-	x = x + cos(retation_angle) * move_step * walk_direction;
-	y = y + sin(retation_angle) * move_step * walk_direction;
-	my_mlx_pixel_put(&img, x, y, 0x008000);
+	new_playerx = x + cos(retation_angle) * move_step * walk_direction;
+	new_playery = y + sin(retation_angle) * move_step * walk_direction;
+    if(ft_has_wallat(new_playerx, new_playery) == 0)
+    {
+        x = new_playerx;
+        y = new_playery;
+        my_mlx_pixel_put(&img, x, y, 0x008000);
+    }
 }
 
 void	ft_draw_map()
@@ -117,7 +137,7 @@ void	ft_draw_map()
 	}
 }
 
-void	ft_draw()
+void	ft_drawing()
 {
 	retation_angle = M_PI / 2 + (turn_direction + stock_direction)  * 10 * (M_PI / 180);
 	move_step = 5;
@@ -142,6 +162,6 @@ void	ft_window(char **resolution)
     win_ptr = mlx_new_window(mlx_ptr, width_window, height_window, "cub3d");
 	img.img = mlx_new_image(mlx_ptr, width_window, height_window);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);
-	ft_draw();
+	ft_drawing();
 	mlx_loop(mlx_ptr);
 }
