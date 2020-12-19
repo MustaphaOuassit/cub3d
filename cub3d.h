@@ -35,7 +35,6 @@
 		int info;
 		int entre;
 		char **resolution;
-		int x_y[2];
 		int tile_size;
 		float x;
 		float y;
