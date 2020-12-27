@@ -41,10 +41,88 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
     *(unsigned int*)dst = color;
 }
 
+void	ft_draw_rays(int rays_angle)
+{
+	int i;
+	int m;
+
+	i = 0;
+
+	while(i != rays_angle / 2)
+	{
+		m = 0;
+		while(m != 30)
+		{
+			loop_x = x + 1 + cos(retation_angle + i * (M_PI / 180)) * m;
+			loop_y = y + 1 + sin(retation_angle	+ i * (M_PI / 180)) * m;
+			my_mlx_pixel_put(&img,loop_x,loop_y,0xFF0000);
+			m++;
+		}
+		i++;
+	}
+	i = 0;
+	while(i != rays_angle / 2)
+	{
+		m = 0;
+		while(m != 30)
+		{
+			loop_x = x + 1 + cos(retation_angle - i * (M_PI / 180)) * m;
+			loop_y = y + 1 + sin(retation_angle	- i * (M_PI / 180)) * m;
+			my_mlx_pixel_put(&img,loop_x,loop_y,0xFF0000);
+			m++;
+		}
+		i++;
+	}
+}
+
+int	ft_normalaize_angle(int angle)
+{
+	int fo_v;
+	fo_v = 2 * M_PI;
+	angle = angle % fo_v;
+	if(angle < 0)
+		angle = fo_v + angle;
+	return(angle);
+}
+
+void	ft_cast()
+{
+	 closet_one_y = (y / tile_size) * tile_size;
+	 if(is_ray_facing_down == 1)
+		 closet_one_y = closet_one_y + tile_size;
+	 else
+	 	closet_one_y = closet_one_y + 0;
+	 closet_one_x = x + ((y - closet_one_x) / tan(ray_angle));
+	 y_step = tile_size;
+	 x_step = tile_size / tan(ray_angle);
+}
+
+void	ft_check_ray_face()
+{
+	if((ray_angle > 0) && (ray_angle < M_PI))
+	{
+		is_ray_facing_down = 1;
+		is_ray_facing_up = 0;
+	}
+	else
+	{
+		is_ray_facing_down = 0;
+		is_ray_facing_up = 1;
+	}
+	if((ray_angle < (0.5 * M_PI)) || (ray_angle > (1.5 * M_PI)))
+	{
+		is_ray_facing_right = 1;
+		is_ray_facing_left = 0;
+	}
+	else
+	{
+		is_ray_facing_right = 0;
+		is_ray_facing_left = 1;
+	}
+}
+
 void	ft_draw_line()
 {
-	int loop_x;
-	int loop_y;
 	int m;
 
 	m = 0;
@@ -55,6 +133,10 @@ void	ft_draw_line()
 		my_mlx_pixel_put(&img,loop_x,loop_y,0xFF0000);
 		m++;
 	}
+	ray_angle = ft_normalaize_angle(ray_angle);
+	ft_check_ray_face();
+	ft_cast();
+	//ft_draw_rays(60);
 }
 
 int     ft_has_wallat(float i, float j)
@@ -140,6 +222,7 @@ void	ft_draw_map()
 void	ft_drawing()
 {
 	retation_angle = M_PI / 2 + (turn_direction + stock_direction)  * 10 * (M_PI / 180);
+	ray_angle = retation_angle - ((60 * M_PI / 180) / 2);
 	move_step = 5;
 	stock_direction = turn_direction + stock_direction;
 	stock_walk = walk_direction + stock_walk;

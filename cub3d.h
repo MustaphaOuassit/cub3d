@@ -38,15 +38,26 @@
 		int tile_size;
 		float x;
 		float y;
+		float loop_x;
+		float loop_y;
 		float new_playerx;
     	float new_playery;
 		float retation_angle;
+		float ray_angle;
 		int move_step;
 		int turn_direction;
 		int walk_direction;
 		int stock_direction;
 		int stock_walk;
 		int is_player_change;
+		float	closet_one_x;
+		float	closet_one_y;
+		int is_ray_facing_down;
+		int is_ray_facing_up;
+		int is_ray_facing_right;
+		int is_ray_facing_left;
+		float x_step;
+		float y_step;
 
 	typedef struct  s_data {
 		void        *img;
