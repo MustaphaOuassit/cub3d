@@ -18,6 +18,7 @@ int	main(int argc, char *argv[])
 	int		fd;
 	char	*line;
 	int		error;
+
 	if(argc == 2)
 	{
 		get = malloc(2);

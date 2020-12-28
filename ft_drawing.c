@@ -41,8 +41,52 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
     *(unsigned int*)dst = color;
 }
 
-void	ft_draw_rays(int rays_angle)
+int     ft_has_wallat(float i, float j)
 {
+    int wallat;
+    int position_x;
+    int position_y;
+
+    wallat = 0;
+    position_x = (i / tile_size);
+    position_y = (j / tile_size);
+    if(map[position_y][position_x] == '1')
+        wallat = 1;
+    else
+        wallat = 0;
+    return(wallat);
+}
+
+void	ft_ray(float ray_angle)
+{
+	int m;
+	int ray_x;
+	int ray_y;
+
+	m = 0;
+	while(m != 30)
+	{
+		ray_x = x + 1 + cos(ray_angle) * m;
+		ray_y = y + 1 + sin(ray_angle) * m;
+		my_mlx_pixel_put(&img,ray_x,ray_y,0xFA8072);
+		m++;
+	}
+}
+
+void	ft_draw_rays()
+{
+	int i;
+
+	i = 0;
+	//while(i < num_rays)
+	while(i < 1)
+	{
+		ft_ray(ray_angle);
+		ray_angle = ray_angle + (60 * (M_PI / 180) / num_rays);
+		i++;
+	}
+	//fo_v = 60 * (M_PI / 180);
+	/*
 	int i;
 	int m;
 
@@ -50,7 +94,7 @@ void	ft_draw_rays(int rays_angle)
 
 	while(i != rays_angle / 2)
 	{
-		m = 0;
+		m = 0; 
 		while(m != 30)
 		{
 			loop_x = x + 1 + cos(retation_angle + i * (M_PI / 180)) * m;
@@ -72,14 +116,14 @@ void	ft_draw_rays(int rays_angle)
 			m++;
 		}
 		i++;
-	}
+	}*/
 }
 
 int	ft_normalaize_angle(int angle)
 {
 	int fo_v;
 	fo_v = 2 * M_PI;
-	angle = angle % fo_v;
+	angle = fmod(angle,fo_v);
 	if(angle < 0)
 		angle = fo_v + angle;
 	return(angle);
@@ -87,14 +131,55 @@ int	ft_normalaize_angle(int angle)
 
 void	ft_cast()
 {
-	 closet_one_y = (y / tile_size) * tile_size;
+	int m;
+
+	m = 0;
+	found_horizontal = 0;
+	wall_x = 0;
+	wall_y = 0;
+	 closet_one_y = (int)(y / tile_size) * tile_size;
 	 if(is_ray_facing_down == 1)
 		 closet_one_y = closet_one_y + tile_size;
 	 else
 	 	closet_one_y = closet_one_y + 0;
-	 closet_one_x = x + ((y - closet_one_x) / tan(ray_angle));
+	 closet_one_x = x + ((closet_one_y - y) / tan(ray_angle));
+	my_mlx_pixel_put(&img,closet_one_x,closet_one_y,0xFF0000);
+	 /*
 	 y_step = tile_size;
+	 if (is_ray_facing_up == 1)
+	 	y_step = y_step * -1;
+	 else
+	 	y_step = y_step * 1;
 	 x_step = tile_size / tan(ray_angle);
+	 if((is_ray_facing_left == 1) && (x_step > 0))
+	  x_step = x_step * -1;
+	  else
+	  	x_step = x_step * 1; 
+	if((is_ray_facing_right == 1) && (x_step < 0))
+		x_step = x_step * -1;
+	else
+		x_step = x_step * 1;
+	next_one_x = x_step;
+	next_one_y = y_step;
+	if(is_ray_facing_up == 1)
+		next_one_y--;
+		while((next_one_x >= 0) && (next_one_x <= width_window) && (next_one_y >= 0) && (next_one_y <= width_window))
+		{
+			if(ft_has_wallat(next_one_x,next_one_y) == 1)
+			{
+				found_horizontal = 1;
+				wall_x = next_one_x;
+				wall_y = next_one_y;
+				printf("%f	%f	\n", next_one_x, next_one_y);
+				my_mlx_pixel_put(&img, x + wall_x,y + wall_y,0xFF0000);
+				break;
+			}
+			else
+			{
+				next_one_x = next_one_x + x_step;
+				next_one_y = next_one_y + y_step;
+			}
+		}*/
 }
 
 void	ft_check_ray_face()
@@ -126,33 +211,18 @@ void	ft_draw_line()
 	int m;
 
 	m = 0;
-	while(m != 30)
+	ft_draw_rays();
+	/*
+		while(m != 30)
 	{
 		loop_x = x + 1 + cos(retation_angle) * m;
 		loop_y = y + 1 + sin(retation_angle) * m;
 		my_mlx_pixel_put(&img,loop_x,loop_y,0xFF0000);
 		m++;
-	}
+	}*/
 	ray_angle = ft_normalaize_angle(ray_angle);
 	ft_check_ray_face();
 	ft_cast();
-	//ft_draw_rays(60);
-}
-
-int     ft_has_wallat(float i, float j)
-{
-    int wallat;
-    int position_x;
-    int position_y;
-
-    wallat = 0;
-    position_x = (i / tile_size);
-    position_y = (j / tile_size);
-    if(map[position_y][position_x] == '1')
-        wallat = 1;
-    else
-        wallat = 0;
-    return(wallat);
 }
 
 void	ft_draw_player()
@@ -223,6 +293,7 @@ void	ft_drawing()
 {
 	retation_angle = M_PI / 2 + (turn_direction + stock_direction)  * 10 * (M_PI / 180);
 	ray_angle = retation_angle - ((60 * M_PI / 180) / 2);
+	num_rays = width_window / 30;
 	move_step = 5;
 	stock_direction = turn_direction + stock_direction;
 	stock_walk = walk_direction + stock_walk;
