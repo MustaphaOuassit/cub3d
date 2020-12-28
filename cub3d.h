@@ -24,6 +24,7 @@
 		int check;
 		char *get;
 		char **map;
+		int toll;
 		int lenget;
 		const char *stock_line;
 		int get_y;
@@ -97,4 +98,5 @@ t_data img;
 		void	ft_window(char **resolution);
 		void	ft_drawing();
 		int		ft_atoi(const char *str);
+		void	ft_toll_line();
 		#endif
