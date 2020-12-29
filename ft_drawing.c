@@ -66,28 +66,48 @@ int     ft_has_wallat(float i, float j)
     wallat = 0;
     position_x = (i / tile_size);
     position_y = (j / tile_size);
-	if((position_y <= get_y - 1) && (position_x <=	toll - 1) && (position_x > 0))
-	{
     	if(map[position_y][position_x] == '1')
     		wallat = 1;
     	else
 			wallat = 0;
-	}
     return(wallat);
+}
+
+void        ft_ray_push(double x2, double y2)
+{
+    double      y1;
+    double      x1;
+    double      xinc;
+    double      yinc;
+    int         steps;
+	int g_tilecolor;
+
+    x1 = x;
+    y1 = y;
+    g_tilecolor = 16711680;
+    steps = abs((int)x2 - (int)x1) > abs((int)y2 - (int)y1) ? abs((int)x2 -
+            (int)x1) : abs((int)y2 - (int)y1);
+    xinc = (x2 - x1) / (double)steps;
+    yinc = (y2 - y1) / (double)steps;
+    x2 = -1;
+    while (++x2 <= steps)
+    {	
+        x1 = x1 + xinc;
+        y1 = y1 + yinc;
+		my_mlx_pixel_put(&img,x1,y1,0xFF0000);
+    }
 }
 
 void	ft_ray(float ray_angle)
 {
 	int m;
-	int ray_x;
-	int ray_y;
 
 	m = 0;
 	while(m != 30)
 	{
 		ray_x = x + 1 + cos(ray_angle) * m;
 		ray_y = y + 1 + sin(ray_angle) * m;
-		my_mlx_pixel_put(&img,ray_x,ray_y,0xFA8072);
+		my_mlx_pixel_put(&img,ray_x,ray_y,0xFF0000);
 		m++;
 	}
 }
@@ -187,14 +207,15 @@ void	ft_cast()
 	next_one_y = (int)closet_one_y;
 	if(is_ray_facing_up == 1)
 		next_one_y--;
-		while((next_one_x >= 0) && (next_one_x <= width_window) && (next_one_y >= 0) && (next_one_y <= height_window))
+		while((next_one_x >= 0) && (next_one_x <= (toll * tile_size)) && (next_one_y >= 0) && (next_one_y <= (get_y * tile_size)))
 		{
 			if(ft_has_wallat(next_one_x,next_one_y) == 1)
 			{
 				found_horizontal = 1;
 				wall_x = next_one_x;
 				wall_y = next_one_y;
-				my_mlx_pixel_put(&img,wall_x,wall_y,0xFF0000);
+				ft_ray_push(wall_x,wall_y);
+				//my_mlx_pixel_put(&img,wall_x,wall_y,0xFF0000);
 				break;
 			}
 			else

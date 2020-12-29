@@ -65,6 +65,8 @@
 		int found_horizontal;
 		float	wall_x;
 		float wall_y;
+		int ray_x;
+		int ray_y;
 
 	typedef struct  s_data {
 		void        *img;
