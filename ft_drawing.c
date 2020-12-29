@@ -66,10 +66,13 @@ int     ft_has_wallat(float i, float j)
     wallat = 0;
     position_x = (i / tile_size);
     position_y = (j / tile_size);
+	if ((position_x > 0 && position_x < toll) && (position_y > 0 && position_y < get_y))
+	{
     	if(map[position_y][position_x] == '1')
     		wallat = 1;
     	else
 			wallat = 0;
+	}
     return(wallat);
 }
 
@@ -117,10 +120,13 @@ void	ft_draw_rays()
 	int i;
 
 	i = 0;
-	//while(i < num_rays)
-	while(i < 1)
+	while(i < num_rays)
+	// while(i < 1)
 	{
-		ft_ray(ray_angle);
+		ray_angle = ft_normalaize_angle(ray_angle);
+		ft_check_ray_face();
+		ft_cast();
+		//ft_ray(ray_angle);
 		ray_angle = ray_angle + (60 * (M_PI / 180) / num_rays);
 		i++;
 	}
@@ -353,9 +359,6 @@ void	ft_draw_line()
 		my_mlx_pixel_put(&img,loop_x,loop_y,0xFF0000);
 		m++;
 	}*/
-	ray_angle = ft_normalaize_angle(ray_angle);
-	ft_check_ray_face();
-	ft_cast();
 }
 
 void	ft_draw_player()
@@ -426,7 +429,7 @@ void	ft_drawing()
 {
 	retation_angle = M_PI / 2 + (turn_direction + stock_direction)  * 10 * (M_PI / 180);
 	ray_angle = retation_angle - ((60 * M_PI / 180) / 2);
-	num_rays = width_window / 30;
+	num_rays = width_window;
 	move_step = 5;
 	stock_direction = turn_direction + stock_direction;
 	stock_walk = walk_direction + stock_walk;

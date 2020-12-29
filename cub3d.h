@@ -51,7 +51,7 @@
 		int stock_direction;
 		int stock_walk;
 		int is_player_change;
-		float num_rays;
+		int num_rays;
 		int	closet_one_x;
 		int	closet_one_y;
 		int is_ray_facing_down;
@@ -96,4 +96,7 @@ t_data img;
 		void	ft_drawing();
 		int		ft_atoi(const char *str);
 		void	ft_toll_line();
+		void	ft_cast();
+		void	ft_check_ray_face();
+		float	ft_normalaize_angle(float angle);
 		#endif
