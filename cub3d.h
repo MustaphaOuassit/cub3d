@@ -54,17 +54,12 @@
 		float num_rays;
 		int	closet_one_x;
 		int	closet_one_y;
-		float	next_one_x;
-		float	next_one_y;
 		int is_ray_facing_down;
 		int is_ray_facing_up;
 		int is_ray_facing_right;
 		int is_ray_facing_left;
 		float x_step;
 		float y_step;
-		int found_horizontal;
-		float	wall_x;
-		float wall_y;
 		int ray_x;
 		int ray_y;
 
