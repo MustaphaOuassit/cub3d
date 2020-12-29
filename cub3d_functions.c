@@ -132,6 +132,5 @@ int	ft_check_all_errors(const char *str)
 		write(1, "Error\n", 6);
 		error = 1;
 	}
-	ft_toll_line();
 	return(error) ;
 }

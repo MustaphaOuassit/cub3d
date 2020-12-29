@@ -66,7 +66,7 @@ int     ft_has_wallat(float i, float j)
     wallat = 0;
     position_x = (i / tile_size);
     position_y = (j / tile_size);
-	if((position_y <= get_y) && (position_x <=	toll))
+	if((position_y <= get_y - 1) && (position_x <=	toll - 1) && (position_x > 0))
 	{
     	if(map[position_y][position_x] == '1')
     		wallat = 1;
@@ -339,6 +339,7 @@ void	ft_window(char **resolution)
     win_ptr = mlx_new_window(mlx_ptr, width_window, height_window, "cub3d");
 	img.img = mlx_new_image(mlx_ptr, width_window, height_window);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);
+	ft_toll_line();
 	ft_drawing();
 	mlx_loop(mlx_ptr);
 }
