@@ -66,13 +66,10 @@ int     ft_has_wallat(float i, float j)
     wallat = 0;
     position_x = (i / tile_size);
     position_y = (j / tile_size);
-	if ((position_x > 0 && position_x < toll) && (position_y > 0 && position_y < get_y))
-	{
-    	if(map[position_y][position_x] == '1')
-    		wallat = 1;
-    	else
-			wallat = 0;
-	}
+    if(map[position_y][position_x] == '1')
+    	wallat = 1;
+    else
+		wallat = 0;
     return(wallat);
 }
 
@@ -101,72 +98,19 @@ void        ft_ray_push(double x2, double y2)
     }
 }
 
-void	ft_ray(float ray_angle)
-{
-	int m;
-
-	m = 0;
-	while(m != 30)
-	{
-		ray_x = x + 1 + cos(ray_angle) * m;
-		ray_y = y + 1 + sin(ray_angle) * m;
-		my_mlx_pixel_put(&img,ray_x,ray_y,0xFF0000);
-		m++;
-	}
-}
-
 void	ft_draw_rays()
 {
 	int i;
 
 	i = 0;
 	while(i < num_rays)
-	// while(i < 1)
 	{
-		ray_angle = ft_normalaize_angle(ray_angle);
-		ft_check_ray_face();
-		ft_cast();
-		//ft_ray(ray_angle);
-		ray_angle = ray_angle + (60 * (M_PI / 180) / num_rays);
+	ray_angle = ft_normalaize_angle(ray_angle);
+	ft_check_ray_face();
+	ft_cast();
+	ray_angle = ray_angle + (60 * (M_PI / 180) / num_rays);
 		i++;
 	}
-	//fo_v = 60 * (M_PI / 180);
-	/*
-	int i;
-	int m;
-
-	i = 0;
-
-	while(i != rays_angle / 2)
-	{
-		m = 0; 
-		while(m != 30)
-		{
-			loop_x = x + 1 + cos(retation_angle + i * (M_PI / 180)) * m;
-			loop_y = y + 1 + sin(retation_angle	+ i * (M_PI / 180)) * m;
-			my_mlx_pixel_put(&img,loop_x,loop_y,0xFF0000);
-			m++;
-		}
-		i++;
-	}
-	i = 0;
-	while(i != rays_angle / 2)
-	{
-		m = 0;
-		while(m != 30)
-		{
-			loop_x = x + 1 + cos(retation_angle - i * (M_PI / 180)) * m;
-			loop_y = y + 1 + sin(retation_angle	- i * (M_PI / 180)) * m;
-			my_mlx_pixel_put(&img,loop_x,loop_y,0xFF0000);
-			m++;
-		}
-		i++;
-	}*/
-}
-
-double	ft_between_points(float x1, float y1, float x2, float y2)
-{
-	return(sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)));
 }
 
 float	ft_normalaize_angle(float angle)
@@ -181,27 +125,14 @@ float	ft_normalaize_angle(float angle)
 
 void	ft_cast()
 {
-	int found_horizontal;
-	int found_vertical;
-	float wall_horizontal_x;
-	float wall_horizontal_y;
-	float wall_vertical_x;
-	float wall_vertical_y;
-	float	next_one_x;
-	float	next_one_y;
-	float	next_one_v_x;
-	float	next_one_v_y;
-	double	horizontal_distance;
-	double	vertical_distance;
-	float	wall_x;
-	float	wall_y;
-	float	distance;
-	int		was_vertical;
+	int m;
+	int i;
 
+	i = 0;
+	m = 0;
 	found_horizontal = 0;
-	wall_horizontal_x = 0;
-	wall_horizontal_y = 0;
-	was_vertical = 0;
+	wall_x = 0;
+	wall_y = 0;
 	 closet_one_y = (int)(y / tile_size) * tile_size;
 	 if(is_ray_facing_down == 1)
 		 closet_one_y = closet_one_y + tile_size;
@@ -236,8 +167,9 @@ void	ft_cast()
 			if(ft_has_wallat(next_one_x,next_one_y) == 1)
 			{
 				found_horizontal = 1;
-				wall_horizontal_x = next_one_x;
-				wall_horizontal_y = next_one_y;
+				wall_x = next_one_x;
+				wall_y = next_one_y;
+				ft_ray_push(wall_x,wall_y);
 				break;
 			}
 			else
@@ -246,79 +178,6 @@ void	ft_cast()
 				next_one_y = next_one_y + y_step;
 			}
 		}
-///////////////////////////////////////////-------------//////////////////////////////////////////////////////////////////////////
-	found_vertical = 0;
-	wall_vertical_x = 0;
-	wall_vertical_y = 0;
-	 closet_one_x = (int)(x / tile_size) * tile_size;
-	 if(is_ray_facing_right == 1)
-		 closet_one_x = closet_one_x + tile_size;
-	 else
-	 	closet_one_x = closet_one_x + 0;
-	 closet_one_y = y + ((closet_one_x - x) * tan(ray_angle));
-	 //////////////////////////
-	 x_step = tile_size;
-	 if (is_ray_facing_left == 1)
-		 x_step = x_step * -1;
-	 else
-	 {
-		 if(is_ray_facing_right == 1)
-		 	x_step = x_step * 1;
-	 }
-	 y_step = tile_size * tan(ray_angle);
-	 if((is_ray_facing_up == 1) && (y_step > 0))
-	 	y_step = y_step * -1;
-	  else
-		  y_step = y_step * 1;
-	if((is_ray_facing_down == 1) && (y_step < 0))
-		y_step = y_step * -1;
-	else
-		y_step = y_step * 1;
-	/////////////////
-	next_one_v_x = (int)closet_one_x;
-	next_one_v_y = (int)closet_one_y;
-	if(is_ray_facing_left == 1)
-		next_one_v_x--;
-		while((next_one_v_x >= 0) && (next_one_v_x <= (toll * tile_size)) && (next_one_v_y >= 0) && (next_one_v_y <= (get_y * tile_size)))
-		{
-			if(ft_has_wallat(next_one_v_x,next_one_v_y) == 1)
-			{
-				found_vertical = 1;
-				wall_vertical_x = next_one_v_x;
-				wall_vertical_y = next_one_v_y;
-				break;
-			}
-			else
-			{
-				next_one_v_x = next_one_v_x + x_step;
-				next_one_v_y = next_one_v_y + y_step;
-			}
-		}
-		if(found_horizontal == 1)
-			horizontal_distance = ft_between_points(x,y,wall_horizontal_x,wall_horizontal_y);
-		else
-			horizontal_distance = INT64_MAX;
-		if (found_vertical == 1)
-			vertical_distance = ft_between_points(x,y,wall_vertical_x,wall_vertical_y);
-		else
-			vertical_distance = INT64_MAX;
-		if(horizontal_distance < vertical_distance)
-			wall_x = wall_horizontal_x;
-		else
-			wall_x = wall_vertical_x;
-		if(horizontal_distance < vertical_distance)
-			wall_y = wall_horizontal_y;
-		else
-			wall_y = wall_vertical_y;
-		if(horizontal_distance < vertical_distance)
-			distance = horizontal_distance;
-		else
-			distance = vertical_distance;
-		if(vertical_distance < horizontal_distance)
-			was_vertical = 1;
-		else
-			was_vertical = 0;
-		ft_ray_push(wall_x,wall_y);
 }
 
 void	ft_check_ray_face()
@@ -343,22 +202,6 @@ void	ft_check_ray_face()
 		is_ray_facing_right = 0;
 		is_ray_facing_left = 1;
 	}
-}
-
-void	ft_draw_line()
-{
-	int m;
-
-	m = 0;
-	ft_draw_rays();
-	/*
-		while(m != 30)
-	{
-		loop_x = x + 1 + cos(retation_angle) * m;
-		loop_y = y + 1 + sin(retation_angle) * m;
-		my_mlx_pixel_put(&img,loop_x,loop_y,0xFF0000);
-		m++;
-	}*/
 }
 
 void	ft_draw_player()
@@ -435,7 +278,7 @@ void	ft_drawing()
 	stock_walk = walk_direction + stock_walk;
 	ft_draw_map();
 	ft_draw_player();
-	ft_draw_line();
+	ft_draw_rays();
 	move_step = 0;
 	mlx_put_image_to_window(mlx_ptr, win_ptr, img.img, 0, 0);
 	mlx_hook(win_ptr,2,0,&deal_key,&img);
