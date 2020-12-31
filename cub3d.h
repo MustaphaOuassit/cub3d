@@ -56,6 +56,8 @@
 		int	closet_one_y;
 		float	next_one_x;
 		float	next_one_y;
+		float	next_one_v_x;
+		float	next_one_v_y;
 		int is_ray_facing_down;
 		int is_ray_facing_up;
 		int is_ray_facing_right;
@@ -63,10 +65,19 @@
 		float x_step;
 		float y_step;
 		int found_horizontal;
+		int found_vertical;
+		float	wall_horizontal_x;
+		float 	wall_horizontal_y;
 		float	wall_x;
-		float wall_y;
+		float	wall_y;
+		float	wall_vertical_x;
+		float 	wall_vertical_y;
 		int ray_x;
 		int ray_y;
+		int long long horizontal_distance;
+		int long long vertical_distance;
+		float distance;
+		int	was_vertical;
 
 	typedef struct  s_data {
 		void        *img;
