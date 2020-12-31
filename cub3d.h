@@ -78,6 +78,10 @@
 		int long long vertical_distance;
 		float distance;
 		int	was_vertical;
+		float ray_distance;
+		float wall_height;
+		float distance_projection;
+		float fo_v;
 
 	typedef struct  s_data {
 		void        *img;
@@ -115,4 +119,5 @@ t_data img;
 		float	ft_normalaize_angle(float angle);
 		void	ft_cast();
 		void	ft_check_ray_face();
+		void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 		#endif

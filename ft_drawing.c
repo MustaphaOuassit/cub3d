@@ -12,6 +12,22 @@
 
 #include "cub3d.h"
 
+void	ft_3d_walls(int x)
+{
+	int j;
+
+	ray_distance = distance;
+	distance_projection = (width_window / 2) * (fo_v / 2);
+	wall_height = (tile_size / ray_distance) * distance_projection;
+	j = (height_window / 2) / 2;
+	while ( j != height_window / 2)
+	{
+		my_mlx_pixel_put(&img,x,j,0xFF0000);
+		j++;
+	}
+	
+}
+
 int	deal_key_release()
 {
 	turn_direction = 0;
@@ -80,8 +96,6 @@ void    ft_draw_line(float x_one,float y_one,float x_zero,float y_zero)
         my_mlx_pixel_put(&img,x_zero,y_zero,0xFF0000);
         x_zero += x_inc;
         y_zero  += y_inc;
-        //printf("%f\n",y);
-        //printf("%f\n",x);
         i++;
     }
     
@@ -147,6 +161,7 @@ void	ft_draw_rays()
 	distance = 0;
 	was_vertical = 0;
 	ft_cast();
+	ft_3d_walls(i);
 	ray_angle = ray_angle + (60 * (M_PI / 180) / num_rays);
 		i++;
 	}
@@ -154,7 +169,6 @@ void	ft_draw_rays()
 
 float	ft_normalaize_angle(float angle)
 {
-	float fo_v;
 	fo_v = 2 * M_PI;
 	angle = fmod(angle,fo_v);
 	if(angle < 0)
@@ -281,7 +295,7 @@ void	ft_cast()
 			was_vertical = 1;
 		else
 			was_vertical = 0;
-		ft_draw_line(x,y,wall_x,wall_y);
+		ft_draw_line(0.2 * x,0.2 * y,0.2 * wall_x,0.2 * wall_y);
 }
 
 void	ft_check_ray_face()
@@ -316,7 +330,7 @@ void	ft_draw_player()
     {
         x = new_playerx;
         y = new_playery;
-        my_mlx_pixel_put(&img, x, y, 0x008000);
+        my_mlx_pixel_put(&img,0.2 *  x, 0.2 * y, 0x008000);
     }
 }
 
@@ -356,7 +370,7 @@ void	ft_draw_map()
 				t = 0;
 				while(t != tile_size)
 				{
-					my_mlx_pixel_put(&img, (tile_size * i) + t, (tile_size * j) + r, color);
+					my_mlx_pixel_put(&img, ((tile_size * i) + t) * 0.2, ((tile_size * j) + r) * 0.2, color);
 					t++;
 				}
 				r++;
