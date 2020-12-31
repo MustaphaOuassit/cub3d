@@ -57,6 +57,36 @@ void	ft_toll_line()
 	}
 }
 
+void    ft_draw_line(float x_one,float y_one,float x_zero,float y_zero)
+{
+    float dx;
+    float dy;
+    float steps;
+    float x_inc;
+    float y_inc;
+    float i;
+    i = 0;
+    dx = x_one - x_zero;
+    dy = y_one - y_zero;
+
+    if (fabsf(dx) > fabsf(dy))
+        steps = fabsf(dx);
+    else 
+        steps = fabsf(dy);
+    x_inc = dx / steps;
+    y_inc = dy / steps;
+    while (i < steps)
+    {        
+        my_mlx_pixel_put(&img,x_zero,y_zero,0xFF0000);
+        x_zero += x_inc;
+        y_zero  += y_inc;
+        //printf("%f\n",y);
+        //printf("%f\n",x);
+        i++;
+    }
+    
+    
+}
 int     ft_has_wallat(float i, float j)
 {
     int wallat;
@@ -163,13 +193,11 @@ void	ft_cast()
 	else
 		x_step = x_step * 1;
 	/////////////////
-	next_one_x = (int)closet_one_x;
-	next_one_y = (int)closet_one_y;
-	if(is_ray_facing_up == 1)
-		next_one_y--;
+	next_one_x = closet_one_x;
+	next_one_y = closet_one_y;
 		while((next_one_x >= 0) && (next_one_x <= ((toll - 1) * tile_size)) && (next_one_y >= 0) && (next_one_y <= ((get_y - 1) * tile_size)))
 		{
-			if(ft_has_wallat(next_one_x,next_one_y) == 1)
+			if(ft_has_wallat(next_one_x,next_one_y -  is_ray_facing_up) == 1)
 			{
 				found_horizontal = 1;
 				wall_horizontal_x = next_one_x;
@@ -212,13 +240,11 @@ void	ft_cast()
 	else
 		y_step = y_step * 1;
 	/////////////////
-	next_one_v_x = (int)closet_one_x;
-	next_one_v_y = (int)closet_one_y;
-	if(is_ray_facing_left == 1)
-		next_one_v_x--;
+	next_one_v_x = closet_one_x;
+	next_one_v_y = closet_one_y;
 		while((next_one_v_x >= 0) && (next_one_v_x <= ((toll - 1) * tile_size)) && (next_one_v_y >= 0) && (next_one_v_y <= ((get_y - 1) * tile_size)))
 		{
-			if(ft_has_wallat(next_one_v_x,next_one_v_y) == 1)
+			if(ft_has_wallat(next_one_v_x - is_ray_facing_left,next_one_v_y) == 1)
 			{
 				found_vertical = 1;
 				wall_vertical_x = next_one_v_x;
@@ -255,7 +281,7 @@ void	ft_cast()
 			was_vertical = 1;
 		else
 			was_vertical = 0;
-		ft_ray_push(wall_x,wall_y);
+		ft_draw_line(x,y,wall_x,wall_y);
 }
 
 void	ft_check_ray_face()

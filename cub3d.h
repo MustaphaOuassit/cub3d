@@ -52,8 +52,8 @@
 		int stock_walk;
 		int is_player_change;
 		float num_rays;
-		int	closet_one_x;
-		int	closet_one_y;
+		float	closet_one_x;
+		float	closet_one_y;
 		float	next_one_x;
 		float	next_one_y;
 		float	next_one_v_x;
