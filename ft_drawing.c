@@ -15,20 +15,20 @@
 void	ft_3d_walls(int x)
 {
 	float j;
-	float y;
+	float i;
 	float ray_distance;
 
 	j = 0; 
-	y = 0;
-	ray_distance = distance * cos(ray_angle - retation_angle);
-	distance_projection = (width_window / 2) / tan( 1.0471975512);
+	i = 0;
+	ray_distance = distance;
+	distance_projection = (width_window / 2) / tan(1.0471975512);
 	wall_height = (tile_size / ray_distance) * distance_projection;
-	y = height_window / 2 - (wall_height / 2);
-    while (j < wall_height && y < height_window)
+	i = (height_window / 2) - (wall_height / 2);
+    while (j < wall_height && i < height_window)
     {
-		if(y > 0)
-        	my_mlx_pixel_put(&img,x,y,0x808080);
-        y++;
+		if(i > 0)
+        	my_mlx_pixel_put(&img,x,i,0x808080);
+        i++;
         j++;
     }
 }
