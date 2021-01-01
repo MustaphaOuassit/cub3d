@@ -14,18 +14,23 @@
 
 void	ft_3d_walls(int x)
 {
-	int j;
+	float j;
+	float y;
+	float ray_distance;
 
-	ray_distance = distance;
-	distance_projection = (width_window / 2) * (fo_v / 2);
+	j = 0; 
+	y = 0;
+	ray_distance = distance * cos(ray_angle - retation_angle);
+	distance_projection = (width_window / 2) / tan( 1.0471975512);
 	wall_height = (tile_size / ray_distance) * distance_projection;
-	j = (height_window / 2) / 2;
-	while ( j != height_window / 2)
-	{
-		my_mlx_pixel_put(&img,x,j,0xFF0000);
-		j++;
-	}
-	
+	y = height_window / 2 - (wall_height / 2);
+    while (j < wall_height && y < height_window)
+    {
+		if(y > 0)
+        	my_mlx_pixel_put(&img,x,y,0x808080);
+        y++;
+        j++;
+    }
 }
 
 int	deal_key_release()
@@ -37,6 +42,11 @@ int	deal_key_release()
 
 int deal_key(int key)
 {
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
 	if(key == 126)
 		walk_direction = 1;
 	if(key == 125)
@@ -45,6 +55,17 @@ int deal_key(int key)
 		turn_direction = 1;
 	if(key == 123)
 		turn_direction = -1;
+	while (j < height_window)
+	{
+		i = 0;
+		while (i < width_window)
+		{
+			my_mlx_pixel_put(&img,i,j,0x000000);
+			i++;
+		}
+		j++;
+	}
+	
 	ft_drawing();
 	return(0);
 }
