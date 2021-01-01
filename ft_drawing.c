@@ -20,9 +20,15 @@ void	ft_3d_walls(int x)
 
 	j = 0; 
 	i = 0;
-	ray_distance = distance;
+	//printf("|%f|\n",distance);
+	ray_distance = distance * cos(ray_angle - retation_angle);
 	distance_projection = (width_window / 2) / tan(1.0471975512);
 	wall_height = (tile_size / ray_distance) * distance_projection;
+	while (i < ((height_window / 2) - (wall_height / 2)))
+	{
+		my_mlx_pixel_put(&img,x,i,0x69e5f3);
+		i++;
+	}
 	i = (height_window / 2) - (wall_height / 2);
     while (j < wall_height && i < height_window)
     {
@@ -31,6 +37,12 @@ void	ft_3d_walls(int x)
         i++;
         j++;
     }
+	while (i < height_window)
+	{
+		my_mlx_pixel_put(&img,x,i,0xc18a15);
+		i++;
+	}
+	
 }
 
 int	deal_key_release()
@@ -316,7 +328,6 @@ void	ft_cast()
 			was_vertical = 1;
 		else
 			was_vertical = 0;
-		ft_draw_line(0.2 * x,0.2 * y,0.2 * wall_x,0.2 * wall_y);
 }
 
 void	ft_check_ray_face()
@@ -351,7 +362,6 @@ void	ft_draw_player()
     {
         x = new_playerx;
         y = new_playery;
-        my_mlx_pixel_put(&img,0.2 *  x, 0.2 * y, 0x008000);
     }
 }
 
@@ -359,43 +369,14 @@ void	ft_draw_map()
 {
 	int i;
 	int j;
-	int t;
-	int r;
-	int color;
 
 	i = 0;
 	j = 0;
-	color = 0;
 	while(map[j])
 	{
 		i = 0;
 		while(map[j][i])
 		{
-			if(map[j][i] == '1')
-				color = 0x808080;
-			else
-			{
-				if(map[j][i] == '0')
-					color = 0xFFFFFF;
-				else
-				{
-					if(map[j][i] == '2')
-						color = 0xFFFFFF;
-					else
-						color = 0;
-				}
-			}
-			r = 0;
-			while(r != tile_size)
-			{
-				t = 0;
-				while(t != tile_size)
-				{
-					my_mlx_pixel_put(&img, ((tile_size * i) + t) * 0.2, ((tile_size * j) + r) * 0.2, color);
-					t++;
-				}
-				r++;
-			}
 			if(map[j][i] == '2' && x == 0)
 			{
 				x = (tile_size * i) + tile_size / 2;

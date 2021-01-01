@@ -24,7 +24,7 @@ int	main(int argc, char *argv[])
 		get = malloc(2);
 		*get = '\0';
 		resolution = malloc(2);
-		tile_size = 64;
+		tile_size = 64; 
 		fd = open(argv[1], O_RDONLY);
 		while (get_next_line(fd, &line) == 1)
 		{

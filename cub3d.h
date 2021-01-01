@@ -74,8 +74,8 @@
 		float 	wall_vertical_y;
 		int ray_x;
 		int ray_y;
-		int long long horizontal_distance;
-		int long long vertical_distance;
+		float horizontal_distance;
+		float vertical_distance;
 		float distance;
 		int	was_vertical;
 		float ray_distance;
