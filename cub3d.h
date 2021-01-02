@@ -82,6 +82,9 @@
 		float wall_height;
 		float distance_projection;
 		float fo_v;
+		void	*ptr;
+		int		*data;
+		int		t;
 
 	typedef struct  s_data {
 		void        *img;

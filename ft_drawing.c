@@ -16,11 +16,13 @@ void	ft_3d_walls(int x)
 {
 	float j;
 	float i;
+	int m;
 	float ray_distance;
+	int result;
 
 	j = 0; 
 	i = 0;
-	//printf("|%f|\n",distance);
+	m = 0;
 	ray_distance = distance * cos(ray_angle - retation_angle);
 	distance_projection = (width_window / 2) / tan(1.0471975512);
 	wall_height = (tile_size / ray_distance) * distance_projection;
@@ -30,12 +32,14 @@ void	ft_3d_walls(int x)
 		i++;
 	}
 	i = (height_window / 2) - (wall_height / 2);
+	result = fmod(wall_x,tile_size);
     while (j < wall_height && i < height_window)
     {
 		if(i > 0)
-        	my_mlx_pixel_put(&img,x,i,0x808080);
+        	my_mlx_pixel_put(&img,x,i,data[(m * tile_size) + result]);
         i++;
         j++;
+		m++;
     }
 	while (i < height_window)
 	{
@@ -415,6 +419,8 @@ void	ft_window(char **resolution)
     win_ptr = mlx_new_window(mlx_ptr, width_window, height_window, "cub3d");
 	img.img = mlx_new_image(mlx_ptr, width_window, height_window);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);
+	ptr = mlx_xpm_file_to_image(mlx_ptr, "walls.xpm",&t,&t);
+	data = (int *)mlx_get_data_addr(ptr, &t,&t,&t);
 	ft_toll_line();
 	ft_drawing();
 	mlx_loop(mlx_ptr);
