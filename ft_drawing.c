@@ -45,7 +45,24 @@ void	ft_3d_walls(int x)
     while (j < wall_height && i < height_window)
     {
 		if(i > 0)
-        	my_mlx_pixel_put(&img,x,i,data[(ft_check_y(i,wall_height) * tile_size) + result]);
+		{
+			if((was_vertical) && (is_ray_facing_left))
+			{
+				my_mlx_pixel_put(&img,x,i,data_one[(ft_check_y(i,wall_height) * tile_size) + result]);
+			}
+			if((was_vertical) && (is_ray_facing_right))
+			{
+				my_mlx_pixel_put(&img,x,i,data_two[(ft_check_y(i,wall_height) * tile_size) + result]);
+			}
+			if((was_vertical == 0) && (is_ray_facing_up))
+			{
+				my_mlx_pixel_put(&img,x,i,data_three[(ft_check_y(i,wall_height) * tile_size) + result]);
+			}
+			if((was_vertical == 0) && (is_ray_facing_down))
+			{
+				my_mlx_pixel_put(&img,x,i,data_four[(ft_check_y(i,wall_height) * tile_size) + result]);
+			}
+		}
         i++;
         j++;
     }
@@ -427,8 +444,14 @@ void	ft_window(char **resolution)
     win_ptr = mlx_new_window(mlx_ptr, width_window, height_window, "cub3d");
 	img.img = mlx_new_image(mlx_ptr, width_window, height_window);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);
-	ptr = mlx_xpm_file_to_image(mlx_ptr, "walls.xpm",&t,&t);
-	data = (int *)mlx_get_data_addr(ptr, &t,&t,&t);
+	textur_one = mlx_xpm_file_to_image(mlx_ptr, "wall1.xpm",&t,&t);
+	data_one = (int *)mlx_get_data_addr(textur_one, &t,&t,&t);
+	textur_two = mlx_xpm_file_to_image(mlx_ptr, "wall2.xpm",&t,&t);
+	data_two = (int *)mlx_get_data_addr(textur_two, &t,&t,&t);
+	textur_three = mlx_xpm_file_to_image(mlx_ptr, "wall3.xpm",&t,&t);
+	data_three = (int *)mlx_get_data_addr(textur_three, &t,&t,&t);
+	textur_four = mlx_xpm_file_to_image(mlx_ptr, "wall4.xpm",&t,&t);
+	data_four = (int *)mlx_get_data_addr(textur_four, &t,&t,&t);
 	ft_toll_line();
 	ft_drawing();
 	mlx_loop(mlx_ptr);

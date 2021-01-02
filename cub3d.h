@@ -82,8 +82,14 @@
 		float wall_height;
 		float distance_projection;
 		float fo_v;
-		void	*ptr;
-		int		*data;
+		void	*textur_one;
+		int		*data_one;
+		void	*textur_two;
+		int		*data_two;
+		void	*textur_three;
+		int		*data_three;
+		void	*textur_four;
+		int		*data_four;
 		int		t;
 
 	typedef struct  s_data {
