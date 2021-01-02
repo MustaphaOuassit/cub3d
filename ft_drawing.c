@@ -12,17 +12,23 @@
 
 #include "cub3d.h"
 
+int		ft_check_y(int y, int wall_strip_height)
+{
+	int distance_from_top;
+
+	distance_from_top = y + (wall_strip_height / 2) - (height_window / 2);
+	return (distance_from_top * ((float)tile_size / wall_strip_height));
+}
+
 void	ft_3d_walls(int x)
 {
 	float j;
 	float i;
-	int m;
 	float ray_distance;
 	int result;
 
 	j = 0; 
 	i = 0;
-	m = 0;
 	ray_distance = distance * cos(ray_angle - retation_angle);
 	distance_projection = (width_window / 2) / tan(1.0471975512);
 	wall_height = (tile_size / ray_distance) * distance_projection;
@@ -32,14 +38,16 @@ void	ft_3d_walls(int x)
 		i++;
 	}
 	i = (height_window / 2) - (wall_height / 2);
-	result = fmod(wall_x,tile_size);
+	if (was_vertical)
+		result = fmod(wall_y,tile_size);
+	else
+		result = fmod(wall_x,tile_size);
     while (j < wall_height && i < height_window)
     {
 		if(i > 0)
-        	my_mlx_pixel_put(&img,x,i,data[(m * tile_size) + result]);
+        	my_mlx_pixel_put(&img,x,i,data[(ft_check_y(i,wall_height) * tile_size) + result]);
         i++;
         j++;
-		m++;
     }
 	while (i < height_window)
 	{
