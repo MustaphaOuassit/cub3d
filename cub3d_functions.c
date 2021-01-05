@@ -43,44 +43,85 @@ int		ft_line_map(const char *str)
 
 int		ft_same(char *str)
 {
-	int i;
 	int j;
 
-	i = 0;
 	j = 1;
-	if ((ft_strlen(str) == 1) && (str[0] == 'R'))
-		j = 0;
+	if(ft_strlen(str) == 1)
+		if((str[0] == 'R') || (str[0] == 'S') || (str[0] == 'F') || str[0] == 'C')
+			j = 0;
+		if(ft_strlen(str) == 2)
+			if(((str[0] == 'N') && (str[1] == 'O')) || ((str[0] == 'S') && (str[1] == 'O'))
+			|| ((str[0] == 'W') && (str[1] == 'E')) || ((str[0] == 'E') && (str[1] == 'A')))
+				j = 0;
 	return (j);
 }
 
 int		ft_check_errors(const char *str)
 {
 	char	**no_space;
+	char	**no_vrg;
 	size_t	i;
-	int		j;
 	int		error;
 
 	no_space = ft_split(str, ' ');
+	no_vrg = ft_split(str, ',');
 	i = 0;
-	j = 0;
 	error = 0;
-	if ((str[0] == 'R') && (ft_same(no_space[0]) == 0))
-	{
-		while (i != ft_strlen(str))
+		if (((str[0] == 'R') || (str[0] == 'F')) && (ft_same(no_space[0]) == 0))
 		{
-			if (!(no_space[i]))
+			check_info = 1;
+			if(str[0] == 'R')
 			{
-				i = i - 1;
-				break ;
+				while (i != ft_strlen(str))
+				{
+					if (!(no_space[i]))
+					{
+						i = i - 1;
+						break ;
+					}
+					i++;
+				}
+				error = ft_check_letter(no_space, i);
 			}
-			i++;
+			if(str[0] == 'F')
+			{
+				i = 0;
+				while (i != ft_strlen(str))
+				{
+					if (!(no_vrg[i]))
+					{
+						i = i - 1;
+						break ;
+					}
+					i++;
+				}
+				error =	ft_continue_vrg(no_vrg,i);
+			}
 		}
-		error = ft_check_letter(no_space, i);
-	}
-	else
+		else
+		{
+			if(check_info == 1)
+				error = ft_check_line_map(str, info);
+			else
+				text_error = "Indice information";
+		}
+		/*
+	if(ft_strlen(no_space[0]) == 2)
 	{
-		error = ft_check_line_map(str, info);
-	}
+		if ((((str[0] == 'N') && (str[1] == 'O')) || ((str[0] == 'S') && (str[1] == 'O'))
+			|| ((str[0] == 'W') && (str[1] == 'E')) || ((str[0] == 'E') && (str[1] == 'A')))
+		&& (ft_same(no_space[0]) == 0))
+		{
+			check_info = 1;
+		}
+		else
+		{
+			if(check_info == 1)
+				error = ft_check_line_map(str, info);
+			else
+				text_error = "Indice information";
+		}
+	}*/
 	return (error);
 }
 

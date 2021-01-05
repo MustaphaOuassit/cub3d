@@ -36,6 +36,7 @@
 		int info;
 		int entre;
 		char **resolution;
+		char **flr;
 		int tile_size;
 		float x;
 		float y;
@@ -91,6 +92,8 @@
 		void	*textur_four;
 		int		*data_four;
 		int		t;
+		char	*text_error;
+		int check_info;
 
 	typedef struct  s_data {
 		void        *img;
@@ -129,4 +132,6 @@ t_data img;
 		void	ft_cast();
 		void	ft_check_ray_face();
 		void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+		int		ft_check_vrg(char **no_vrg, int i);
+		int		ft_continue_vrg(char **no_vrg, int i);
 		#endif
