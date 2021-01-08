@@ -11,67 +11,118 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
-int		ft_continue_vrg(char **no_vrg, int i)
+int		ft_continue_vrg(char **no_vrg, size_t i)
 {
 	int	error;
-	int j;
+	size_t j;
 	size_t b;
-	size_t r;
+	int r;
+	size_t t;
 	char	**no_space;
+	int chose_error;
 
 	error = 0;
+	chose_error = 0;
 	j = 0;
 	b = 0;
-	r = 0;
-	while (j <= i)
+	t = 0;
+	if(i == 2)
 	{
-		b = 0;
-		no_space = ft_split(no_vrg[j], ' ');
-		if (j == 0)
+		while (j <= i)
 		{
-			while (b != ft_strlen(no_space[1]))
+			b = 0;
+			no_space = ft_split(no_vrg[j], ' ');
+			if (j == 0)
 			{
-				if(ft_isdigit(no_space[1][b]) == 0)
+				r = 0;
+				while (no_space[r] != '\0')
+					r++;
+				if(r == 2)
 				{
-					text_error = "No digit in F";
-					error = 0;
-					break;
+					while (b != ft_strlen(no_space[1]))
+					{
+						if(ft_isdigit(no_space[1][b]) == 0)
+						{
+							text_error = "Info invalid in F";
+							error = 0;
+							break;
+						}
+						else
+						{
+							error = 1;
+							info = 1;
+						}
+						if(error == 0)
+							break;
+						b++;
+					}
 				}
 				else
 				{
-					error = 1;
-				}
-				if(error == 0)
+					error = 0;
+					t = 0;
+					while (t != ft_strlen(no_space[r - 1]))
+					{
+						if(ft_isdigit(no_space[r - 1][t]) == 0)
+						{
+							chose_error = 1;
+							break;
+						}
+						t++;
+					}
+					if(chose_error == 0)
+						text_error = "Maximum numbers for one element in F is 1";
+					else
+						text_error = "Info invalid in F";
 					break;
-				b++;
+				}
+				if(error == 1)
+					flr[j] = no_space[1];
 			}
-			if(error == 1)
-				flr[j] = no_space[1];
+			else
+			{
+				while (b != ft_strlen(no_space[0]))
+				{
+					if(ft_isdigit(no_space[0][b]) == 0)
+					{
+						text_error = "Info invalid in F";
+						error = 0;
+						break;
+					}
+					else
+					{
+						error = 1;
+						info = 1;
+					}
+					if(error == 0)
+						break;
+					b++;
+				}
+				if(error == 1)
+					flr[j] = no_space[0];
+			}
+			if(error == 0)
+				break;
+			j++;
 		}
+	}
+	else
+	{
+		error = 0;
+		j = 0;
+		while (j != ft_strlen(no_vrg[i]))
+		{
+			if(ft_isdigit(no_vrg[i][j]) == 0)
+			{
+				chose_error = 1;
+				break;
+			}
+			j++;
+		}
+		if(chose_error == 0)
+			text_error = "Maximum info 3 numbers in F";
 		else
-		{
-			while (b != ft_strlen(no_space[0]))
-			{
-				if(ft_isdigit(no_space[0][b]) == 0)
-				{
-					text_error = "No digit in F";
-					error = 0;
-					break;
-				}
-				else
-				{
-					error = 1;
-				}
-				if(error == 0)
-					break;
-				b++;
-			}
-			if(error == 1)
-				flr[j] = no_space[0];
-		}
-		if(error == 0)
-			break;
-		j++;
+			text_error = "Info invalid in F";
 	}
 	return(error);
 	/*
@@ -125,6 +176,7 @@ int		ft_continue_letter(char **no_space, int i, size_t j)
 			{
 				error = 1;
 				info = 1;
+				text_error = "Info invalid in R";
 			}
 			j++;
 		}
@@ -160,9 +212,11 @@ int		ft_check_vrg(char **no_vrg, int i)
 int		ft_check_letter(char **no_space, int i)
 {
 	int error;
-	int j;
+	size_t j;
+	int chose_error;
 
 	error = 0;
+	chose_error = 0;
 	j = 0;
 	if (i == 2)
 	{
@@ -170,7 +224,23 @@ int		ft_check_letter(char **no_space, int i)
 		error = ft_continue_letter(no_space, i, j);
 	}
 	else
+	{
 		error = 0;
+		j = 0;
+		while (j != ft_strlen(no_space[i]))
+		{
+			if(ft_isdigit(no_space[i][j]) == 0)
+			{
+				chose_error = 1;
+				break;
+			}
+			j++;
+		}
+		if(chose_error == 0)
+			text_error = "Maximum info 2 numbers in R";
+		else
+			text_error = "Info invalid in R";
+	}
 	return (error);
 }
 

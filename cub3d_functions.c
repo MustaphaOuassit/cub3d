@@ -67,6 +67,7 @@ int		ft_check_errors(const char *str)
 	no_vrg = ft_split(str, ',');
 	i = 0;
 	error = 0;
+
 		if (((str[0] == 'R') || (str[0] == 'F')) && (ft_same(no_space[0]) == 0))
 		{
 			check_info = 1;
@@ -100,10 +101,8 @@ int		ft_check_errors(const char *str)
 		}
 		else
 		{
-			if(check_info == 1)
-				error = ft_check_line_map(str, info);
-			else
-				text_error = "Indice information";
+			text_error = "lack the identifier";
+			error = ft_check_line_map(str, info);
 		}
 		/*
 	if(ft_strlen(no_space[0]) == 2)

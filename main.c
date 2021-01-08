@@ -44,7 +44,7 @@ int	main(int argc, char *argv[])
 			printf("%s\n","GO");
 		}
 		else
-			printf("Error : %s\n",text_error);
+			printf("Error:\n%s\n",text_error);
 		
 		
 	}
