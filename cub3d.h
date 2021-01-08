@@ -132,6 +132,6 @@ t_data img;
 		void	ft_cast();
 		void	ft_check_ray_face();
 		void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-		int		ft_check_vrg(char **no_vrg, int i);
-		int		ft_continue_vrg(char **no_vrg, size_t i);
+		int		ft_check_vrg(char **no_vrg, int i,const char *str);
+		int		ft_continue_vrg(char **no_vrg, size_t i, const char *str);
 		#endif

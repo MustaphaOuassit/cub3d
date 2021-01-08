@@ -96,7 +96,7 @@ int		ft_check_errors(const char *str)
 					}
 					i++;
 				}
-				error =	ft_continue_vrg(no_vrg,i);
+				error =	ft_continue_vrg(no_vrg,i,str);
 			}
 		}
 		else
@@ -104,23 +104,6 @@ int		ft_check_errors(const char *str)
 			text_error = "lack the identifier";
 			error = ft_check_line_map(str, info);
 		}
-		/*
-	if(ft_strlen(no_space[0]) == 2)
-	{
-		if ((((str[0] == 'N') && (str[1] == 'O')) || ((str[0] == 'S') && (str[1] == 'O'))
-			|| ((str[0] == 'W') && (str[1] == 'E')) || ((str[0] == 'E') && (str[1] == 'A')))
-		&& (ft_same(no_space[0]) == 0))
-		{
-			check_info = 1;
-		}
-		else
-		{
-			if(check_info == 1)
-				error = ft_check_line_map(str, info);
-			else
-				text_error = "Indice information";
-		}
-	}*/
 	return (error);
 }
 
