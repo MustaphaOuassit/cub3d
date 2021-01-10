@@ -1,11 +1,13 @@
 R 1920 1080
 
+SO ./txt.64  4.xpm
 
+WE ./txt64-2.xpm
 
 EA  ./txt64-3.xpm
 
 
-S   ./luffy.xpm
+S   ./luff y.xpm
 
 F 77,77,88
 

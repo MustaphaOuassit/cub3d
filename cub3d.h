@@ -98,8 +98,12 @@
 		int check_c;
 		int check_s;
 		int check_ea;
+		int check_we;
+		int check_so;
 		char	*textur_sprite;
 		char	*textur_ea;
+		char	*textur_we;
+		char	*textur_so;
 
 	typedef struct  s_data {
 		void        *img;
