@@ -80,20 +80,28 @@ int		ft_continue_line(char **separ_lines)
 
 	j = 1;
 	error = 0;
-	while (j != get_y - 1)
+	if((check_f == 1) && (check_c == 1) && (check_s == 1) && (check_ea == 1))
 	{
-		if (((separ_lines[j][ft_strlen(separ_lines[j]) - 1] == '1')
-					|| (separ_lines[j][ft_strlen(separ_lines[j]) - 1] == ' '))
-				&& ((separ_lines[j][0] == '1') || (separ_lines[j][0] == ' ')))
+		while (j != get_y - 1)
 		{
-			i = 0;
-			error = ft_zero_space(separ_lines, i, j, error);
+			if (((separ_lines[j][ft_strlen(separ_lines[j]) - 1] == '1')
+						|| (separ_lines[j][ft_strlen(separ_lines[j]) - 1] == ' '))
+					&& ((separ_lines[j][0] == '1') || (separ_lines[j][0] == ' ')))
+			{
+				i = 0;
+				error = ft_zero_space(separ_lines, i, j, error);
+			}
+			else
+				error = 1;
+			if (error == 1)
+				break ;
+			j++;
 		}
-		else
-			error = 1;
-		if (error == 1)
-			break ;
-		j++;
+	}
+	else
+	{
+		error = 1;
+		text_error = "lack the identifier";
 	}
 	return (error);
 }

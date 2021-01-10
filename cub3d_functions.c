@@ -67,10 +67,8 @@ int		ft_check_errors(const char *str)
 	no_vrg = ft_split(str, ',');
 	i = 0;
 	error = 0;
-
-		if (((str[0] == 'R') || (str[0] == 'F')) && (ft_same(no_space[0]) == 0))
+		if (((str[0] == 'R') || (str[0] == 'F') || (str[0] == 'C') || (str[0] == 'S') || (str[0] == 'E')) && (ft_same(no_space[0]) == 0))
 		{
-			check_info = 1;
 			if(str[0] == 'R')
 			{
 				while (i != ft_strlen(str))
@@ -96,7 +94,73 @@ int		ft_check_errors(const char *str)
 					}
 					i++;
 				}
-				error =	ft_continue_vrg(no_vrg,i,str);
+				error =	ft_continue_vrg_f(no_vrg,i,str);
+				if(error == 1)
+					check_f = 1;
+			}
+			if(str[0] == 'C')
+			{
+				i = 0;
+				while (i != ft_strlen(str))
+				{
+					if (!(no_vrg[i]))
+					{
+						i = i - 1;
+						break ;
+					}
+					i++;
+				}
+				error =	ft_continue_vrg_c(no_vrg,i,str);
+				if(error == 1)
+					check_c = 1;
+			}
+			if(str[0] == 'S')
+			{
+				i = 0;
+				while (no_space[i] != '\0')
+					i++;
+				if((ft_strlen(no_space[0]) == 1) && (i > 1) && ((no_space[1][0] == '.') && ((no_space[1][1] == '/'))))
+				{
+					if((no_space[i - 1][ft_strlen(no_space[i - 1]) - 1] == 'm') && (no_space[i - 1][ft_strlen(no_space[i - 1]) - 2] == 'p')
+						&& (no_space[i - 1][ft_strlen(no_space[i - 1]) - 3] == 'x') && (no_space[i - 1][ft_strlen(no_space[i - 1]) - 4] == '.'))
+						{
+							error = 1;
+							textur_sprite = no_space[i - 1];
+						}
+					else
+					{
+						error = 0;
+						text_error = "type file xpm in S";
+					}
+					if(error == 1)
+						check_s = 1;
+				}
+				else
+					text_error = "Info invalid in S";
+			}
+			if((str[0] == 'E') && (str[1] == 'A'))
+			{
+				i = 0;
+				while (no_space[i] != '\0')
+					i++;
+				if((ft_strlen(no_space[0]) == 2) && (i > 1) && ((no_space[1][0] == '.') && ((no_space[1][1] == '/'))))
+				{
+					if((no_space[i - 1][ft_strlen(no_space[i - 1]) - 1] == 'm') && (no_space[i - 1][ft_strlen(no_space[i - 1]) - 2] == 'p')
+						&& (no_space[i - 1][ft_strlen(no_space[i - 1]) - 3] == 'x') && (no_space[i - 1][ft_strlen(no_space[i - 1]) - 4] == '.'))
+						{
+							error = 1;
+							textur_ea = no_space[i - 1];
+						}
+					else
+					{
+						error = 0;
+						text_error = "type file xpm in EA";
+					}
+					if(error == 1)
+						check_ea = 1;
+				}
+				else
+					text_error = "Info invalid in EA";
 			}
 		}
 		else

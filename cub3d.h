@@ -37,6 +37,7 @@
 		int entre;
 		char **resolution;
 		char **flr;
+		char **sky;
 		int tile_size;
 		float x;
 		float y;
@@ -93,7 +94,12 @@
 		int		*data_four;
 		int		t;
 		char	*text_error;
-		int check_info;
+		int check_f;
+		int check_c;
+		int check_s;
+		int check_ea;
+		char	*textur_sprite;
+		char	*textur_ea;
 
 	typedef struct  s_data {
 		void        *img;
@@ -132,6 +138,6 @@ t_data img;
 		void	ft_cast();
 		void	ft_check_ray_face();
 		void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-		int		ft_check_vrg(char **no_vrg, int i,const char *str);
-		int		ft_continue_vrg(char **no_vrg, size_t i, const char *str);
+		int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str);
+		int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str);
 		#endif
