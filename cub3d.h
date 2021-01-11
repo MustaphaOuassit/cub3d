@@ -106,6 +106,15 @@
 		char	*textur_we;
 		char	*textur_so;
 		char	*textur_no;
+		int		duplicate_r;
+		int		duplicate_no;
+		int		duplicate_so;
+		int		duplicate_we;
+		int		duplicate_ea;
+		int		duplicate_s;
+		int		duplicate_f;
+		int		duplicate_c;
+
 
 	typedef struct  s_data {
 		void        *img;

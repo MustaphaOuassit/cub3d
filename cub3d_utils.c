@@ -537,7 +537,10 @@ int		ft_check_line_map(const char *str, int info)
 	if ((ft_line_map(str) == 1) && (info == 1))
 		error = 1;
 	else
+	{
 		error = 0;
+		text_error = "Invalid Text";
+	}
 	return (error);
 }
 

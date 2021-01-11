@@ -1,20 +1,24 @@
-R 1920 1080
 
-NO ./txt64-1 .xpm
+
+
+
+
+
+
+R   1920 555
+
+NO ./txt64-1.xpm
 
 SO ./txt.644.xpm
 
 WE ./txt64-2.xpm
 
-EA ./txt64-3.xpm
-
+EA ./txtxxx64-3.xpm
 
 S ./luffy.xpm
 
 
-
 F  48,14,28
-
 
 
 C 48,14,28
