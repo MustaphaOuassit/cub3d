@@ -92,9 +92,14 @@ int		ft_continue_line(char **separ_lines)
 				error = ft_zero_space(separ_lines, i, j, error);
 			}
 			else
+			{
 				error = 1;
+			}
 			if (error == 1)
-				break ;
+			{
+				text_error = "Close the map";
+				break;
+			}
 			j++;
 		}
 	}
@@ -102,6 +107,7 @@ int		ft_continue_line(char **separ_lines)
 	{
 		error = 1;
 		text_error = "lack the identifier";
+		
 	}
 	return (error);
 }

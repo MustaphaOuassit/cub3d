@@ -90,7 +90,10 @@ int		ft_check_errors(const char *str)
 				else
 				{
 					error = 0;
-					text_error = "Duplicate the identifier R";
+					if(get_y == 0)
+						text_error = "Duplicate the identifier R";
+					else
+						text_error = "Close the map";
 				}
 			}	
 			if(str[0] == 'F')
@@ -117,7 +120,10 @@ int		ft_check_errors(const char *str)
 				else
 				{
 					error = 0;
-					text_error = "Duplicate the identifier F";
+					if(get_y == 0)
+						text_error = "Duplicate the identifier F";
+					else
+						text_error = "Close the map";
 				}
 			}
 			if(str[0] == 'C')
@@ -144,7 +150,10 @@ int		ft_check_errors(const char *str)
 				else
 				{
 					error = 0;
-					text_error = "Duplicate the identifier C";
+					if(get_y == 0)
+						text_error = "Duplicate the identifier C";
+					else
+						text_error = "Close the map";	
 				}
 			}
 			if((str[0] == 'S') && (str[1] != 'O'))
@@ -173,7 +182,10 @@ int		ft_check_errors(const char *str)
 				else
 				{
 					error = 0;
-					text_error = "Duplicate the identifier S";
+					if(get_y == 0)
+						text_error = "Duplicate the identifier S";
+					else
+						text_error = "Close the map";
 				}
 			}
 			if((str[0] == 'E') && (str[1] == 'A'))
@@ -202,7 +214,10 @@ int		ft_check_errors(const char *str)
 				else
 				{
 					error = 0;
-					text_error = "Duplicate the identifier EA";
+					if(get_y == 0)
+						text_error = "Duplicate the identifier EA";
+					else
+						text_error = "Close the map";	
 				}
 			}
 			if((str[0] == 'W') && (str[1] == 'E'))
@@ -231,7 +246,10 @@ int		ft_check_errors(const char *str)
 				else
 				{
 					error = 0;
-					text_error = "Duplicate the identifier WE";
+					if(get_y == 0)
+						text_error = "Duplicate the identifier WE";
+					else
+						text_error = "Close the map";	
 				}
 			}
 			if((str[0] == 'S') && (str[1] == 'O'))
@@ -260,7 +278,10 @@ int		ft_check_errors(const char *str)
 				else
 				{
 					error = 0;
-					text_error = "Duplicate the identifier SO";
+					if(get_y == 0)
+						text_error = "Duplicate the identifier SO";
+					else
+						text_error = "Close the map";
 				}
 			}
 			if((str[0] == 'N') && (str[1] == 'O'))
@@ -289,7 +310,10 @@ int		ft_check_errors(const char *str)
 				else
 				{
 					error = 0;
-					text_error = "Duplicate the identifier NO";
+					if(get_y == 0)
+						text_error = "Duplicate the identifier NO";
+					else
+						text_error = "Close the map";
 				}
 			}
 		}
@@ -313,7 +337,7 @@ int		ft_check_one_on_line(char *firstr, char *endstr)
 		if ((firstr[i] != '1') && (firstr[i] != ' '))
 		{
 			error = 1;
-			break ;
+			break;
 		}
 		i++;
 	}
@@ -328,24 +352,39 @@ int	ft_check_all_errors(const char *str)
 	int		error;
 
 	error = 0;
-	if (ft_check_errors(str) == 1)
+	if((check_f == 1) && (check_c == 1) && (check_s == 1) && (check_ea == 1) && (check_we == 1) && (check_so == 1) && (check_no == 1))
 	{
-		separ_lines = ft_split_n(get, 'c');
-		if (get_y > 1)
+		if (ft_check_errors(str) == 1)
 		{
-			if (ft_check_one_on_line(separ_lines[0],
-						separ_lines[get_y - 1]) == 0)
-				error = ft_continue_line(separ_lines);
+			separ_lines = ft_split_n(get, 'c');
+			if (get_y >= 3)
+			{
+				if (ft_check_one_on_line(separ_lines[0],separ_lines[get_y - 1]) == 0)
+				{
+					error = ft_continue_line(separ_lines);
+				}
+				else
+				{
+					error = 1;
+					text_error = "Close the map";
+				}
+			}
 			else
+			{
 				error = 1;
+				if(get_y == 0)
+					text_error = "Enter the map";
+				if((get_y != 0) && (get_y < 3))
+					text_error = "Minimum lines of the map is 3";
+			}
 		}
 		else
-			write(1, "Error\n", 6);
+			error = 1;
 	}
 	else
 	{
-		write(1, "Error\n", 6);
 		error = 1;
+		text_error = "lack the identifier";
 	}
 	return(error) ;
 }

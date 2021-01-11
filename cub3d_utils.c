@@ -533,13 +533,16 @@ int		ft_check_line_map(const char *str, int info)
 {
 	int error;
 
+	if(get_y >= 1)
+		text_error = "Close the map";
+	else
+		text_error = "Invalid Text";
 	error = 0;
 	if ((ft_line_map(str) == 1) && (info == 1))
 		error = 1;
 	else
 	{
 		error = 0;
-		text_error = "Invalid Text";
 	}
 	return (error);
 }
