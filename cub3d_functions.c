@@ -67,8 +67,7 @@ int		ft_check_errors(const char *str)
 	no_vrg = ft_split(str, ',');
 	i = 0;
 	error = 0;
-		if (((str[0] == 'R') || (str[0] == 'F') || (str[0] == 'C') || (str[0] == 'S') || (str[0] == 'E') || (str[0] == 'W'))
-		&& (ft_same(no_space[0]) == 0))
+		if (((str[0] == 'R') || (str[0] == 'F') || (str[0] == 'C') || (str[0] == 'S'))&& (ft_same(no_space[0]) == 0))
 		{
 			if(str[0] == 'R')
 			{
@@ -115,102 +114,25 @@ int		ft_check_errors(const char *str)
 				if(error == 1)
 					check_c = 1;
 			}
-			if((str[0] == 'S') && (str[1] != 'O'))
+			if(str[0] == 'S')
 			{
 				i = 0;
-				while (no_space[i] != '\0')
+				while(no_space[i] != '\0')
 					i++;
-				if((ft_strlen(no_space[0]) == 1) && (i > 1) && ((no_space[1][0] == '.') && ((no_space[1][1] == '/'))))
+				if((i == 2) && (str[ft_strlen(str) - 1] != ' '))
 				{
-					if((no_space[i - 1][ft_strlen(no_space[i - 1]) - 1] == 'm') && (no_space[i - 1][ft_strlen(no_space[i - 1]) - 2] == 'p')
-						&& (no_space[i - 1][ft_strlen(no_space[i - 1]) - 3] == 'x') && (no_space[i - 1][ft_strlen(no_space[i - 1]) - 4] == '.'))
-						{
-							error = 1;
-							textur_sprite = no_space[i - 1];
-							printf("%s\n",textur_sprite);
-						}
-					else
-					{
-						error = 0;
-						text_error = "type file xpm in S";
-					}
-					if(error == 1)
-						check_s = 1;
+					error = 1;
+					check_s = 1;
+					textur_sprite = ft_strdup(no_space[1]);
 				}
 				else
-					text_error = "Info invalid in S";
-			}
-			if((str[0] == 'E') && (str[1] == 'A'))
-			{
-				i = 0;
-				while (no_space[i] != '\0')
-					i++;
-				if((ft_strlen(no_space[0]) == 2) && (i > 1) && ((no_space[1][0] == '.') && ((no_space[1][1] == '/'))))
 				{
-					if((no_space[i - 1][ft_strlen(no_space[i - 1]) - 1] == 'm') && (no_space[i - 1][ft_strlen(no_space[i - 1]) - 2] == 'p')
-						&& (no_space[i - 1][ft_strlen(no_space[i - 1]) - 3] == 'x') && (no_space[i - 1][ft_strlen(no_space[i - 1]) - 4] == '.'))
-						{
-							error = 1;
-							textur_ea = no_space[i - 1];
-						}
+					error = 0;
+					if(i == 1)
+						text_error = "Entre the file in S";
 					else
-					{
-						error = 0;
-						text_error = "type file xpm in EA";
-					}
-					if(error == 1)
-						check_ea = 1;
+						text_error = "Info invalid in S";
 				}
-				else
-					text_error = "Info invalid in EA";
-			}
-			if((str[0] == 'W') && (str[1] == 'E'))
-			{
-				i = 0;
-				while (no_space[i] != '\0')
-					i++;
-				if((ft_strlen(no_space[0]) == 2) && (i > 1) && ((no_space[1][0] == '.') && ((no_space[1][1] == '/'))))
-				{
-					if((no_space[i - 1][ft_strlen(no_space[i - 1]) - 1] == 'm') && (no_space[i - 1][ft_strlen(no_space[i - 1]) - 2] == 'p')
-						&& (no_space[i - 1][ft_strlen(no_space[i - 1]) - 3] == 'x') && (no_space[i - 1][ft_strlen(no_space[i - 1]) - 4] == '.'))
-						{
-							error = 1;
-							textur_we = no_space[i - 1];
-						}
-					else
-					{
-						error = 0;
-						text_error = "type file xpm in WE";
-					}
-					if(error == 1)
-						check_we = 1;
-				}
-				else
-					text_error = "Info invalid in WE";
-			}
-			if((str[0] == 'S') && (str[1] == 'O'))
-			{
-				i = 0;
-				while (no_space[i] != '\0')
-					i++;
-				if((ft_strlen(no_space[0]) == 2) && (i > 1) && ((no_space[1][0] == '.') && ((no_space[1][1] == '/'))))
-				{
-					if((no_space[i - 1][ft_strlen(no_space[i - 1]) - 1] == 'm') && (no_space[i - 1][ft_strlen(no_space[i - 1]) - 2] == 'p')
-						&& (no_space[i - 1][ft_strlen(no_space[i - 1]) - 3] == 'x') && (no_space[i - 1][ft_strlen(no_space[i - 1]) - 4] == '.'))
-						{
-							error = 1;
-							textur_so = no_space[i - 1];
-						}
-					else
-					{
-						error = 0;
-						text_error = "type file xpm in SO";
-					}
-					if(error == 1)
-						check_so = 1;
-				}
-				else
-					text_error = "Info invalid in SO";
 			}
 		}
 		else
