@@ -80,7 +80,7 @@ int		ft_continue_line(char **separ_lines)
 
 	j = 1;
 	error = 0;
-	if((check_f == 1) && (check_c == 1) && (check_s == 1))
+	if((check_f == 1) && (check_c == 1) && (check_s == 1) && (check_ea == 1) && (check_we == 1) && (check_so == 1) && (check_no == 1))
 	{
 		while (j != get_y - 1)
 		{

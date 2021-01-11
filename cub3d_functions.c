@@ -67,7 +67,8 @@ int		ft_check_errors(const char *str)
 	no_vrg = ft_split(str, ',');
 	i = 0;
 	error = 0;
-		if (((str[0] == 'R') || (str[0] == 'F') || (str[0] == 'C') || (str[0] == 'S'))&& (ft_same(no_space[0]) == 0))
+		if (((str[0] == 'R') || (str[0] == 'F') || (str[0] == 'C') || (str[0] == 'S') || (str[0] == 'E') || (str[0] == 'W') || (str[0] == 'N'))
+			&& (ft_same(no_space[0]) == 0))
 		{
 			if(str[0] == 'R')
 			{
@@ -114,7 +115,7 @@ int		ft_check_errors(const char *str)
 				if(error == 1)
 					check_c = 1;
 			}
-			if(str[0] == 'S')
+			if((str[0] == 'S') && (str[1] != 'O'))
 			{
 				i = 0;
 				while(no_space[i] != '\0')
@@ -132,6 +133,86 @@ int		ft_check_errors(const char *str)
 						text_error = "Entre the file in S";
 					else
 						text_error = "Info invalid in S";
+				}
+			}
+			if((str[0] == 'E') && (str[1] == 'A'))
+			{
+				i = 0;
+				while(no_space[i] != '\0')
+					i++;
+				if((i == 2) && (str[ft_strlen(str) - 1] != ' '))
+				{
+					error = 1;
+					check_ea = 1;
+					textur_ea = ft_strdup(no_space[1]);
+				}
+				else
+				{
+					error = 0;
+					if(i == 1)
+						text_error = "Entre the file in EA";
+					else
+						text_error = "Info invalid in EA";
+				}
+			}
+			if((str[0] == 'W') && (str[1] == 'E'))
+			{
+				i = 0;
+				while(no_space[i] != '\0')
+					i++;
+				if((i == 2) && (str[ft_strlen(str) - 1] != ' '))
+				{
+					error = 1;
+					check_we = 1;
+					textur_we = ft_strdup(no_space[1]);
+				}
+				else
+				{
+					error = 0;
+					if(i == 1)
+						text_error = "Entre the file in WE";
+					else
+						text_error = "Info invalid in WE";
+				}
+			}
+			if((str[0] == 'S') && (str[1] == 'O'))
+			{
+				i = 0;
+				while(no_space[i] != '\0')
+					i++;
+				if((i == 2) && (str[ft_strlen(str) - 1] != ' '))
+				{
+					error = 1;
+					check_so = 1;
+					textur_so = ft_strdup(no_space[1]);
+				}
+				else
+				{
+					error = 0;
+					if(i == 1)
+						text_error = "Entre the file in SO";
+					else
+						text_error = "Info invalid in SO";
+				}
+			}
+			if((str[0] == 'N') && (str[1] == 'O'))
+			{
+				i = 0;
+				while(no_space[i] != '\0')
+					i++;
+				if((i == 2) && (str[ft_strlen(str) - 1] != ' '))
+				{
+					error = 1;
+					check_no = 1;
+					textur_no = ft_strdup(no_space[1]);
+				}
+				else
+				{
+					error = 0;
+					if(i == 1)
+						text_error = "Entre the file in NO";
+					else
+						text_error = "Info invalid in NO";
 				}
 			}
 		}

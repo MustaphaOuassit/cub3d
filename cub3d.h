@@ -100,10 +100,12 @@
 		int check_ea;
 		int check_we;
 		int check_so;
+		int check_no;
 		char	*textur_sprite;
 		char	*textur_ea;
 		char	*textur_we;
 		char	*textur_so;
+		char	*textur_no;
 
 	typedef struct  s_data {
 		void        *img;
