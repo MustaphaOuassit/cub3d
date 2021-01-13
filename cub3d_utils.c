@@ -532,8 +532,7 @@ int	ft_continue(const char *str, int error)
 int		ft_check_line_map(const char *str, int info)
 {
 	int error;
-
-	if(get_y >= 1)
+	if((get_y >= 1) && (all_info == 8))
 		text_error = "Close the map";
 	else
 		text_error = "Invalid Text";

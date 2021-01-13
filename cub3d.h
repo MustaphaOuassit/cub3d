@@ -114,6 +114,7 @@
 		int		duplicate_s;
 		int		duplicate_f;
 		int		duplicate_c;
+		int		all_info;
 
 
 	typedef struct  s_data {
