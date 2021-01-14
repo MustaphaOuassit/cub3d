@@ -23,7 +23,7 @@ int		ft_line_map(const char *str)
 	while (i != ft_strlen(str))
 	{
 		if ((str[i] != ' ') && (str[i] != '0')
-				&& (str[i] != '1') && (str[i] != '2'))
+				&& (str[i] != '1') && (str[i] != '2') && (str[i] != 'N') && (str[i] != 'S') && (str[i] != 'E') && (str[i] != 'W'))
 		{
 			check = 0;
 			error = 0;
@@ -31,8 +31,17 @@ int		ft_line_map(const char *str)
 		}
 		else
 		{
-			check = 1;
-			error = 1;
+			if(((str[i] == 'N') || (str[i] == 'S') || (str[i] == 'E') || (str[i] == 'W')) && (get_y == 0))
+			{
+				check = 0;
+				error = 0;
+				break;
+			}
+			else
+			{
+				check = 1;
+				error = 1;	
+			}
 		}
 		i++;
 	}

@@ -97,7 +97,8 @@ int		ft_continue_line(char **separ_lines)
 			}
 			if (error == 1)
 			{
-				text_error = "Close the map";
+				if(duplicate_p == 0)
+					text_error = "Close the map";
 				break;
 			}
 			j++;
