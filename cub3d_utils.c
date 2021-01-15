@@ -432,11 +432,18 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 	return(error);
 }
 
-int		ft_continue_letter(char **no_space, int i, size_t j)
+int		ft_continue_letter(char **no_space, int i)
 {
 	int	error;
-
+	size_t j;
+	int p = 0;
 	error = 0;
+	while (no_space[p] != '\0')
+	{
+		printf("%s\n",no_space[p]);
+		p++;
+	}
+	
 	while (i != 3)
 	{
 		j = 0;
@@ -482,7 +489,7 @@ int		ft_check_letter(char **no_space, int i)
 	if (i == 2)
 	{
 		i = 1;
-		error = ft_continue_letter(no_space, i, j);
+		error = ft_continue_letter(no_space, i);
 	}
 	else
 	{

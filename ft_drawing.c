@@ -406,7 +406,7 @@ void	ft_draw_map()
 		i = 0;
 		while(map[j][i])
 		{
-			if(map[j][i] == '2' && x == 0)
+			if(((map[j][i] == 'N') || (map[j][i] == 'S') || (map[j][i] == 'E') || (map[j][i] == 'W')) && (x == 0))
 			{
 				x = (tile_size * i) + tile_size / 2;
 				y = (tile_size * j) + tile_size / 2;
@@ -419,7 +419,7 @@ void	ft_draw_map()
 
 void	ft_drawing()
 {
-	retation_angle = M_PI / 2 + (turn_direction + stock_direction)  * 10 * (M_PI / 180);
+	retation_angle = check_direction + (turn_direction + stock_direction)  * 10 * (M_PI / 180);
 	ray_angle = retation_angle - ((60 * M_PI / 180) / 2);
 	num_rays = width_window;
 	move_step = 5;
@@ -436,23 +436,37 @@ void	ft_drawing()
 
 void	ft_window(char **resolution)
 {
-	x = 0;
-	y = 0;
-	width_window = ft_atoi(resolution[0]);
-	height_window = ft_atoi(resolution[1]);
-	mlx_ptr = mlx_init();
-    win_ptr = mlx_new_window(mlx_ptr, width_window, height_window, "cub3d");
-	img.img = mlx_new_image(mlx_ptr, width_window, height_window);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);
-	textur_one = mlx_xpm_file_to_image(mlx_ptr, "wall1.xpm",&t,&t);
-	data_one = (int *)mlx_get_data_addr(textur_one, &t,&t,&t);
-	textur_two = mlx_xpm_file_to_image(mlx_ptr, "wall2.xpm",&t,&t);
-	data_two = (int *)mlx_get_data_addr(textur_two, &t,&t,&t);
-	textur_three = mlx_xpm_file_to_image(mlx_ptr, "wall3.xpm",&t,&t);
-	data_three = (int *)mlx_get_data_addr(textur_three, &t,&t,&t);
-	textur_four = mlx_xpm_file_to_image(mlx_ptr, "wall4.xpm",&t,&t);
-	data_four = (int *)mlx_get_data_addr(textur_four, &t,&t,&t);
-	ft_toll_line();
-	ft_drawing();
-	mlx_loop(mlx_ptr);
+	if(side_p)
+	{
+		if(side_p == 'N')
+			check_direction = (M_PI / 2) + (M_PI / 2) + (M_PI / 2);
+		if(side_p == 'S')
+			check_direction = M_PI / 2;
+		if(side_p == 'E')
+			check_direction = M_PI + M_PI;
+		if(side_p == 'W')
+			check_direction = M_PI;
+		x = 0;
+		y = 0;
+		width_window = ft_atoi(resolution[0]);
+		height_window = ft_atoi(resolution[1]);
+    	win_ptr = mlx_new_window(mlx_ptr, width_window, height_window, "cub3d");
+		img.img = mlx_new_image(mlx_ptr, width_window, height_window);
+		img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);
+		textur_one = mlx_xpm_file_to_image(mlx_ptr, "wall1.xpm",&t,&t);
+		data_one = (int *)mlx_get_data_addr(textur_one, &t,&t,&t);
+		textur_two = mlx_xpm_file_to_image(mlx_ptr, "wall2.xpm",&t,&t);
+		data_two = (int *)mlx_get_data_addr(textur_two, &t,&t,&t);
+		textur_three = mlx_xpm_file_to_image(mlx_ptr, "wall3.xpm",&t,&t);
+		data_three = (int *)mlx_get_data_addr(textur_three, &t,&t,&t);
+		textur_four = mlx_xpm_file_to_image(mlx_ptr, "wall4.xpm",&t,&t);
+		data_four = (int *)mlx_get_data_addr(textur_four, &t,&t,&t);
+		ft_toll_line();
+		ft_drawing();
+		mlx_loop(mlx_ptr);
+	}
+	else
+		printf("Error:\nNo Player in the map\n");
+	
+
 }

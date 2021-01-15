@@ -117,6 +117,7 @@
 		int		all_info;
 		int		duplicate_p;
 		int		side_p;
+		float		check_direction;
 
 
 	typedef struct  s_data {

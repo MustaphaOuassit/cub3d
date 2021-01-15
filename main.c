@@ -18,7 +18,8 @@ int	main(int argc, char *argv[])
 	int		fd;
 	char	*line;
 	int		error;
-	
+
+	mlx_ptr = mlx_init();
 	if(argc == 2)
 	{
 		get = malloc(2);
@@ -41,6 +42,7 @@ int	main(int argc, char *argv[])
 		}
 		if (ft_continue(line, error) == 0)
 		{
+
 			//ft_window(resolution);
 			printf("%s\n","GO");
 		}
