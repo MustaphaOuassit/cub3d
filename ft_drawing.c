@@ -434,7 +434,7 @@ void	ft_drawing()
 	mlx_hook(win_ptr,3,0,&deal_key_release,&img);
 }
 
-void	ft_window(char **resolution)
+void	ft_window()
 {
 	if(side_p)
 	{
@@ -448,8 +448,6 @@ void	ft_window(char **resolution)
 			check_direction = M_PI;
 		x = 0;
 		y = 0;
-		width_window = ft_atoi(resolution[0]);
-		height_window = ft_atoi(resolution[1]);
     	win_ptr = mlx_new_window(mlx_ptr, width_window, height_window, "cub3d");
 		img.img = mlx_new_image(mlx_ptr, width_window, height_window);
 		img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);

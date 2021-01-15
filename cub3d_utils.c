@@ -87,7 +87,7 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 					break;
 				}
 				if(error == 1)
-					sky[j] = no_space[1];
+					c_r = ft_atoi(no_space[1]);
 			}
 			else
 			{
@@ -138,7 +138,12 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 						text_error = "Minimum numbers for one element in C is 1";
 				}
 				if(error == 1)
-					sky[j] = no_space[0];
+				{
+					if(j == 1)
+						c_g = ft_atoi(no_space[0]);
+					if(j == 2)
+						c_b = ft_atoi(no_space[0]);
+				}
 			}
 			if(error == 0)
 				break;
@@ -297,7 +302,7 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 					break;
 				}
 				if(error == 1)
-					flr[j] = no_space[1];
+					f_r = ft_atoi(no_space[1]);
 			}
 			else
 			{
@@ -348,7 +353,12 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 						text_error = "Minimum numbers for one element in F is 1";
 				}
 				if(error == 1)
-					flr[j] = no_space[0];
+				{
+					if(j == 1)
+						f_g = ft_atoi(no_space[0]);
+					if(j == 2)
+						f_b = ft_atoi(no_space[0]);
+				}
 			}
 			if(error == 0)
 				break;
@@ -436,13 +446,7 @@ int		ft_continue_letter(char **no_space, int i)
 {
 	int	error;
 	size_t j;
-	int p = 0;
 	error = 0;
-	while (no_space[p] != '\0')
-	{
-		printf("%s\n",no_space[p]);
-		p++;
-	}
 	
 	while (i != 3)
 	{
@@ -468,8 +472,8 @@ int		ft_continue_letter(char **no_space, int i)
 	}
 	if (error == 1)
 	{
-		resolution[0] = no_space[1];
-		resolution[1] = no_space[2];
+		width_window = ft_atoi(no_space[1]);
+		height_window = ft_atoi(no_space[2]);
 	}
 	return (error);
 }

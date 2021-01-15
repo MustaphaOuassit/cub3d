@@ -36,7 +36,12 @@
 		int info;
 		int entre;
 		char **resolution;
-		char **flr;
+		int f_r;
+		int f_g;
+		int f_b;
+		int c_r;
+		int c_g;
+		int c_b;
 		char **sky;
 		int tile_size;
 		float x;
