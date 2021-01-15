@@ -525,6 +525,9 @@ int		ft_check_letter(char **no_space, int i)
 
 int	ft_continue(const char *str, int error)
 {
+	int i;
+
+	i = 0;
 	if (entre == 1)
 	{
 		if (error == 0)
@@ -534,7 +537,12 @@ int	ft_continue(const char *str, int error)
 	}
 	else
 	{
-		text_error = "Empty File.";
+		while(str[i] != '\0')
+			i++;
+		if(i == 0)
+			text_error = "Empty File";
+		else
+			text_error = "Invalid File";
 		error = 1;
 	}
 	return(error);

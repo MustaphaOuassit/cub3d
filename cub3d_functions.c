@@ -373,7 +373,6 @@ int	ft_check_all_errors(const char *str)
 	char **no_vrg;
 	int		error;
 	size_t i;
-
 	error = 0;
 	i = 0;
 	if((check_f == 1) && (check_c == 1) && (check_s == 1) && (check_ea == 1) && (check_we == 1) && (check_so == 1) && (check_no == 1))
