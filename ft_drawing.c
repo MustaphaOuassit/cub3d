@@ -15,7 +15,6 @@
 int		ft_check_y(int y, int wall_strip_height)
 {
 	int distance_from_top;
-
 	distance_from_top = y + (wall_strip_height / 2) - (height_window / 2);
 	return (distance_from_top * ((float)tile_size / wall_strip_height));
 }
@@ -26,6 +25,7 @@ void	ft_3d_walls(int x)
 	float i;
 	float ray_distance;
 	int result;
+	int n;
 
 	j = 0; 
 	i = 0;
@@ -43,24 +43,30 @@ void	ft_3d_walls(int x)
 	else
 		result = fmod(wall_x,tile_size);
     while (j < wall_height && i < height_window)
-    {
+    {			
+
 		if(i > 0)
 		{
+			n = (ft_check_y(i,wall_height) * tile_size) + result;
+			if((n >= 4096) || (n < 0))
+			{	
+				n = 4095;
+			}
 			if((was_vertical) && (is_ray_facing_left))
 			{
-				my_mlx_pixel_put(&img,x,i,data_one[(ft_check_y(i,wall_height) * tile_size) + result]);
+				my_mlx_pixel_put(&img,x,i,data_one[n]);
 			}
 			if((was_vertical) && (is_ray_facing_right))
 			{
-				my_mlx_pixel_put(&img,x,i,data_two[(ft_check_y(i,wall_height) * tile_size) + result]);
+				my_mlx_pixel_put(&img,x,i,data_two[n]);
 			}
 			if((was_vertical == 0) && (is_ray_facing_up))
 			{
-				my_mlx_pixel_put(&img,x,i,data_three[(ft_check_y(i,wall_height) * tile_size) + result]);
+				my_mlx_pixel_put(&img,x,i,data_three[n]);
 			}
 			if((was_vertical == 0) && (is_ray_facing_down))
 			{
-				my_mlx_pixel_put(&img,x,i,data_four[(ft_check_y(i,wall_height) * tile_size) + result]);
+				my_mlx_pixel_put(&img,x,i,data_four[n]);
 			}
 		}
         i++;
@@ -172,6 +178,8 @@ int     ft_has_wallat(float i, float j)
     wallat = 0;
     position_x = (i / tile_size);
     position_y = (j / tile_size);
+	if((position_y >= get_y) || (position_x >= (int)ft_strlen(map[position_y])))
+		return(1);
     if(map[position_y][position_x] == '1')
     	wallat = 1;
     else
@@ -419,7 +427,7 @@ void	ft_draw_map()
 
 void	ft_drawing()
 {
-	retation_angle = check_direction + (turn_direction + stock_direction)  * 10 * (M_PI / 180);
+	retation_angle = (check_direction) + (turn_direction + stock_direction)  * 10 * (M_PI / 180);
 	ray_angle = retation_angle - ((60 * M_PI / 180) / 2);
 	num_rays = width_window;
 	move_step = 5;
@@ -464,7 +472,12 @@ void	ft_window()
 		mlx_loop(mlx_ptr);
 	}
 	else
-		printf("Error:\nNo Player in the map\n");
+	{
+		if(all_info == 8)
+			printf("Error:\nNo Player in the map\n");
+		else
+			printf("Error:\nlack the identifier\n");
+	}
 	
 
 }

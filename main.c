@@ -40,8 +40,8 @@ int	main(int argc, char *argv[])
 		if (ft_continue(line, error) == 0)
 		{
 
-			//ft_window(resolution);
-			printf("%s\n","GO");
+			ft_window();
+			//printf("%s\n","GO");
 		}
 		else
 			printf("Error:\n%s\n",text_error);

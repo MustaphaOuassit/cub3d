@@ -14,12 +14,15 @@
 
 int		ft_break(char **separ_lines, size_t i, int j, int error)
 {
-	if ((separ_lines[j][i - 1] == ' ') || (separ_lines[j][i + 1] == ' ')
-			|| (separ_lines[j - 1][i] == ' ') || (separ_lines[j + 1][i] == ' '))
-		error = 1;
-	if ((ft_strlen(separ_lines[j - 1]) <= i)
-			|| (ft_strlen(separ_lines[j + 1]) <= i))
-		error = 1;
+	if(((int)(i - 1) >= 0) && ((int)(i + 1) < (int)(ft_strlen(separ_lines[j]))))
+	{
+		if ((separ_lines[j][i - 1] == ' ') || (separ_lines[j][i + 1] == ' ')
+				|| (separ_lines[j - 1][i] == ' ') || (separ_lines[j + 1][i] == ' '))
+			error = 1;
+		if ((ft_strlen(separ_lines[j - 1]) <= i)
+				|| (ft_strlen(separ_lines[j + 1]) <= i))
+			error = 1;
+	}
 	return (error);
 }
 
@@ -59,13 +62,16 @@ int		ft_zero_space(char **separ_lines, size_t i, int j, int error)
 		}
 		if (separ_lines[j][i] == ' ')
 		{
-			if ((separ_lines[j][i - 1] == '0')
-					|| (separ_lines[j][i + 1] == '0')
-					|| (separ_lines[j - 1][i] == '0')
-					|| (separ_lines[j + 1][i] == '0'))
+			if(((int)(i - 1) >= 0) && ((int)(i + 1) < (int)(ft_strlen(separ_lines[j]))))
 			{
-				error = 1;
-				break ;
+				if ((separ_lines[j][i - 1] == '0')
+					|| (separ_lines[j][i + 1] == '0')
+					|| (separ_lines[j][i] == '0')
+					|| (separ_lines[j][i] == '0'))
+				{
+					error = 1;
+					break ;
+				}
 			}
 		}
 		i++;
