@@ -123,7 +123,8 @@
 		int		duplicate_p;
 		int		side_p;
 		float		check_direction;
-
+		int		color_floor;
+		int		color_sky;
 
 	typedef struct  s_data {
 		void        *img;

@@ -34,7 +34,7 @@ void	ft_3d_walls(int x)
 	wall_height = (tile_size / ray_distance) * distance_projection;
 	while (i < ((height_window / 2) - (wall_height / 2)))
 	{
-		my_mlx_pixel_put(&img,x,i,0x69e5f3);
+		my_mlx_pixel_put(&img,x,i,color_sky);
 		i++;
 	}
 	i = (height_window / 2) - (wall_height / 2);
@@ -74,7 +74,7 @@ void	ft_3d_walls(int x)
     }
 	while (i < height_window)
 	{
-		my_mlx_pixel_put(&img,x,i,0xc18a15);
+		my_mlx_pixel_put(&img,x,i,color_floor);
 		i++;
 	}
 	
@@ -444,6 +444,9 @@ void	ft_drawing()
 
 void	ft_window()
 {
+	int error;
+
+	error = 0;
 	if(side_p)
 	{
 		if(height_window < 400)
@@ -462,22 +465,68 @@ void	ft_window()
 			check_direction = M_PI + M_PI;
 		if(side_p == 'W')
 			check_direction = M_PI;
-		x = 0;
-		y = 0;
-    	win_ptr = mlx_new_window(mlx_ptr, width_window, height_window, "cub3d");
-		img.img = mlx_new_image(mlx_ptr, width_window, height_window);
-		img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);
-		textur_one = mlx_xpm_file_to_image(mlx_ptr, "wall1.xpm",&t,&t);
-		data_one = (int *)mlx_get_data_addr(textur_one, &t,&t,&t);
-		textur_two = mlx_xpm_file_to_image(mlx_ptr, "wall2.xpm",&t,&t);
-		data_two = (int *)mlx_get_data_addr(textur_two, &t,&t,&t);
-		textur_three = mlx_xpm_file_to_image(mlx_ptr, "wall3.xpm",&t,&t);
-		data_three = (int *)mlx_get_data_addr(textur_three, &t,&t,&t);
-		textur_four = mlx_xpm_file_to_image(mlx_ptr, "wall4.xpm",&t,&t);
-		data_four = (int *)mlx_get_data_addr(textur_four, &t,&t,&t);
-		ft_toll_line();
-		ft_drawing();
-		mlx_loop(mlx_ptr);
+		if (!(textur_one = mlx_xpm_file_to_image(mlx_ptr,textur_so,&t,&t))) 
+		{
+			printf("Error :\n%s Invalid file\n",textur_so);
+			error = 1;
+		}
+		if (!(textur_two = mlx_xpm_file_to_image(mlx_ptr, textur_we,&t,&t))) 
+		{
+			printf("Error :\n%s Invalid file\n",textur_we);
+			error = 1;
+		}
+		if (!(textur_three = mlx_xpm_file_to_image(mlx_ptr, textur_no,&t,&t))) 
+		{
+			printf("Error :\n%s Invalid file\n",textur_no);
+			error = 1;
+		}
+		if (!(textur_four = mlx_xpm_file_to_image(mlx_ptr, textur_ea,&t,&t)))
+		{
+			if(error == 0)
+			{
+				printf("Error :\n%s Invalid file\n",textur_ea);
+				error = 1;
+			}
+		}
+		if(((f_r <= 255) && ((f_r >= 0))) && ((f_g <= 255) && ((f_g >= 0))) && ((f_b <= 255) && ((f_b >= 0))))
+		{
+			color_floor = f_r * 65536 + f_g * 256 + f_b;
+		}
+		else
+		{
+			if(error == 0)
+			{
+				printf("Error :\nColor no valid in F\n");
+				error = 1;
+			}
+		}
+		if(((c_r <= 255) && ((c_r >= 0))) && ((c_g <= 255) && ((c_g >= 0))) && ((c_b <= 255) && ((c_b >= 0))))
+		{
+			color_sky = c_r * 65536 + c_g * 256 + c_b;
+		}
+		else
+		{
+			if(error == 0)
+			{
+				printf("Error :\nColor no valid in C\n");
+				error = 1;
+			}
+		}
+		if(error == 0)
+		{
+			data_one = (int *)mlx_get_data_addr(textur_one, &t,&t,&t);
+			data_two = (int *)mlx_get_data_addr(textur_two, &t,&t,&t);
+			data_three = (int *)mlx_get_data_addr(textur_three, &t,&t,&t);
+			data_four = (int *)mlx_get_data_addr(textur_four, &t,&t,&t);
+			x = 0;
+			y = 0;
+    		win_ptr = mlx_new_window(mlx_ptr, width_window, height_window, "cub3d");
+			img.img = mlx_new_image(mlx_ptr, width_window, height_window);
+			img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);
+			ft_toll_line();
+			ft_drawing();
+			mlx_loop(mlx_ptr);
+		}
 	}
 	else
 	{
