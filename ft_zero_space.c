@@ -62,12 +62,12 @@ int		ft_zero_space(char **separ_lines, size_t i, int j, int error)
 		}
 		if (separ_lines[j][i] == ' ')
 		{
-			if(((int)(i - 1) >= 0) && ((int)(i + 1) < (int)(ft_strlen(separ_lines[j]))))
+			if(((int)(i - 1) >= 0) && ((int)(i + 1) < (int)(ft_strlen(separ_lines[j]))) && ((int)(i + 1) < (int)(ft_strlen(separ_lines[j + 1]))) && ((int)(i + 1) < (int)(ft_strlen(separ_lines[j - 1]))))
 			{
 				if ((separ_lines[j][i - 1] == '0')
 					|| (separ_lines[j][i + 1] == '0')
-					|| (separ_lines[j][i] == '0')
-					|| (separ_lines[j][i] == '0'))
+					|| (separ_lines[j - 1][i] == '0')
+					|| (separ_lines[j + 1][i] == '0'))
 				{
 					error = 1;
 					break ;
