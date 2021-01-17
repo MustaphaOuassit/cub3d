@@ -446,6 +446,14 @@ void	ft_window()
 {
 	if(side_p)
 	{
+		if(height_window < 400)
+			height_window = 400;
+		if(width_window < 400)
+			width_window = 400;
+		if(width_window > 2048)
+			width_window = 2048;
+		if(height_window > 1111)
+			height_window = 1111;
 		if(side_p == 'N')
 			check_direction = (M_PI / 2) + (M_PI / 2) + (M_PI / 2);
 		if(side_p == 'S')
