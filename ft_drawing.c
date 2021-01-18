@@ -94,14 +94,16 @@ int deal_key(int key)
 
 	i = 0;
 	j = 0;
-	if(key == 126)
+	if(key == 13)
 		walk_direction = 1;
-	if(key == 125)
+	if(key == 1)
 		walk_direction = -1;
 	if(key == 124)
 		turn_direction = 1;
 	if(key == 123)
 		turn_direction = -1;
+	if(key == 53)
+		exit(1);
 	while (j < height_window)
 	{
 		i = 0;
@@ -112,7 +114,6 @@ int deal_key(int key)
 		}
 		j++;
 	}
-	
 	ft_drawing();
 	return(0);
 }
@@ -472,19 +473,25 @@ void	ft_window()
 		}
 		if (!(textur_two = mlx_xpm_file_to_image(mlx_ptr, textur_we,&t,&t))) 
 		{
-			printf("Error :\n%s Invalid file\n",textur_we);
-			error = 1;
+			if(error == 0)
+			{
+				printf("Error\n%s Invalid file\n",textur_we);
+				error = 1;
+			}
 		}
 		if (!(textur_three = mlx_xpm_file_to_image(mlx_ptr, textur_no,&t,&t))) 
 		{
-			printf("Error :\n%s Invalid file\n",textur_no);
-			error = 1;
+			if(error == 0)
+			{
+				printf("Error\n%s Invalid file\n",textur_no);
+				error = 1;
+			}
 		}
 		if (!(textur_four = mlx_xpm_file_to_image(mlx_ptr, textur_ea,&t,&t)))
 		{
 			if(error == 0)
 			{
-				printf("Error :\n%s Invalid file\n",textur_ea);
+				printf("Error\n%s Invalid file\n",textur_ea);
 				error = 1;
 			}
 		}
@@ -496,7 +503,7 @@ void	ft_window()
 		{
 			if(error == 0)
 			{
-				printf("Error :\nColor no valid in F\n");
+				printf("Error\nColor no valid in F\n");
 				error = 1;
 			}
 		}
@@ -508,7 +515,7 @@ void	ft_window()
 		{
 			if(error == 0)
 			{
-				printf("Error :\nColor no valid in C\n");
+				printf("Error\nColor no valid in C\n");
 				error = 1;
 			}
 		}
@@ -531,9 +538,9 @@ void	ft_window()
 	else
 	{
 		if(all_info == 8)
-			printf("Error:\nNo Player in the map\n");
+			printf("Error\nNo Player in the map\n");
 		else
-			printf("Error:\nlack the identifier\n");
+			printf("Error\nlack the identifier\n");
 	}
 	
 

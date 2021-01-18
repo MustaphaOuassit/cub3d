@@ -30,7 +30,7 @@ int		ft_zero_space(char **separ_lines, size_t i, int j, int error)
 {
 	while (i != ft_strlen(separ_lines[j]))
 	{
-		if (separ_lines[j][i] == '0')
+		if ((separ_lines[j][i] == '0') || (separ_lines[j][i] == '2'))
 		{
 			if (ft_break(separ_lines, i, j, error) == 1)
 			{
