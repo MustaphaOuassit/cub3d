@@ -78,7 +78,7 @@ int		ft_check_errors(const char *str)
 	error = 0;
 	info = 1;
 		if (((str[0] == 'R') || (str[0] == 'F') || (str[0] == 'C') || (str[0] == 'S') || (str[0] == 'E') || (str[0] == 'W') || (str[0] == 'N'))
-			&& (ft_same(no_space[0]) == 0))
+			&& (ft_same(no_space[0]) == 0) && (get_y == 0))
 		{
 			if(str[0] == 'R')
 			{
