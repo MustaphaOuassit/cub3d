@@ -450,10 +450,6 @@ void	ft_window()
 	error = 0;
 	if(side_p)
 	{
-		if(height_window < 400)
-			height_window = 400;
-		if(width_window < 400)
-			width_window = 400;
 		if(width_window > 2048)
 			width_window = 2048;
 		if(height_window > 1111)

@@ -87,7 +87,12 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 					break;
 				}
 				if(error == 1)
-					c_r = ft_atoi(no_space[1]);
+				{
+					if(ft_strlen(no_space[1]) >= 4)
+						c_r = 255;
+					else
+						c_r = ft_atoi(no_space[1]);
+				}
 			}
 			else
 			{
@@ -140,9 +145,19 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 				if(error == 1)
 				{
 					if(j == 1)
-						c_g = ft_atoi(no_space[0]);
+					{
+						if(ft_strlen(no_space[0]) >= 4)
+							c_g = 255;
+						else
+							c_g = ft_atoi(no_space[0]);
+					}
 					if(j == 2)
-						c_b = ft_atoi(no_space[0]);
+					{
+						if(ft_strlen(no_space) >= 4)
+							c_b = 255;
+						else
+							c_b = ft_atoi(no_space[0]);
+					}
 				}
 			}
 			if(error == 0)
@@ -302,7 +317,12 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 					break;
 				}
 				if(error == 1)
-					f_r = ft_atoi(no_space[1]);
+				{
+					if(ft_strlen(no_space[1]) >= 4)
+						f_r = 255;
+					else
+						f_r = ft_atoi(no_space[1]);
+				}
 			}
 			else
 			{
@@ -355,9 +375,19 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 				if(error == 1)
 				{
 					if(j == 1)
-						f_g = ft_atoi(no_space[0]);
+					{
+						if(ft_strlen(no_space[0]) >= 4)
+							f_g = 255;
+						else
+							f_g = ft_atoi(no_space[0]);
+					}
 					if(j == 2)
-						f_b = ft_atoi(no_space[0]);
+					{
+						if(ft_strlen(no_space[0]) >= 4)
+							f_b = 255;
+						else
+							f_b = ft_atoi(no_space[0]);
+					}
 				}
 			}
 			if(error == 0)
@@ -472,8 +502,14 @@ int		ft_continue_letter(char **no_space, int i)
 	}
 	if (error == 1)
 	{
-		width_window = ft_atoi(no_space[1]);
-		height_window = ft_atoi(no_space[2]);
+		if(ft_strlen(no_space[1]) >= 5)
+			width_window = 2048;
+		else
+			width_window = ft_atoi(no_space[1]);
+		if(ft_strlen(no_space[2]) >= 5)
+			height_window = 1111;
+		else
+			height_window = ft_atoi(no_space[2]);
 	}
 	return (error);
 }
