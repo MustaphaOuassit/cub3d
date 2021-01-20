@@ -181,7 +181,7 @@ int     ft_has_wallat(float i, float j)
     position_y = (j / tile_size);
 	if((position_y >= get_y) || (position_x >= (int)ft_strlen(map[position_y])))
 		return(1);
-    if(map[position_y][position_x] == '1')
+    if((map[position_y][position_x] == '1') || (map[position_y][position_x] == ' ') || (map[position_y][position_x] == '\0'))
     	wallat = 1;
     else
 		wallat = 0;

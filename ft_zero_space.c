@@ -14,14 +14,17 @@
 
 int		ft_break(char **separ_lines, size_t i, int j, int error)
 {
-	if(((int)(i - 1) >= 0) && ((int)(i + 1) < (int)(ft_strlen(separ_lines[j]))))
+	if ((ft_strlen(separ_lines[j - 1]) <= i)
+	|| (ft_strlen(separ_lines[j + 1]) <= i))
+		error = 1;
+	else
 	{
-		if ((separ_lines[j][i - 1] == ' ') || (separ_lines[j][i + 1] == ' ')
-				|| (separ_lines[j - 1][i] == ' ') || (separ_lines[j + 1][i] == ' '))
-			error = 1;
-		if ((ft_strlen(separ_lines[j - 1]) <= i)
-				|| (ft_strlen(separ_lines[j + 1]) <= i))
-			error = 1;
+		if(((int)(i - 1) >= 0) && ((int)(i + 1) < (int)(ft_strlen(separ_lines[j]))))
+		{
+			if ((separ_lines[j][i - 1] == ' ') || (separ_lines[j][i + 1] == ' ')
+			|| (separ_lines[j - 1][i] == ' ') || (separ_lines[j + 1][i] == ' '))
+				error = 1;
+		}
 	}
 	return (error);
 }
