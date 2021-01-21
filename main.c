@@ -68,5 +68,5 @@ int	main(int argc, char *argv[])
 			printf("Error\nFile %s no valid\n",argv[1]);
 	}
 	else
-		printf("Error\nMinimum argc is 3\n");
+		printf("Error\nWrong numbers of argc\n");
 }

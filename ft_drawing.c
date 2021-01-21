@@ -29,8 +29,8 @@ void	ft_3d_walls(int x)
 
 	j = 0; 
 	i = 0;
-	ray_distance = distance * cos(ray_angle - retation_angle);
-	distance_projection = (width_window / 2) / tan(1.0471975512);
+	ray_distance = distance * cos(ray_angle - rotation_angle);
+	distance_projection = (width_window / 2) / tan(1.0471975512 / 2);
 	wall_height = (tile_size / ray_distance) * distance_projection;
 	while (i < ((height_window / 2) - (wall_height / 2)))
 	{
@@ -98,6 +98,16 @@ int deal_key(int key)
 		walk_direction = 1;
 	if(key == 1)
 		walk_direction = -1;
+	if(key == 2)
+	{
+		walk_direction = 1;
+		b = M_PI / 2;
+	}
+	if(key == 0)
+	{
+		walk_direction = -1;
+		b = M_PI / 2;
+	}
 	if(key == 124)
 		turn_direction = 1;
 	if(key == 123)
@@ -114,7 +124,9 @@ int deal_key(int key)
 		}
 		j++;
 	}
+	
 	ft_drawing();
+
 	return(0);
 }
 
@@ -394,13 +406,14 @@ void	ft_check_ray_face()
 
 void	ft_draw_player()
 {
-	new_playerx = x + cos(retation_angle) * move_step * walk_direction;
-	new_playery = y + sin(retation_angle) * move_step * walk_direction;
+	new_playerx = x + cos(rotation_angle + b) * move_step * walk_direction;
+	new_playery = y + sin(rotation_angle + b) * move_step * walk_direction;
     if(ft_has_wallat(new_playerx, new_playery) == 0)
     {
         x = new_playerx;
         y = new_playery;
     }
+	b = 0;
 }
 
 void	ft_draw_map()
@@ -428,10 +441,10 @@ void	ft_draw_map()
 
 void	ft_drawing()
 {
-	retation_angle = (check_direction) + (turn_direction + stock_direction)  * 10 * (M_PI / 180);
-	ray_angle = retation_angle - ((60 * M_PI / 180) / 2);
+	rotation_angle = (check_direction) + (turn_direction + stock_direction)  * 10 * (M_PI / 180);
+	ray_angle = rotation_angle - ((60 * M_PI / 180) / 2);
 	num_rays = width_window;
-	move_step = 5;
+	move_step = 20;
 	stock_direction = turn_direction + stock_direction;
 	stock_walk = walk_direction + stock_walk;
 	ft_draw_map();
@@ -528,7 +541,10 @@ void	ft_window()
 			img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);
 			ft_toll_line();
 			ft_drawing();
-			mlx_loop(mlx_ptr);
+			if(save == 1)
+				printf("Screenshot\n");
+			else
+				mlx_loop(mlx_ptr);
 		}
 	}
 	else

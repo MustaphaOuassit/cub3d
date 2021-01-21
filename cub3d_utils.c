@@ -210,7 +210,7 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 			j++;
 		}
 		if((chose_error == 0) && (sec_error == 0))
-			text_error = "Minimum info 3 numbers in C";
+			text_error = "Wrong number of infos in C";
 		else
 		{
 			if((sec_error == 1) && (chose_error == 0))
@@ -440,7 +440,7 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 			j++;
 		}
 		if((chose_error == 0) && (sec_error == 0))
-			text_error = "Minimum info 3 numbers in F";
+			text_error = "Wrong number of infos in F";
 		else
 		{
 			if((sec_error == 1) && (chose_error == 0))

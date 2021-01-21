@@ -20,7 +20,6 @@
 		# include <mlx.h>
 		# include <math.h>
 
-		
 		int check;
 		char *get;
 		char **map;
@@ -50,7 +49,7 @@
 		float loop_y;
 		float new_playerx;
     	float new_playery;
-		float retation_angle;
+		float rotation_angle;
 		float ray_angle;
 		int move_step;
 		int turn_direction;
@@ -126,6 +125,7 @@
 		int		color_floor;
 		int		color_sky;
 		int 	save;
+		float		b;
 
 	typedef struct  s_data {
 		void        *img;
