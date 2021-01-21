@@ -125,6 +125,7 @@
 		float		check_direction;
 		int		color_floor;
 		int		color_sky;
+		int 	save;
 
 	typedef struct  s_data {
 		void        *img;
@@ -166,4 +167,6 @@ t_data img;
 		void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 		int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str);
 		int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str);
+		int		ft_extention(char *str);
+		int		ft_strcmp(char *s1, const char *s2);
 		#endif

@@ -153,7 +153,7 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 					}
 					if(j == 2)
 					{
-						if(ft_strlen(no_space) >= 4)
+						if(ft_strlen(no_space[0]) >= 4)
 							c_b = 255;
 						else
 							c_b = ft_atoi(no_space[0]);

@@ -112,3 +112,43 @@ int		ft_continue_line(char **separ_lines)
 	}
 	return (error);
 }
+
+int		ft_extention(char *str)
+{
+	int i;
+	int j;
+	int error;
+	char **dot;
+
+	i = 0;
+	j = 0;
+	error = 0;
+	dot = ft_split(str,'.');
+	while(dot[i] != '\0')
+		i++;
+	if(ft_strlen(dot[i - 1]) == 3)
+	{
+		while (dot[i - 1][j] != '\0')
+		{
+			if((dot[i - 1][j] != 'c') && (dot[i - 1][j] != 'u') && (dot[i - 1][j] != 'b'))
+			{
+				error = 1;
+				break;
+			}
+			j++;
+		}
+	}
+	else
+		error = 1;
+	return(error);
+}
+
+int	ft_strcmp(char *s1, const char *s2)
+{
+	int x;
+
+	x = 0;
+	while (s1[x] == s2[x] && s1[x] != '\0' && s2[x] != '\0')
+		x++;
+	return (s1[x] - s2[x]);
+}
