@@ -182,12 +182,31 @@ void    ft_draw_line(float x_one,float y_one,float x_zero,float y_zero)
     
     
 }
+
+int     ft_has_wallat_p(float i, float j)
+{
+    int wallat;
+    int position_x;
+    int position_y;
+	
+    wallat = 0;
+    position_x = (i / tile_size);
+    position_y = (j / tile_size);
+	if((position_y >= get_y) || (position_x >= (int)ft_strlen(map[position_y])))
+		return(1);
+    if((map[position_y][position_x] == '1') || (map[position_y][position_x] == ' ') || (map[position_y][position_x] == '\0'))
+    	wallat = 1;
+    else
+		wallat = 0;
+    return(wallat);
+}
+
 int     ft_has_wallat(float i, float j)
 {
     int wallat;
     int position_x;
     int position_y;
-
+	
     wallat = 0;
     position_x = (i / tile_size);
     position_y = (j / tile_size);
@@ -406,13 +425,14 @@ void	ft_check_ray_face()
 
 void	ft_draw_player()
 {
-	new_playerx = x + cos(rotation_angle + b) * move_step * walk_direction;
-	new_playery = y + sin(rotation_angle + b) * move_step * walk_direction;
-    if(ft_has_wallat(new_playerx, new_playery) == 0)
+	new_playerx = x + cos(rotation_angle + b) * move_step * (walk_direction * 4);
+	new_playery = y + sin(rotation_angle + b) * move_step * (walk_direction * 4);
+    if(ft_has_wallat_p(new_playerx, new_playery) == 0)
     {
-        x = new_playerx;
-        y = new_playery;
+        x = x + cos(rotation_angle + b) * move_step * (walk_direction);
+        y = y + sin(rotation_angle + b) * move_step * (walk_direction);
     }
+		
 	b = 0;
 }
 
