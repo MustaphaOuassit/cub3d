@@ -126,7 +126,7 @@ int		ft_extention(char *str)
 	dot = ft_split(str,'.');
 	while(dot[i] != '\0')
 		i++;
-	if(ft_strlen(dot[i - 1]) == 3)
+	if((i > 0) && (ft_strlen(dot[i - 1]) == 3))
 	{
 		while (dot[i - 1][j] != '\0')
 		{
