@@ -126,7 +126,8 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 					r = 0;
 					while (no_space[t] != '\0')
 					{
-						while (r != ft_strlen(no_space[t]))
+						r = 0;
+						while (no_space[t][r] != '\0')
 						{
 							if(ft_isdigit(no_space[t][r]) == 0)
 							{
@@ -356,7 +357,8 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 					r = 0;
 					while (no_space[t] != '\0')
 					{
-						while (r != ft_strlen(no_space[t]))
+						r = 0;
+						while (no_space[t][r] != '\0')
 						{
 							if(ft_isdigit(no_space[t][r]) == 0)
 							{
@@ -552,7 +554,7 @@ int		ft_check_letter(char **no_space, int i)
 			r++;
 		}
 		if(chose_error == 0)
-			text_error = "Minimum info 2 numbers in R";
+			text_error = "Wrong number of infos in R";
 		else
 			text_error = "Info invalid in R";
 	}

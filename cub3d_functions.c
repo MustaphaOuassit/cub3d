@@ -96,8 +96,16 @@ int		ft_check_errors(const char *str)
 					error = ft_check_letter(no_space, i);
 					if(error == 1)
 					{
-						duplicate_r = 1;
-						all_info = all_info + 1;
+						if(str[ft_strlen(str) - 1] == ' ')
+						{
+							error = 0;
+							text_error = "Info invalid in R";
+						}
+						else
+						{
+							duplicate_r = 1;
+							all_info = all_info + 1;
+						}
 					}
 				}
 				else
@@ -126,9 +134,17 @@ int		ft_check_errors(const char *str)
 					error =	ft_continue_vrg_f(no_vrg,i,str);
 					if(error == 1)
 					{
-						check_f = 1;
-						duplicate_f = 1;
-						all_info = all_info + 1;
+						if(str[ft_strlen(str) - 1] == ' ')
+						{
+							error = 0;
+							text_error = "Info invalid in F";
+						}
+						else
+						{
+							check_f = 1;
+							duplicate_f = 1;
+							all_info = all_info + 1;
+						}
 					}
 				}
 				else
@@ -157,9 +173,17 @@ int		ft_check_errors(const char *str)
 					error =	ft_continue_vrg_c(no_vrg,i,str);
 					if(error == 1)
 					{
-						check_c = 1;
-						duplicate_c = 1;
-						all_info = all_info + 1;
+						if(str[ft_strlen(str) - 1] == ' ')
+						{
+							error = 0;
+							text_error = "Info invalid in C";
+						}
+						else
+						{
+							check_c = 1;
+							duplicate_c = 1;
+							all_info = all_info + 1;
+						}
 					}
 				}
 				else
