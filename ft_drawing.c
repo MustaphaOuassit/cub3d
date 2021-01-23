@@ -129,6 +129,12 @@ int deal_key(int key)
 	return(0);
 }
 
+int            ft_close(void)
+{
+    mlx_destroy_window(mlx_ptr, win_ptr);
+    exit(0);
+}
+
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
     char    *dst;
@@ -473,6 +479,7 @@ void	ft_drawing()
 	mlx_put_image_to_window(mlx_ptr, win_ptr, img.img, 0, 0);
 	mlx_hook(win_ptr,2,0,&deal_key,&img);
 	mlx_hook(win_ptr,3,0,&deal_key_release,&img);
+	mlx_hook(win_ptr, 17, 1L << 17, ft_close, (void *)0);
 }
 
 void	ft_window()
