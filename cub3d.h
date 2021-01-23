@@ -126,6 +126,8 @@
 		int		color_sky;
 		int 	save;
 		float		b;
+		int			color_f;
+		int			color_c ;
 
 	typedef struct  s_data {
 		void        *img;

@@ -22,6 +22,7 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 	char	**no_space;
 	int chose_error;
 	int	sec_error;
+	int y;
 
 	error = 0;
 	chose_error = 0;
@@ -88,8 +89,15 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 				}
 				if(error == 1)
 				{
-					if(ft_strlen(no_space[1]) >= 4)
-						c_r = 255;
+					y = 0;
+					while (no_space[1][y] != '\0')
+					{
+						if(no_space[1][y] != '0')
+							break;
+						y++;
+					}
+					if((ft_strlen(no_space[1]) - y) >= 4)
+						color_c = 1;
 					else
 						c_r = ft_atoi(no_space[1]);
 				}
@@ -145,17 +153,24 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 				}
 				if(error == 1)
 				{
+					y = 0;
+					while (no_space[0][y] != '\0')
+					{
+						if(no_space[0][y] != '0')
+							break;
+						y++;
+					}
 					if(j == 1)
 					{
-						if(ft_strlen(no_space[0]) >= 4)
-							c_g = 255;
+						if((ft_strlen(no_space[0]) - y) >= 4)
+							color_c = 1;
 						else
 							c_g = ft_atoi(no_space[0]);
 					}
 					if(j == 2)
 					{
-						if(ft_strlen(no_space[0]) >= 4)
-							c_b = 255;
+						if((ft_strlen(no_space[0]) - y) >= 4)
+							color_c = 1;
 						else
 							c_b = ft_atoi(no_space[0]);
 					}
@@ -250,6 +265,7 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 	size_t b;
 	size_t r;
 	size_t t;
+	int y;
 	char	**no_space;
 	int chose_error;
 	int	sec_error;
@@ -319,8 +335,15 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 				}
 				if(error == 1)
 				{
-					if(ft_strlen(no_space[1]) >= 4)
-						f_r = 255;
+					y = 0;
+					while (no_space[1][y] != '\0')
+					{
+						if(no_space[1][y] != '0')
+							break;
+						y++;
+					}
+					if((ft_strlen(no_space[1]) - y) >= 4)
+						color_f = 1;
 					else
 						f_r = ft_atoi(no_space[1]);
 				}
@@ -376,17 +399,24 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 				}
 				if(error == 1)
 				{
+					y = 0;
+					while (no_space[0][y] != '\0')
+					{
+						if(no_space[0][y] != '0')
+							break;
+						y++;
+					}
 					if(j == 1)
 					{
-						if(ft_strlen(no_space[0]) >= 4)
-							f_g = 255;
+						if((ft_strlen(no_space[0]) - y) >= 4)
+							color_f = 1;
 						else
 							f_g = ft_atoi(no_space[0]);
 					}
 					if(j == 2)
 					{
-						if(ft_strlen(no_space[0]) >= 4)
-							f_b = 255;
+						if((ft_strlen(no_space[0]) - y) >= 4)
+							color_f = 1;
 						else
 							f_b = ft_atoi(no_space[0]);
 					}
@@ -504,11 +534,18 @@ int		ft_continue_letter(char **no_space, int i)
 	}
 	if (error == 1)
 	{
-		if(ft_strlen(no_space[1]) >= 5)
+		i = 0;
+		while (no_space[1][i] != '\0')
+		{
+			if(no_space[1][i] != '0')
+				break;
+			i++;
+		}
+		if((ft_strlen(no_space[1]) - i) >= 5)
 			width_window = 2048;
 		else
 			width_window = ft_atoi(no_space[1]);
-		if(ft_strlen(no_space[2]) >= 5)
+		if((ft_strlen(no_space[2]) - i) >= 5)
 			height_window = 1111;
 		else
 			height_window = ft_atoi(no_space[2]);
