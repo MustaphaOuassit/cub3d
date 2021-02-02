@@ -22,6 +22,7 @@ SRC = main.c \
 	  ft_errors.c \
 	  ft_zero_space.c \
 	  ft_drawing.c \
+	  ft_screenshot.c \
 
 all : $(NAME)
 

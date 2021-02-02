@@ -568,7 +568,7 @@ void	ft_window()
 			ft_toll_line();
 			ft_drawing();
 			if(save == 1)
-				printf("Screenshot\n");
+				ft_screenshot();
 			else
 				mlx_loop(mlx_ptr);
 		}

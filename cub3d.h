@@ -138,6 +138,23 @@
 }               t_data;
 t_data img;
 
+typedef	struct		s_header
+{
+	int				width;
+	int				height;
+	int				bitcount;
+	int				w_in_b;
+	int				image_size;
+	int				bi_size;
+	int				bf_off_bits;
+	int				file_size;
+	int				bi_planes;
+	unsigned	char*	buf;
+	int				*data;
+	int				row;
+	int				col;
+}					t_header;
+
 		int		get_next_line(int fd, char **line);
         char	*ft_strchr(const char*s, int c);
         char	*ft_strdup(const char *s1);
@@ -171,4 +188,5 @@ t_data img;
 		int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str);
 		int		ft_extention(char *str);
 		int		ft_strcmp(char *s1, const char *s2);
+		void	ft_screenshot();
 		#endif
