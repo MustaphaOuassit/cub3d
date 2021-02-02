@@ -19,8 +19,7 @@ int	main(int argc, char *argv[])
 	char	*line;
 	char	*text_save;
 	int		error;
-
-	mlx_ptr = mlx_init();
+	
 	text_save = "--save";
 	error = 0;
 	if((argc == 2) || (argc == 3))
@@ -56,7 +55,7 @@ int	main(int argc, char *argv[])
 				}
 				if (ft_continue(line, error) == 0)
 				{
-
+					mlx_ptr = mlx_init();
 					ft_window();
 					//printf("%s\n","GO");
 				}
