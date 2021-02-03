@@ -96,6 +96,8 @@
 		int		*data_three;
 		void	*textur_four;
 		int		*data_four;
+		void	*textur_five;
+		int		*data_five;
 		int		t;
 		char	*text_error;
 		int check_f;
@@ -128,7 +130,29 @@
 		float		b;
 		int			color_f;
 		int			color_c ;
+		int g_sprite_height;
+		int g_sprite_width;
+		typedef struct		s_sprite
+		{
+		int			x;
+		int			y;
+		float		distance;
+		int			size;
+		float		x_offset;
+		float 		y_offset;
+	}					t_sprite;
+	typedef struct s_list
+	{
+		void *content;
+		struct s_list *next;
+	} t_list;
+	t_list *g_sprite_h;
 
+		typedef struct s_rays
+		{
+			float distance;
+		}t_rays;
+		t_rays *g_rays;
 	typedef struct  s_data {
 		void        *img;
     	char        *addr;
@@ -189,4 +213,6 @@ typedef	struct		s_header
 		int		ft_extention(char *str);
 		int		ft_strcmp(char *s1, const char *s2);
 		void	ft_screenshot();
+		void ft_sprite_position(int i,int j);
+		void	ft_sprite();
 		#endif

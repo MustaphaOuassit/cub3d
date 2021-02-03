@@ -23,6 +23,7 @@ SRC = main.c \
 	  ft_zero_space.c \
 	  ft_drawing.c \
 	  ft_screenshot.c \
+	  ft_sprite.c \
 
 all : $(NAME)
 

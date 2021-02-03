@@ -269,7 +269,9 @@ void	ft_draw_rays()
 	was_vertical = 0;
 	ft_cast();
 	ft_3d_walls(i);
+	g_rays->distance = distance;
 	ray_angle = ray_angle + (60 * (M_PI / 180) / num_rays);
+
 		i++;
 	}
 }
@@ -458,6 +460,8 @@ void	ft_draw_map()
 				x = (tile_size * i) + tile_size / 2;
 				y = (tile_size * j) + tile_size / 2;
 			}
+			if(map[j][i] == '2')
+				ft_sprite_position(i,j);
 			i++;
 		}
 		j++;
@@ -472,9 +476,12 @@ void	ft_drawing()
 	move_step = 20;
 	stock_direction = turn_direction + stock_direction;
 	stock_walk = walk_direction + stock_walk;
+	g_sprite_h = NULL;
 	ft_draw_map();
 	ft_draw_player();
+	g_rays = malloc((num_rays) *  sizeof(t_rays));
 	ft_draw_rays();
+	ft_sprite();
 	move_step = 0;
 	mlx_put_image_to_window(mlx_ptr, win_ptr, img.img, 0, 0);
 	mlx_hook(win_ptr,2,0,&deal_key,&img);
@@ -530,6 +537,14 @@ void	ft_window()
 				error = 1;
 			}
 		}
+		if (!(textur_five = mlx_xpm_file_to_image(mlx_ptr, textur_sprite,&g_sprite_height,&g_sprite_width)))
+		{
+			if(error == 0)
+			{
+				printf("Error\n%s Invalid file\n",textur_ea);
+				error = 1;
+			}
+		}
 		if((color_f == 0) && ((f_r <= 255) && ((f_r >= 0))) && ((f_g <= 255) && ((f_g >= 0))) && ((f_b <= 255) && ((f_b >= 0))))
 		{
 			color_floor = f_r * 65536 + f_g * 256 + f_b;
@@ -560,6 +575,7 @@ void	ft_window()
 			data_two = (int *)mlx_get_data_addr(textur_two, &t,&t,&t);
 			data_three = (int *)mlx_get_data_addr(textur_three, &t,&t,&t);
 			data_four = (int *)mlx_get_data_addr(textur_four, &t,&t,&t);
+			data_five = (int *)mlx_get_data_addr(textur_five, &t,&t,&t);
 			x = 0;
 			y = 0;
     		win_ptr = mlx_new_window(mlx_ptr, width_window, height_window, "cub3d");
