@@ -130,8 +130,7 @@ void	ft_draw_sprite(t_sprite *sprite, int i, int j)
 	(int)g_sprite_height/
 			(int)sprite->size)) + (i * (int)g_sprite_width /
 			(int)sprite->size)];
-	
-		my_mlx_pixel_put(mlx_ptr, sprite->x_offset + i,sprite->y_offset + j ,color);
+			my_mlx_pixel_put(&img, sprite->x_offset + i,sprite->y_offset + j ,color);
 	
 }
 
@@ -181,7 +180,7 @@ void ft_render_sprite(t_sprite *sprite)
 	else
 		sprite->size = (width_window/ sprite->distance) * tile_size;
 	sprite->y_offset = (height_window / 2) - (sprite->size / 2);
-	sprite->x_offset = ((s_angle * width_window) / fo_v) +
+	sprite->x_offset = ((s_angle * width_window) / (60 * M_PI / 180)) +
 		((width_window / 2) - (sprite->size / 2));
 		ft_start_draw_sprite(sprite);
 }

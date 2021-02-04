@@ -537,11 +537,11 @@ void	ft_window()
 				error = 1;
 			}
 		}
-		if (!(textur_five = mlx_xpm_file_to_image(mlx_ptr, textur_sprite,&g_sprite_height,&g_sprite_width)))
+		if (!(textur_five = mlx_xpm_file_to_image(mlx_ptr, textur_sprite,&g_sprite_width,&g_sprite_height)))
 		{
 			if(error == 0)
 			{
-				printf("Error\n%s Invalid file\n",textur_ea);
+				printf("Error\n%s Invalid file\n",textur_sprite);
 				error = 1;
 			}
 		}
