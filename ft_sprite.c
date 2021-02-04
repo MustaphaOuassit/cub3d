@@ -111,10 +111,6 @@ int	 protect_x(t_sprite *sprite, int i)
 {
 	int valid;
 	valid = 1;
-	if ((int)sprite->x_offset + i > num_rays)
-	{
-
-	}
 	if (sprite->x_offset + i < 0 ||
 				 (int)sprite->x_offset + i >= num_rays ||
 			 sprite->distance > g_rays[(int)sprite->x_offset + i].distance)
@@ -130,7 +126,8 @@ void	ft_draw_sprite(t_sprite *sprite, int i, int j)
 	(int)g_sprite_height/
 			(int)sprite->size)) + (i * (int)g_sprite_width /
 			(int)sprite->size)];
-			my_mlx_pixel_put(&img, sprite->x_offset + i,sprite->y_offset + j ,color);
+			if(color != 0)
+					my_mlx_pixel_put(&img, sprite->x_offset + i,sprite->y_offset + j ,color);
 	
 }
 
@@ -143,7 +140,7 @@ void	ft_start_draw_sprite(t_sprite *sprite)
 	j = 0;
 	while (i < sprite->size - 1)
 	{
-		if (!protect_x(sprite,i))
+		if (!protect_x(sprite, i))
 		{
 			i++;
 			continue;

@@ -269,7 +269,7 @@ void	ft_draw_rays()
 	was_vertical = 0;
 	ft_cast();
 	ft_3d_walls(i);
-	g_rays->distance = distance;
+	g_rays[i].distance = distance;
 	ray_angle = ray_angle + (60 * (M_PI / 180) / num_rays);
 
 		i++;
@@ -461,7 +461,7 @@ void	ft_draw_map()
 				y = (tile_size * j) + tile_size / 2;
 			}
 			if(map[j][i] == '2')
-				ft_sprite_position(i,j);
+				ft_sprite_position(j,i);
 			i++;
 		}
 		j++;
@@ -578,7 +578,7 @@ void	ft_window()
 			data_five = (int *)mlx_get_data_addr(textur_five, &t,&t,&t);
 			x = 0;
 			y = 0;
-    		win_ptr = mlx_new_window(mlx_ptr, width_window, height_window, "cub3d");
+    		win_ptr = mlx_new_window(mlx_ptr, width_window, height_window, "cub3D");
 			img.img = mlx_new_image(mlx_ptr, width_window, height_window);
 			img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);
 			ft_toll_line();
