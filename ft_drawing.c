@@ -510,14 +510,18 @@ void	ft_window()
 			check_direction = M_PI;
 		if (!(textur_one = mlx_xpm_file_to_image(mlx_ptr,textur_so,&t,&t))) 
 		{
-			printf("Error :\n%s Invalid file\n",textur_so);
+			write(1,"Error\n",7);
+			write(1,textur_so,(int)ft_strlen(textur_so));
+			write(1," Invalid file\n",14);
 			error = 1;
 		}
 		if (!(textur_two = mlx_xpm_file_to_image(mlx_ptr, textur_we,&t,&t))) 
 		{
 			if(error == 0)
 			{
-				printf("Error\n%s Invalid file\n",textur_we);
+				write(1,"Error\n",7);
+				write(1,textur_we,(int)ft_strlen(textur_we));
+				write(1," Invalid file\n",14);
 				error = 1;
 			}
 		}
@@ -525,7 +529,9 @@ void	ft_window()
 		{
 			if(error == 0)
 			{
-				printf("Error\n%s Invalid file\n",textur_no);
+				write(1,"Error\n",7);
+				write(1,textur_no,(int)ft_strlen(textur_no));
+				write(1," Invalid file\n",14);
 				error = 1;
 			}
 		}
@@ -533,7 +539,9 @@ void	ft_window()
 		{
 			if(error == 0)
 			{
-				printf("Error\n%s Invalid file\n",textur_ea);
+				write(1,"Error\n",7);
+				write(1,textur_ea,(int)ft_strlen(textur_ea));
+				write(1," Invalid file\n",14);
 				error = 1;
 			}
 		}
@@ -541,7 +549,9 @@ void	ft_window()
 		{
 			if(error == 0)
 			{
-				printf("Error\n%s Invalid file\n",textur_sprite);
+				write(1,"Error\n",7);
+				write(1,textur_sprite,(int)ft_strlen(textur_sprite));
+				write(1," Invalid file\n",14);
 				error = 1;
 			}
 		}
@@ -553,7 +563,8 @@ void	ft_window()
 		{
 			if(error == 0)
 			{
-				printf("Error\nColor no valid in F\n");
+				write(1,"Error\n",7);
+				write(1,"Color no valid in F\n",20);
 				error = 1;
 			}
 		}
@@ -565,7 +576,8 @@ void	ft_window()
 		{
 			if(error == 0)
 			{
-				printf("Error\nColor no valid in C\n");
+				write(1,"Error\n",7);
+				write(1,"Color no valid in C\n",20);
 				error = 1;
 			}
 		}
@@ -592,10 +604,14 @@ void	ft_window()
 	else
 	{
 		if(all_info == 8)
-			printf("Error\nNo Player in the map\n");
+		{
+			write(1,"Error\n",7);
+			write(1,"No Player in the map\n",21);
+		}
 		else
-			printf("Error\nlack the identifier\n");
+		{
+			write(1,"Error\n",7);
+			write(1,"lack the identifier\n",20);
+		}
 	}
-	
-
 }

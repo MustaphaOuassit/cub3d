@@ -34,7 +34,9 @@ int	main(int argc, char *argv[])
 				else
 				{
 					error = 1;
-					printf("Error\n%s no valid\n",argv[2]);
+					write(1,"Error\n",7);
+					write(1,argv[2],(int)ft_strlen(argv[2]));
+					write(1," no valid\n",10);
 				}
 			}
 			if(error == 0)
@@ -57,15 +59,26 @@ int	main(int argc, char *argv[])
 				{
 					mlx_ptr = mlx_init();
 					ft_window();
-					//printf("%s\n","GO");
 				}
 				else
-					printf("Error\n%s\n",text_error);
+				{
+					write(1,"Error\n",7);
+					write(1,text_error,(int)ft_strlen(text_error));
+					write(1,"\n",1);
+				}
 			}
 		}
 		else
-			printf("Error\nFile %s no valid\n",argv[1]);
+		{
+			write(1,"Error\n",7);
+			write(1,"File ",5);
+			write(1,argv[1],(int)ft_strlen(argv[1]));
+			write(1," no valid\n",10);
+		}
 	}
 	else
-		printf("Error\nWrong numbers of argc\n");
+	{
+		write(1,"Error\n",7);
+		write(1,"Wrong numbers of argc\n",22);
+	}
 }

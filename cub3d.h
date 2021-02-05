@@ -213,6 +213,6 @@ typedef	struct		s_header
 		int		ft_extention(char *str);
 		int		ft_strcmp(char *s1, const char *s2);
 		void	ft_screenshot();
-		void ft_sprite_position(int i,int j);
+		void 	ft_sprite_position(int i,int j);
 		void	ft_sprite();
 		#endif
