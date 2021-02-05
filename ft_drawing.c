@@ -496,10 +496,10 @@ void	ft_window()
 	error = 0;
 	if(side_p)
 	{
-		if(width_window > 2048)
-			width_window = 2048;
-		if(height_window > 1111)
-			height_window = 1111;
+		if(width_window > 2560)
+			width_window = 2560;
+		if(height_window > 1440)
+			height_window = 1440;
 		if(side_p == 'N')
 			check_direction = (M_PI / 2) + (M_PI / 2) + (M_PI / 2);
 		if(side_p == 'S')
@@ -583,8 +583,8 @@ void	ft_window()
 		}
 		if(error == 0)
 		{
-			data_one = (int *)mlx_get_data_addr(textur_two, &t,&t,&t);
-			data_two = (int *)mlx_get_data_addr(textur_four, &t,&t,&t);
+			data_one = (int *)mlx_get_data_addr(textur_four, &t,&t,&t);
+			data_two = (int *)mlx_get_data_addr(textur_two, &t,&t,&t);
 			data_three = (int *)mlx_get_data_addr(textur_one, &t,&t,&t);
 			data_four = (int *)mlx_get_data_addr(textur_three, &t,&t,&t);
 			data_five = (int *)mlx_get_data_addr(textur_five, &t,&t,&t);

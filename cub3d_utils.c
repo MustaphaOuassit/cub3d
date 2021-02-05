@@ -542,11 +542,11 @@ int		ft_continue_letter(char **no_space, int i)
 			i++;
 		}
 		if((ft_strlen(no_space[1]) - i) >= 5)
-			width_window = 2048;
+			width_window = 2560;
 		else
 			width_window = ft_atoi(no_space[1]);
 		if((ft_strlen(no_space[2]) - i) >= 5)
-			height_window = 1111;
+			height_window = 1440;
 		else
 			height_window = ft_atoi(no_space[2]);
 	}
