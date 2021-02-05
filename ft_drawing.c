@@ -508,7 +508,7 @@ void	ft_window()
 			check_direction = M_PI + M_PI;
 		if(side_p == 'W')
 			check_direction = M_PI;
-		if (!(textur_one = mlx_xpm_file_to_image(mlx_ptr,textur_so,&t,&t))) 
+		if (!(textur_one = mlx_xpm_file_to_image(mlx_ptr,textur_so,&t,&t)))
 		{
 			write(1,"Error\n",7);
 			write(1,textur_so,(int)ft_strlen(textur_so));
@@ -583,10 +583,10 @@ void	ft_window()
 		}
 		if(error == 0)
 		{
-			data_one = (int *)mlx_get_data_addr(textur_one, &t,&t,&t);
-			data_two = (int *)mlx_get_data_addr(textur_two, &t,&t,&t);
-			data_three = (int *)mlx_get_data_addr(textur_three, &t,&t,&t);
-			data_four = (int *)mlx_get_data_addr(textur_four, &t,&t,&t);
+			data_one = (int *)mlx_get_data_addr(textur_two, &t,&t,&t);
+			data_two = (int *)mlx_get_data_addr(textur_four, &t,&t,&t);
+			data_three = (int *)mlx_get_data_addr(textur_one, &t,&t,&t);
+			data_four = (int *)mlx_get_data_addr(textur_three, &t,&t,&t);
 			data_five = (int *)mlx_get_data_addr(textur_five, &t,&t,&t);
 			x = 0;
 			y = 0;
