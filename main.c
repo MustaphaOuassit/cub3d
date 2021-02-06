@@ -30,7 +30,9 @@ int	main(int argc, char *argv[])
 			if(argc == 3)
 			{ 
 				if(ft_strcmp(text_save,argv[2]) == 0)
+				{
 					save = 1;
+				}
 				else
 				{
 					error = 1;
@@ -41,8 +43,7 @@ int	main(int argc, char *argv[])
 			}
 			if(error == 0)
 			{
-				get = malloc(2);
-				*get = '\0';
+				get = ft_strdup("");
 				tile_size = 64; 
 				while (get_next_line(fd, &line) == 1)
 				{
@@ -54,9 +55,11 @@ int	main(int argc, char *argv[])
 					}
 					else
 						error = 0;
+					free(line);
 				}
 				if (ft_continue(line, error) == 0)
 				{
+					free(line);
 					mlx_ptr = mlx_init();
 					ft_window();
 				}

@@ -179,6 +179,7 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 			if(error == 0)
 				break;
 			j++;
+			ft_ptr_ln(no_space);
 		}
 	}
 	else
@@ -224,6 +225,7 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 			if(chose_error == 1)
 				break;
 			j++;
+			ft_ptr_ln(no_space);
 		}
 		if((chose_error == 0) && (sec_error == 0))
 			text_error = "Wrong number of infos in C";
@@ -425,6 +427,7 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 			if(error == 0)
 				break;
 			j++;
+			ft_ptr_ln(no_space);
 		}
 	}
 	else
@@ -470,6 +473,7 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 			if(chose_error == 1)
 				break;
 			j++;
+			ft_ptr_ln(no_space);
 		}
 		if((chose_error == 0) && (sec_error == 0))
 			text_error = "Wrong number of infos in F";

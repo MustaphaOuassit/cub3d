@@ -35,6 +35,8 @@ int		ft_zero_space(char **separ_lines, size_t i, int j, int error)
 	{
 		if ((separ_lines[j][i] == '0') || (separ_lines[j][i] == '2'))
 		{
+			if(separ_lines[j][i] == '2')
+				ft_sprite_position(j,i);
 			if (ft_break(separ_lines, i, j, error) == 1)
 			{
 				error = 1;

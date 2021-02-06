@@ -366,6 +366,8 @@ int		ft_check_errors(const char *str)
 			text_error = "lack the identifier";
 			error = ft_check_line_map(str, info);
 		}
+		ft_ptr_ln(no_space);
+		ft_ptr_ln(no_vrg);
 	return (error);
 }
 
@@ -404,6 +406,7 @@ int	ft_check_all_errors(const char *str)
 		if (ft_check_errors(str) == 1)
 		{
 			separ_lines = ft_split_n(get, 'c');
+			free(get);
 			if (get_y >= 3)
 			{
 				if (ft_check_one_on_line(separ_lines[0],separ_lines[get_y - 1]) == 0)
@@ -705,8 +708,8 @@ int	ft_check_all_errors(const char *str)
 	}
 	else
 		text_error = "lack the identifier";
-	
-	
+	ft_ptr_ln(no_space);
+	ft_ptr_ln(no_vrg);
 }
 	return(error) ;
 }

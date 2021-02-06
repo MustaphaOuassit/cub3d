@@ -215,4 +215,6 @@ typedef	struct		s_header
 		void	ft_screenshot();
 		void 	ft_sprite_position(int i,int j);
 		void	ft_sprite();
+		void	*fr_ee(char **words, int j);
+		void	ft_ptr_ln(char **str);
 		#endif

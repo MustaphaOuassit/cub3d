@@ -57,7 +57,7 @@ int		ft_word_length(char *str, int i, char c)
 
 void	*fr_ee(char **words, int j)
 {
-	while (j)
+	while (j >= 0)
 		free(words[j--]);
 	free(words);
 	return (NULL);

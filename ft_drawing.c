@@ -12,6 +12,14 @@
 
 #include "cub3d.h"
 
+void	ft_ptr_ln(char **str)
+{
+	int j;
+	j = 0;
+	while(str[j] != '\0')
+		j++;
+	fr_ee(str,j);
+}
 int		ft_check_y(int y, int wall_strip_height)
 {
 	int distance_from_top;
@@ -460,8 +468,6 @@ void	ft_draw_map()
 				x = (tile_size * i) + tile_size / 2;
 				y = (tile_size * j) + tile_size / 2;
 			}
-			if(map[j][i] == '2')
-				ft_sprite_position(j,i);
 			i++;
 		}
 		j++;
@@ -472,14 +478,11 @@ void	ft_drawing()
 {
 	rotation_angle = (check_direction) + (turn_direction + stock_direction)  * 10 * (M_PI / 180);
 	ray_angle = rotation_angle - ((60 * M_PI / 180) / 2);
-	num_rays = width_window;
 	move_step = 20;
 	stock_direction = turn_direction + stock_direction;
 	stock_walk = walk_direction + stock_walk;
-	g_sprite_h = NULL;
 	ft_draw_map();
 	ft_draw_player();
-	g_rays = malloc((num_rays) *  sizeof(t_rays));
 	ft_draw_rays();
 	ft_sprite();
 	move_step = 0;
@@ -590,6 +593,8 @@ void	ft_window()
 			data_five = (int *)mlx_get_data_addr(textur_five, &t,&t,&t);
 			x = 0;
 			y = 0;
+			num_rays = width_window;
+			g_rays = malloc((num_rays) *  sizeof(t_rays));
     		win_ptr = mlx_new_window(mlx_ptr, width_window, height_window, "cub3D");
 			img.img = mlx_new_image(mlx_ptr, width_window, height_window);
 			img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);

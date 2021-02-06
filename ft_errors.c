@@ -16,9 +16,13 @@ int		ft_add_string(const char *str, int error)
 {
 	char	*separator;
 
+	char *pfree;
 	separator = ft_strjoin(str, "c");
+	pfree = get;
 	get = ft_strjoin(get, separator);
 	get_y++;
+	free(pfree);
+	free(separator);
 	error = 1;
 	return (error);
 }
@@ -140,6 +144,7 @@ int		ft_extention(char *str)
 	}
 	else
 		error = 1;
+	ft_ptr_ln(dot);
 	return(error);
 }
 
