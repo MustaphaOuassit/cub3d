@@ -12,6 +12,20 @@
 
 #include "cub3d.h"
 
+int ft_check_player(int c,int error)
+{
+	if(((c == 'N') || (c == 'S') || (c == 'E') || (c == 'W')) && (g_get_y == 0))
+	{
+		g_check = 0;
+		error = 0;
+	}
+	else
+	{
+		g_check = 1;
+		error = 1;	
+	}
+	return(error);
+}
 int		ft_line_map(const char *str)
 {
 	size_t i;
@@ -31,17 +45,9 @@ int		ft_line_map(const char *str)
 		}
 		else
 		{
-			if(((str[i] == 'N') || (str[i] == 'S') || (str[i] == 'E') || (str[i] == 'W')) && (g_get_y == 0))
-			{
-				g_check = 0;
-				error = 0;
+			error = ft_check_player(str[i],error);
+			if(error == 0)
 				break;
-			}
-			else
-			{
-				g_check = 1;
-				error = 1;	
-			}
 		}
 		i++;
 	}
@@ -81,42 +87,7 @@ int		ft_check_errors(const char *str)
 			&& (ft_same(no_space[0]) == 0) && (g_get_y == 0))
 		{
 			if(str[0] == 'R')
-			{
-				if(g_duplicate_r == 0)
-				{
-					while (i != ft_strlen(str))
-					{
-						if (!(no_space[i]))
-						{
-							i = i - 1;
-							break ;
-						}
-						i++;
-					}
-					error = ft_check_letter(no_space, i);
-					if(error == 1)
-					{
-						if(str[ft_strlen(str) - 1] == ' ')
-						{
-							error = 0;
-							g_text_error = "Info invalid in R";
-						}
-						else
-						{
-							g_duplicate_r = 1;
-							g_all_info = g_all_info + 1;
-						}
-					}
-				}
-				else
-				{
-					error = 0;
-					if(g_get_y == 0)
-						g_text_error = "Duplicate the identifier R";
-					else
-						g_text_error = "Close the map";
-				}
-			}	
+				error = ft_check_r(str,no_space);
 			if(str[0] == 'F')
 			{
 				if(g_duplicate_f == 0)

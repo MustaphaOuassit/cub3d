@@ -207,4 +207,8 @@ typedef	struct		s_header
 		void	ft_sprite();
 		void	*fr_ee(char **words, int j);
 		void	ft_ptr_ln(char **str);
+		int		ft_check_save(int argc, char *argv[],int error);
+		void    ft_take_informations(int fd,int error);
+		void	ft_write_argv(char *argv);
+		int		ft_check_r(const char *str,char **no_space);
 		#endif
