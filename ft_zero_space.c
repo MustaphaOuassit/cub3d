@@ -82,7 +82,7 @@ int		ft_zero_space(char **separ_lines, size_t i, int j, int error)
 		i++;
 	}
 	if(error == 0)
-		map = separ_lines;
+		g_map = separ_lines;
 	return (error);
 }
 

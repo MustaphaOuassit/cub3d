@@ -54,7 +54,7 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 						else
 						{
 							error = 1;
-							info = 1;
+							g_info = 1;
 						}
 						if(error == 0)
 							break;
@@ -99,7 +99,7 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 					if((ft_strlen(no_space[1]) - y) >= 4)
 						color_c = 1;
 					else
-						c_r = ft_atoi(no_space[1]);
+						g_c_r = ft_atoi(no_space[1]);
 				}
 			}
 			else
@@ -120,7 +120,7 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 						else
 						{
 							error = 1;
-							info = 1;
+							g_info = 1;
 						}
 						if(error == 0)
 							break;
@@ -165,14 +165,14 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 						if((ft_strlen(no_space[0]) - y) >= 4)
 							color_c = 1;
 						else
-							c_g = ft_atoi(no_space[0]);
+							g_c_g = ft_atoi(no_space[0]);
 					}
 					if(j == 2)
 					{
 						if((ft_strlen(no_space[0]) - y) >= 4)
 							color_c = 1;
 						else
-							c_b = ft_atoi(no_space[0]);
+							g_c_b = ft_atoi(no_space[0]);
 					}
 				}
 			}
@@ -302,7 +302,7 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 						else
 						{
 							error = 1;
-							info = 1;
+							g_info = 1;
 						}
 						if(error == 0)
 							break;
@@ -347,7 +347,7 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 					if((ft_strlen(no_space[1]) - y) >= 4)
 						color_f = 1;
 					else
-						f_r = ft_atoi(no_space[1]);
+						g_f_r = ft_atoi(no_space[1]);
 				}
 			}
 			else
@@ -368,7 +368,7 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 						else
 						{
 							error = 1;
-							info = 1;
+							g_info = 1;
 						}
 						if(error == 0)
 							break;
@@ -413,14 +413,14 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 						if((ft_strlen(no_space[0]) - y) >= 4)
 							color_f = 1;
 						else
-							f_g = ft_atoi(no_space[0]);
+							g_f_g = ft_atoi(no_space[0]);
 					}
 					if(j == 2)
 					{
 						if((ft_strlen(no_space[0]) - y) >= 4)
 							color_f = 1;
 						else
-							f_b = ft_atoi(no_space[0]);
+							g_f_b = ft_atoi(no_space[0]);
 					}
 				}
 			}
@@ -528,7 +528,7 @@ int		ft_continue_letter(char **no_space, int i)
 			else
 			{
 				error = 1;
-				info = 1;
+				g_info = 1;
 			}
 			j++;
 		}
@@ -546,13 +546,13 @@ int		ft_continue_letter(char **no_space, int i)
 			i++;
 		}
 		if((ft_strlen(no_space[1]) - i) >= 5)
-			width_window = 2560;
+			g_width_window = 2560;
 		else
-			width_window = ft_atoi(no_space[1]);
+			g_width_window = ft_atoi(no_space[1]);
 		if((ft_strlen(no_space[2]) - i) >= 5)
-			height_window = 1440;
+			g_height_window = 1440;
 		else
-			height_window = ft_atoi(no_space[2]);
+			g_height_window = ft_atoi(no_space[2]);
 	}
 	return (error);
 }
@@ -607,7 +607,7 @@ int	ft_continue(const char *str, int error)
 	int i;
 
 	i = 0;
-	if (entre == 1)
+	if (g_entre == 1)
 	{
 		if (error == 0)
 		{
@@ -630,7 +630,7 @@ int	ft_continue(const char *str, int error)
 int		ft_check_line_map(const char *str, int info)
 {
 	int error;
-	if((get_y >= 1) && (all_info == 8))
+	if((g_get_y >= 1) && (all_info == 8))
 		text_error = "Close the map";
 	else
 		text_error = "Invalid Text";
@@ -655,7 +655,7 @@ int		ft_pirmission(const char *str)
 	{
 		if ((str[i] == '0') || (str[i] == '1') || (str[i] == '2'))
 		{
-			pirmission = 1;
+			g_pirmission = 1;
 			j = 0;
 			break ;
 		}

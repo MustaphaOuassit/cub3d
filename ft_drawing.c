@@ -23,7 +23,7 @@ void	ft_ptr_ln(char **str)
 int		ft_check_y(int y, int wall_strip_height)
 {
 	int distance_from_top;
-	distance_from_top = y + (wall_strip_height / 2) - (height_window / 2);
+	distance_from_top = y + (wall_strip_height / 2) - (g_height_window / 2);
 	return (distance_from_top * ((float)tile_size / wall_strip_height));
 }
 
@@ -38,19 +38,19 @@ void	ft_3d_walls(int x)
 	j = 0; 
 	i = 0;
 	ray_distance = distance * cos(ray_angle - rotation_angle);
-	distance_projection = (width_window / 2) / tan(1.0471975512 / 2);
+	distance_projection = (g_width_window / 2) / tan(1.0471975512 / 2);
 	wall_height = (tile_size / ray_distance) * distance_projection;
-	while (i < ((height_window / 2) - (wall_height / 2)))
+	while (i < ((g_height_window / 2) - (wall_height / 2)))
 	{
 		my_mlx_pixel_put(&img,x,i,color_sky);
 		i++;
 	}
-	i = (height_window / 2) - (wall_height / 2);
+	i = (g_height_window / 2) - (wall_height / 2);
 	if (was_vertical)
 		result = fmod(wall_y,tile_size);
 	else
 		result = fmod(wall_x,tile_size);
-    while (j < wall_height && i < height_window)
+    while (j < wall_height && i < g_height_window)
     {			
 
 		if(i > 0)
@@ -80,7 +80,7 @@ void	ft_3d_walls(int x)
         i++;
         j++;
     }
-	while (i < height_window)
+	while (i < g_height_window)
 	{
 		my_mlx_pixel_put(&img,x,i,color_floor);
 		i++;
@@ -122,10 +122,10 @@ int deal_key(int key)
 		turn_direction = -1;
 	if(key == 53)
 		exit(1);
-	while (j < height_window)
+	while (j < g_height_window)
 	{
 		i = 0;
-		while (i < width_window)
+		while (i < g_width_window)
 		{
 			my_mlx_pixel_put(&img,i,j,0x000000);
 			i++;
@@ -139,7 +139,7 @@ int deal_key(int key)
 
 int            ft_close(void)
 {
-    mlx_destroy_window(mlx_ptr, win_ptr);
+    mlx_destroy_window(g_mlx_ptr, g_win_ptr);
     exit(0);
 }
 
@@ -158,11 +158,11 @@ void	ft_toll_line()
 
 	i = 0;
 	len = 0;
-	while(i != get_y)
+	while(i != g_get_y)
 	{
-		if(ft_strlen(map[i]) > len)
-			toll = ft_strlen(map[i]);
-		len = ft_strlen(map[i]);
+		if(ft_strlen(g_map[i]) > len)
+			g_toll = ft_strlen(g_map[i]);
+		len = ft_strlen(g_map[i]);
 		i++;
 	}
 }
@@ -205,9 +205,9 @@ int     ft_has_wallat_p(float i, float j)
     wallat = 0;
     position_x = (i / tile_size);
     position_y = (j / tile_size);
-	if((position_y >= get_y) || (position_x >= (int)ft_strlen(map[position_y])))
+	if((position_y >= g_get_y) || (position_x >= (int)ft_strlen(g_map[position_y])))
 		return(1);
-    if((map[position_y][position_x] == '1') || (map[position_y][position_x] == ' ') || (map[position_y][position_x] == '\0'))
+    if((g_map[position_y][position_x] == '1') || (g_map[position_y][position_x] == ' ') || (g_map[position_y][position_x] == '\0'))
     	wallat = 1;
     else
 		wallat = 0;
@@ -223,9 +223,9 @@ int     ft_has_wallat(float i, float j)
     wallat = 0;
     position_x = (i / tile_size);
     position_y = (j / tile_size);
-	if((position_y >= get_y) || (position_x >= (int)ft_strlen(map[position_y])))
+	if((position_y >= g_get_y) || (position_x >= (int)ft_strlen(g_map[position_y])))
 		return(1);
-    if((map[position_y][position_x] == '1') || (map[position_y][position_x] == ' ') || (map[position_y][position_x] == '\0'))
+    if((g_map[position_y][position_x] == '1') || (g_map[position_y][position_x] == ' ') || (g_map[position_y][position_x] == '\0'))
     	wallat = 1;
     else
 		wallat = 0;
@@ -326,7 +326,7 @@ void	ft_cast()
 	/////////////////
 	next_one_x = closet_one_x;
 	next_one_y = closet_one_y;
-		while((next_one_x >= 0) && (next_one_x <= ((toll - 1) * tile_size)) && (next_one_y >= 0) && (next_one_y <= ((get_y - 1) * tile_size)))
+		while((next_one_x >= 0) && (next_one_x <= ((g_toll - 1) * tile_size)) && (next_one_y >= 0) && (next_one_y <= ((g_get_y - 1) * tile_size)))
 		{
 			if(ft_has_wallat(next_one_x,next_one_y -  is_ray_facing_up) == 1)
 			{
@@ -373,7 +373,7 @@ void	ft_cast()
 	/////////////////
 	next_one_v_x = closet_one_x;
 	next_one_v_y = closet_one_y;
-		while((next_one_v_x >= 0) && (next_one_v_x <= ((toll - 1) * tile_size)) && (next_one_v_y >= 0) && (next_one_v_y <= ((get_y - 1) * tile_size)))
+		while((next_one_v_x >= 0) && (next_one_v_x <= ((g_toll - 1) * tile_size)) && (next_one_v_y >= 0) && (next_one_v_y <= ((g_get_y - 1) * tile_size)))
 		{
 			if(ft_has_wallat(next_one_v_x - is_ray_facing_left,next_one_v_y) == 1)
 			{
@@ -458,12 +458,12 @@ void	ft_draw_map()
 
 	i = 0;
 	j = 0;
-	while(map[j])
+	while(g_map[j])
 	{
 		i = 0;
-		while(map[j][i])
+		while(g_map[j][i])
 		{
-			if(((map[j][i] == 'N') || (map[j][i] == 'S') || (map[j][i] == 'E') || (map[j][i] == 'W')) && (x == 0))
+			if(((g_map[j][i] == 'N') || (g_map[j][i] == 'S') || (g_map[j][i] == 'E') || (g_map[j][i] == 'W')) && (x == 0))
 			{
 				x = (tile_size * i) + tile_size / 2;
 				y = (tile_size * j) + tile_size / 2;
@@ -486,10 +486,10 @@ void	ft_drawing()
 	ft_draw_rays();
 	ft_sprite();
 	move_step = 0;
-	mlx_put_image_to_window(mlx_ptr, win_ptr, img.img, 0, 0);
-	mlx_hook(win_ptr,2,0,&deal_key,&img);
-	mlx_hook(win_ptr,3,0,&deal_key_release,&img);
-	mlx_hook(win_ptr, 17, 1L << 17, ft_close, (void *)0);
+	mlx_put_image_to_window(g_mlx_ptr, g_win_ptr, img.img, 0, 0);
+	mlx_hook(g_win_ptr,2,0,&deal_key,&img);
+	mlx_hook(g_win_ptr,3,0,&deal_key_release,&img);
+	mlx_hook(g_win_ptr, 17, 1L << 17, ft_close, (void *)0);
 }
 
 void	ft_window()
@@ -499,10 +499,10 @@ void	ft_window()
 	error = 0;
 	if(side_p)
 	{
-		if(width_window > 2560)
-			width_window = 2560;
-		if(height_window > 1440)
-			height_window = 1440;
+		if(g_width_window > 2560)
+			g_width_window = 2560;
+		if(g_height_window > 1440)
+			g_height_window = 1440;
 		if(side_p == 'N')
 			check_direction = (M_PI / 2) + (M_PI / 2) + (M_PI / 2);
 		if(side_p == 'S')
@@ -511,14 +511,14 @@ void	ft_window()
 			check_direction = M_PI + M_PI;
 		if(side_p == 'W')
 			check_direction = M_PI;
-		if (!(textur_one = mlx_xpm_file_to_image(mlx_ptr,textur_so,&t,&t)))
+		if (!(textur_one = mlx_xpm_file_to_image(g_mlx_ptr,textur_so,&t,&t)))
 		{
 			write(1,"Error\n",7);
 			write(1,textur_so,(int)ft_strlen(textur_so));
 			write(1," Invalid file\n",14);
 			error = 1;
 		}
-		if (!(textur_two = mlx_xpm_file_to_image(mlx_ptr, textur_we,&t,&t))) 
+		if (!(textur_two = mlx_xpm_file_to_image(g_mlx_ptr, textur_we,&t,&t))) 
 		{
 			if(error == 0)
 			{
@@ -528,7 +528,7 @@ void	ft_window()
 				error = 1;
 			}
 		}
-		if (!(textur_three = mlx_xpm_file_to_image(mlx_ptr, textur_no,&t,&t))) 
+		if (!(textur_three = mlx_xpm_file_to_image(g_mlx_ptr, textur_no,&t,&t))) 
 		{
 			if(error == 0)
 			{
@@ -538,7 +538,7 @@ void	ft_window()
 				error = 1;
 			}
 		}
-		if (!(textur_four = mlx_xpm_file_to_image(mlx_ptr, textur_ea,&t,&t)))
+		if (!(textur_four = mlx_xpm_file_to_image(g_mlx_ptr, textur_ea,&t,&t)))
 		{
 			if(error == 0)
 			{
@@ -548,7 +548,7 @@ void	ft_window()
 				error = 1;
 			}
 		}
-		if (!(textur_five = mlx_xpm_file_to_image(mlx_ptr, textur_sprite,&g_sprite_width,&g_sprite_height)))
+		if (!(textur_five = mlx_xpm_file_to_image(g_mlx_ptr, textur_sprite,&g_sprite_width,&g_sprite_height)))
 		{
 			if(error == 0)
 			{
@@ -558,9 +558,9 @@ void	ft_window()
 				error = 1;
 			}
 		}
-		if((color_f == 0) && ((f_r <= 255) && ((f_r >= 0))) && ((f_g <= 255) && ((f_g >= 0))) && ((f_b <= 255) && ((f_b >= 0))))
+		if((color_f == 0) && ((g_f_r <= 255) && ((g_f_r >= 0))) && ((g_f_g <= 255) && ((g_f_g >= 0))) && ((g_f_b <= 255) && ((g_f_b >= 0))))
 		{
-			color_floor = f_r * 65536 + f_g * 256 + f_b;
+			color_floor = g_f_r * 65536 + g_f_g * 256 + g_f_b;
 		}
 		else
 		{
@@ -571,9 +571,9 @@ void	ft_window()
 				error = 1;
 			}
 		}
-		if((color_c == 0) && ((c_r <= 255) && ((c_r >= 0))) && ((c_g <= 255) && ((c_g >= 0))) && ((c_b <= 255) && ((c_b >= 0))))
+		if((color_c == 0) && ((g_c_r <= 255) && ((g_c_r >= 0))) && ((g_c_g <= 255) && ((g_c_g >= 0))) && ((g_c_b <= 255) && ((g_c_b >= 0))))
 		{
-			color_sky = c_r * 65536 + c_g * 256 + c_b;
+			color_sky = g_c_r * 65536 + g_c_g * 256 + g_c_b;
 		}
 		else
 		{
@@ -593,17 +593,17 @@ void	ft_window()
 			data_five = (int *)mlx_get_data_addr(textur_five, &t,&t,&t);
 			x = 0;
 			y = 0;
-			num_rays = width_window;
+			num_rays = g_width_window;
 			g_rays = malloc((num_rays) *  sizeof(t_rays));
-    		win_ptr = mlx_new_window(mlx_ptr, width_window, height_window, "cub3D");
-			img.img = mlx_new_image(mlx_ptr, width_window, height_window);
+    		g_win_ptr = mlx_new_window(g_mlx_ptr, g_width_window, g_height_window, "cub3D");
+			img.img = mlx_new_image(g_mlx_ptr, g_width_window, g_height_window);
 			img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);
 			ft_toll_line();
 			ft_drawing();
 			if(save == 1)
 				ft_screenshot();
 			else
-				mlx_loop(mlx_ptr);
+				mlx_loop(g_mlx_ptr);
 		}
 	}
 	else

@@ -18,9 +18,9 @@ int		ft_add_string(const char *str, int error)
 
 	char *pfree;
 	separator = ft_strjoin(str, "c");
-	pfree = get;
-	get = ft_strjoin(get, separator);
-	get_y++;
+	pfree = g_get;
+	g_get = ft_strjoin(g_get, separator);
+	g_get_y++;
 	free(pfree);
 	free(separator);
 	error = 1;
@@ -43,7 +43,7 @@ int		ft_continue_string(const char *str, int error)
 		}
 		i++;
 	}
-	if ((pirmission == 1) || (r == 1))
+	if ((g_pirmission == 1) || (r == 1))
 		error = 0;
 	return (error);
 }
@@ -86,7 +86,7 @@ int		ft_continue_line(char **separ_lines)
 	error = 0;
 	if((check_f == 1) && (check_c == 1) && (check_s == 1) && (check_ea == 1) && (check_we == 1) && (check_so == 1) && (check_no == 1))
 	{
-		while (j != get_y - 1)
+		while (j != g_get_y - 1)
 		{
 			if (((separ_lines[j][ft_strlen(separ_lines[j]) - 1] == '1')
 						|| (separ_lines[j][ft_strlen(separ_lines[j]) - 1] == ' '))

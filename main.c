@@ -43,11 +43,11 @@ int	main(int argc, char *argv[])
 			}
 			if(error == 0)
 			{
-				get = ft_strdup("");
+				g_get = ft_strdup("");
 				tile_size = 64; 
 				while (get_next_line(fd, &line) == 1)
 				{
-					entre = 1;
+					g_entre = 1;
 					if (ft_check_errors(line) == 0)
 					{
 						error = 1;
@@ -60,7 +60,7 @@ int	main(int argc, char *argv[])
 				if (ft_continue(line, error) == 0)
 				{
 					free(line);
-					mlx_ptr = mlx_init();
+					g_mlx_ptr = mlx_init();
 					ft_window();
 				}
 				else

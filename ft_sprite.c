@@ -150,7 +150,7 @@ void	ft_start_draw_sprite(t_sprite *sprite)
 		{
 
 			if (sprite->y_offset + j < 0 ||
-					sprite->y_offset + j >= height_window)
+					sprite->y_offset + j >= g_height_window)
 			{
 				j++;
 				continue;
@@ -172,13 +172,13 @@ void ft_render_sprite(t_sprite *sprite)
 	while (s_angle - (rotation_angle) < -M_PI)
 		s_angle += 2 * M_PI;
 	s_angle -= rotation_angle;
-	if (height_window > width_window)
-		sprite->size = (height_window/ sprite->distance) * tile_size;
+	if (g_height_window > g_width_window)
+		sprite->size = (g_height_window/ sprite->distance) * tile_size;
 	else
-		sprite->size = (width_window/ sprite->distance) * tile_size;
-	sprite->y_offset = (height_window / 2) - (sprite->size / 2);
-	sprite->x_offset = ((s_angle * width_window) / (60 * M_PI / 180)) +
-		((width_window / 2) - (sprite->size / 2));
+		sprite->size = (g_width_window/ sprite->distance) * tile_size;
+	sprite->y_offset = (g_height_window / 2) - (sprite->size / 2);
+	sprite->x_offset = ((s_angle * g_width_window) / (60 * M_PI / 180)) +
+		((g_width_window / 2) - (sprite->size / 2));
 		ft_start_draw_sprite(sprite);
 }
 

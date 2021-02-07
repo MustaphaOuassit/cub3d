@@ -14,8 +14,8 @@
 
 void			ft_error()
 {
-	if (mlx_ptr && win_ptr)
-		mlx_destroy_window(mlx_ptr, win_ptr);
+	if (g_mlx_ptr && g_win_ptr)
+		mlx_destroy_window(g_mlx_ptr, g_win_ptr);
 	exit(1);
 }
 
@@ -52,8 +52,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 void	ft_init_header(unsigned char *header, t_header *info, int i)
 {
 	i = 0;
-	info->width = width_window;
-	info->height = height_window;
+	info->width = g_width_window;
+	info->height = g_height_window;
 	info->bitcount = 24;
 	info->bi_planes = 1;
 	info->w_in_b = ((info->width * info->bitcount + 31) / 32) * 4;
@@ -115,8 +115,8 @@ void	ft_screenshot(void)
 		info.col = 0;
 		while (info.col < info.width)
 		{
-			color = get_colors(info.data[(height_window - info.row) * \
-				width_window + info.col]);
+			color = get_colors(info.data[(g_height_window - info.row) * \
+				g_width_window + info.col]);
 							info.buf[info.row * info.w_in_b + info.col * 3 + 0] = color[2];
 			info.buf[info.row * info.w_in_b + info.col * 3 + 1] = color[1];
 			info.buf[info.row * info.w_in_b + info.col * 3 + 2] = color[0];

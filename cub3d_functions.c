@@ -18,34 +18,34 @@ int		ft_line_map(const char *str)
 	int error;
 
 	i = 0;
-	if ((ft_strlen(str) == 0) && (check == 0))
+	if ((ft_strlen(str) == 0) && (g_check == 0))
 		error = 1;
 	while (i != ft_strlen(str))
 	{
 		if ((str[i] != ' ') && (str[i] != '0')
 				&& (str[i] != '1') && (str[i] != '2') && (str[i] != 'N') && (str[i] != 'S') && (str[i] != 'E') && (str[i] != 'W'))
 		{
-			check = 0;
+			g_check = 0;
 			error = 0;
 			break ;
 		}
 		else
 		{
-			if(((str[i] == 'N') || (str[i] == 'S') || (str[i] == 'E') || (str[i] == 'W')) && (get_y == 0))
+			if(((str[i] == 'N') || (str[i] == 'S') || (str[i] == 'E') || (str[i] == 'W')) && (g_get_y == 0))
 			{
-				check = 0;
+				g_check = 0;
 				error = 0;
 				break;
 			}
 			else
 			{
-				check = 1;
+				g_check = 1;
 				error = 1;	
 			}
 		}
 		i++;
 	}
-	if (check == 1)
+	if (g_check == 1)
 		error = ft_continue_check(str, error);
 	return (error);
 }
@@ -76,9 +76,9 @@ int		ft_check_errors(const char *str)
 	no_vrg = ft_split(str, ',');
 	i = 0;
 	error = 0;
-	info = 1;
+	g_info = 1;
 		if (((str[0] == 'R') || (str[0] == 'F') || (str[0] == 'C') || (str[0] == 'S') || (str[0] == 'E') || (str[0] == 'W') || (str[0] == 'N'))
-			&& (ft_same(no_space[0]) == 0) && (get_y == 0))
+			&& (ft_same(no_space[0]) == 0) && (g_get_y == 0))
 		{
 			if(str[0] == 'R')
 			{
@@ -111,7 +111,7 @@ int		ft_check_errors(const char *str)
 				else
 				{
 					error = 0;
-					if(get_y == 0)
+					if(g_get_y == 0)
 						text_error = "Duplicate the identifier R";
 					else
 						text_error = "Close the map";
@@ -150,7 +150,7 @@ int		ft_check_errors(const char *str)
 				else
 				{
 					error = 0;
-					if(get_y == 0)
+					if(g_get_y == 0)
 						text_error = "Duplicate the identifier F";
 					else
 						text_error = "Close the map";
@@ -189,7 +189,7 @@ int		ft_check_errors(const char *str)
 				else
 				{
 					error = 0;
-					if(get_y == 0)
+					if(g_get_y == 0)
 						text_error = "Duplicate the identifier C";
 					else
 						text_error = "Close the map";	
@@ -222,7 +222,7 @@ int		ft_check_errors(const char *str)
 				else
 				{
 					error = 0;
-					if(get_y == 0)
+					if(g_get_y == 0)
 						text_error = "Duplicate the identifier S";
 					else
 						text_error = "Close the map";
@@ -255,7 +255,7 @@ int		ft_check_errors(const char *str)
 				else
 				{
 					error = 0;
-					if(get_y == 0)
+					if(g_get_y == 0)
 						text_error = "Duplicate the identifier EA";
 					else
 						text_error = "Close the map";	
@@ -288,7 +288,7 @@ int		ft_check_errors(const char *str)
 				else
 				{
 					error = 0;
-					if(get_y == 0)
+					if(g_get_y == 0)
 						text_error = "Duplicate the identifier WE";
 					else
 						text_error = "Close the map";	
@@ -321,7 +321,7 @@ int		ft_check_errors(const char *str)
 				else
 				{
 					error = 0;
-					if(get_y == 0)
+					if(g_get_y == 0)
 						text_error = "Duplicate the identifier SO";
 					else
 						text_error = "Close the map";
@@ -354,7 +354,7 @@ int		ft_check_errors(const char *str)
 				else
 				{
 					error = 0;
-					if(get_y == 0)
+					if(g_get_y == 0)
 						text_error = "Duplicate the identifier NO";
 					else
 						text_error = "Close the map";
@@ -364,7 +364,7 @@ int		ft_check_errors(const char *str)
 		else
 		{
 			text_error = "lack the identifier";
-			error = ft_check_line_map(str, info);
+			error = ft_check_line_map(str, g_info);
 		}
 		ft_ptr_ln(no_space);
 		ft_ptr_ln(no_vrg);
@@ -405,11 +405,11 @@ int	ft_check_all_errors(const char *str)
 	{
 		if (ft_check_errors(str) == 1)
 		{
-			separ_lines = ft_split_n(get, 'c');
-			free(get);
-			if (get_y >= 3)
+			separ_lines = ft_split_n(g_get, 'c');
+			free(g_get);
+			if (g_get_y >= 3)
 			{
-				if (ft_check_one_on_line(separ_lines[0],separ_lines[get_y - 1]) == 0)
+				if (ft_check_one_on_line(separ_lines[0],separ_lines[g_get_y - 1]) == 0)
 				{
 					error = ft_continue_line(separ_lines);
 				}
@@ -422,9 +422,9 @@ int	ft_check_all_errors(const char *str)
 			else
 			{
 				error = 1;
-				if(get_y == 0)
+				if(g_get_y == 0)
 					text_error = "Enter the map";
-				if((get_y != 0) && (get_y < 3))
+				if((g_get_y != 0) && (g_get_y < 3))
 					text_error = "Minimum lines of the map is 3";
 			}
 		}
@@ -466,7 +466,7 @@ int	ft_check_all_errors(const char *str)
 				else
 				{
 					error = 0;
-					if(get_y == 0)
+					if(g_get_y == 0)
 						text_error = "Duplicate the identifier R";
 					else
 						text_error = "Close the map";
@@ -497,7 +497,7 @@ int	ft_check_all_errors(const char *str)
 				else
 				{
 					error = 0;
-					if(get_y == 0)
+					if(g_get_y == 0)
 						text_error = "Duplicate the identifier F";
 					else
 						text_error = "Close the map";
@@ -528,7 +528,7 @@ int	ft_check_all_errors(const char *str)
 				else
 				{
 					error = 0;
-					if(get_y == 0)
+					if(g_get_y == 0)
 						text_error = "Duplicate the identifier C";
 					else
 						text_error = "Close the map";	
@@ -561,7 +561,7 @@ int	ft_check_all_errors(const char *str)
 				else
 				{
 					error = 0;
-					if(get_y == 0)
+					if(g_get_y == 0)
 						text_error = "Duplicate the identifier S";
 					else
 						text_error = "Close the map";
@@ -594,7 +594,7 @@ int	ft_check_all_errors(const char *str)
 				else
 				{
 					error = 0;
-					if(get_y == 0)
+					if(g_get_y == 0)
 						text_error = "Duplicate the identifier EA";
 					else
 						text_error = "Close the map";	
@@ -627,7 +627,7 @@ int	ft_check_all_errors(const char *str)
 				else
 				{
 					error = 0;
-					if(get_y == 0)
+					if(g_get_y == 0)
 						text_error = "Duplicate the identifier WE";
 					else
 						text_error = "Close the map";	
@@ -660,7 +660,7 @@ int	ft_check_all_errors(const char *str)
 				else
 				{
 					error = 0;
-					if(get_y == 0)
+					if(g_get_y == 0)
 						text_error = "Duplicate the identifier SO";
 					else
 						text_error = "Close the map";
@@ -693,13 +693,13 @@ int	ft_check_all_errors(const char *str)
 				else
 				{
 					error = 0;
-					if(get_y == 0)
+					if(g_get_y == 0)
 						text_error = "Duplicate the identifier NO";
 					else
 						text_error = "Close the map";
 				}
 			}
-			if(((check_f == 1) || (check_c == 1) || (check_s == 1) || (check_ea == 1) || (check_we == 1) || (check_so == 1) || (check_no == 1)) && (get_y == 0))
+			if(((check_f == 1) || (check_c == 1) || (check_s == 1) || (check_ea == 1) || (check_we == 1) || (check_so == 1) || (check_no == 1)) && (g_get_y == 0))
 				text_error = "Entre the map";
 			else
 				text_error = "lack the identifier";

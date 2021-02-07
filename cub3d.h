@@ -20,27 +20,24 @@
 		# include <mlx.h>
 		# include <math.h>
 
-		int check;
-		char *get;
-		char **map;
-		int toll;
-		int lenget;
-		const char *stock_line;
-		int get_y;
-		int width_window;
-		int height_window;
-		void *mlx_ptr;
-    	void *win_ptr;
-		int pirmission;
-		int info;
-		int entre;
-		char **resolution;
-		int f_r;
-		int f_g;
-		int f_b;
-		int c_r;
-		int c_g;
-		int c_b;
+		int g_check;
+		char *g_get;
+		char **g_map;
+		int g_toll;
+		int g_get_y;
+		int g_width_window;
+		int g_height_window;
+		void *g_mlx_ptr;
+    	void *g_win_ptr;
+		int g_pirmission;
+		int g_info;
+		int g_entre;
+		int g_f_r;
+		int g_f_g;
+		int g_f_b;
+		int g_c_r;
+		int g_c_g;
+		int g_c_b;
 		char **sky;
 		int tile_size;
 		float x;
