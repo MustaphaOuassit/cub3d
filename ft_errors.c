@@ -84,7 +84,7 @@ int		ft_continue_line(char **separ_lines)
 
 	j = 1;
 	error = 0;
-	if((check_f == 1) && (check_c == 1) && (check_s == 1) && (check_ea == 1) && (check_we == 1) && (check_so == 1) && (check_no == 1))
+	if((g_check_f == 1) && (g_check_c == 1) && (g_check_s == 1) && (g_check_ea == 1) && (g_check_we == 1) && (g_check_so == 1) && (g_check_no == 1))
 	{
 		while (j != g_get_y - 1)
 		{
@@ -101,8 +101,8 @@ int		ft_continue_line(char **separ_lines)
 			}
 			if (error == 1)
 			{
-				if(duplicate_p == 0)
-					text_error = "Close the map";
+				if(g_duplicate_p == 0)
+					g_text_error = "Close the map";
 				break;
 			}
 			j++;
@@ -111,7 +111,7 @@ int		ft_continue_line(char **separ_lines)
 	else
 	{
 		error = 1;
-		text_error = "lack the identifier";
+		g_text_error = "lack the identifier";
 		
 	}
 	return (error);

@@ -45,7 +45,7 @@ int		ft_zero_space(char **separ_lines, size_t i, int j, int error)
 		}
 		if ((separ_lines[j][i] == 'N') || (separ_lines[j][i] == 'S') || (separ_lines[j][i] == 'E') || (separ_lines[j][i] == 'W'))
 		{
-			if(duplicate_p == 0)
+			if(g_duplicate_p == 0)
 			{
 				if (ft_break(separ_lines, i, j, error) == 1)
 				{
@@ -54,14 +54,14 @@ int		ft_zero_space(char **separ_lines, size_t i, int j, int error)
 				}
 				else
 				{
-					duplicate_p = 1;
-					side_p = separ_lines[j][i];
+					g_duplicate_p = 1;
+					g_side_p = separ_lines[j][i];
 				}
 			}
 			else
 			{
 				error = 1;
-				text_error = "Duplicate Player in th map";
+				g_text_error = "Duplicate Player in th map";
 				break;
 			}
 		}

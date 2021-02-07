@@ -47,7 +47,7 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 					{
 						if(ft_isdigit(no_space[1][b]) == 0)
 						{
-							text_error = "Info invalid in C";
+							g_text_error = "Info invalid in C";
 							error = 0;
 							break;
 						}
@@ -82,9 +82,9 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 						r++;
 					}
 					if(chose_error == 0)
-						text_error = "Minimum numbers for one element in C is 1";
+						g_text_error = "Minimum numbers for one element in C is 1";
 					else
-						text_error = "Info invalid in C";
+						g_text_error = "Info invalid in C";
 					break;
 				}
 				if(error == 1)
@@ -97,7 +97,7 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 						y++;
 					}
 					if((ft_strlen(no_space[1]) - y) >= 4)
-						color_c = 1;
+						g_color_c = 1;
 					else
 						g_c_r = ft_atoi(no_space[1]);
 				}
@@ -113,7 +113,7 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 					{
 						if(ft_isdigit(no_space[0][b]) == 0)
 						{
-							text_error = "Info invalid in C";
+							g_text_error = "Info invalid in C";
 							error = 0;
 							break;
 						}
@@ -147,9 +147,9 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 						t++;
 					}
 					if(chose_error == 1)
-						text_error = "Info invalid in C";
+						g_text_error = "Info invalid in C";
 					else
-						text_error = "Minimum numbers for one element in C is 1";
+						g_text_error = "Minimum numbers for one element in C is 1";
 				}
 				if(error == 1)
 				{
@@ -163,14 +163,14 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 					if(j == 1)
 					{
 						if((ft_strlen(no_space[0]) - y) >= 4)
-							color_c = 1;
+							g_color_c = 1;
 						else
 							g_c_g = ft_atoi(no_space[0]);
 					}
 					if(j == 2)
 					{
 						if((ft_strlen(no_space[0]) - y) >= 4)
-							color_c = 1;
+							g_color_c = 1;
 						else
 							g_c_b = ft_atoi(no_space[0]);
 					}
@@ -228,13 +228,13 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 			ft_ptr_ln(no_space);
 		}
 		if((chose_error == 0) && (sec_error == 0))
-			text_error = "Wrong number of infos in C";
+			g_text_error = "Wrong number of infos in C";
 		else
 		{
 			if((sec_error == 1) && (chose_error == 0))
-				text_error = "Minimum numbers for one element in C is 1";
+				g_text_error = "Minimum numbers for one element in C is 1";
 			else
-				text_error = "Info invalid in C";
+				g_text_error = "Info invalid in C";
 		}
 	}
 	if(error == 1)
@@ -254,7 +254,7 @@ int		ft_continue_vrg_c(char **no_vrg, size_t i, const char *str)
 		else
 		{
 			error = 0;
-			text_error = "just two virgule in C";
+			g_text_error = "just two virgule in C";
 		}
 	}
 	return(error);
@@ -295,7 +295,7 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 					{
 						if(ft_isdigit(no_space[1][b]) == 0)
 						{
-							text_error = "Info invalid in F";
+							g_text_error = "Info invalid in F";
 							error = 0;
 							break;
 						}
@@ -330,9 +330,9 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 						r++;
 					}
 					if(chose_error == 0)
-						text_error = "Minimum numbers for one element in F is 1";
+						g_text_error = "Minimum numbers for one element in F is 1";
 					else
-						text_error = "Info invalid in F";
+						g_text_error = "Info invalid in F";
 					break;
 				}
 				if(error == 1)
@@ -345,7 +345,7 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 						y++;
 					}
 					if((ft_strlen(no_space[1]) - y) >= 4)
-						color_f = 1;
+						g_color_f = 1;
 					else
 						g_f_r = ft_atoi(no_space[1]);
 				}
@@ -361,7 +361,7 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 					{
 						if(ft_isdigit(no_space[0][b]) == 0)
 						{
-							text_error = "Info invalid in F";
+							g_text_error = "Info invalid in F";
 							error = 0;
 							break;
 						}
@@ -395,9 +395,9 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 						t++;
 					}
 					if(chose_error == 1)
-						text_error = "Info invalid in F";
+						g_text_error = "Info invalid in F";
 					else
-						text_error = "Minimum numbers for one element in F is 1";
+						g_text_error = "Minimum numbers for one element in F is 1";
 				}
 				if(error == 1)
 				{
@@ -411,14 +411,14 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 					if(j == 1)
 					{
 						if((ft_strlen(no_space[0]) - y) >= 4)
-							color_f = 1;
+							g_color_f = 1;
 						else
 							g_f_g = ft_atoi(no_space[0]);
 					}
 					if(j == 2)
 					{
 						if((ft_strlen(no_space[0]) - y) >= 4)
-							color_f = 1;
+							g_color_f = 1;
 						else
 							g_f_b = ft_atoi(no_space[0]);
 					}
@@ -476,13 +476,13 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 			ft_ptr_ln(no_space);
 		}
 		if((chose_error == 0) && (sec_error == 0))
-			text_error = "Wrong number of infos in F";
+			g_text_error = "Wrong number of infos in F";
 		else
 		{
 			if((sec_error == 1) && (chose_error == 0))
-				text_error = "Minimum numbers for one element in F is 1";
+				g_text_error = "Minimum numbers for one element in F is 1";
 			else
-				text_error = "Info invalid in F";
+				g_text_error = "Info invalid in F";
 		}
 	}
 	if(error == 1)
@@ -502,7 +502,7 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 		else
 		{
 			error = 0;
-			text_error = "just two virgule in F";
+			g_text_error = "just two virgule in F";
 		}
 	}
 	return(error);
@@ -522,7 +522,7 @@ int		ft_continue_letter(char **no_space, int i)
 			if (ft_isdigit(no_space[i][j]) == 0)
 			{
 				error = 0;
-				text_error = "Info invalid in R";
+				g_text_error = "Info invalid in R";
 				break ;
 			}
 			else
@@ -595,9 +595,9 @@ int		ft_check_letter(char **no_space, int i)
 			r++;
 		}
 		if(chose_error == 0)
-			text_error = "Wrong number of infos in R";
+			g_text_error = "Wrong number of infos in R";
 		else
-			text_error = "Info invalid in R";
+			g_text_error = "Info invalid in R";
 	}
 	return (error);
 }
@@ -619,9 +619,9 @@ int	ft_continue(const char *str, int error)
 		while(str[i] != '\0')
 			i++;
 		if(i == 0)
-			text_error = "Empty File";
+			g_text_error = "Empty File";
 		else
-			text_error = "Invalid File";
+			g_text_error = "Invalid File";
 		error = 1;
 	}
 	return(error);
@@ -630,10 +630,10 @@ int	ft_continue(const char *str, int error)
 int		ft_check_line_map(const char *str, int info)
 {
 	int error;
-	if((g_get_y >= 1) && (all_info == 8))
-		text_error = "Close the map";
+	if((g_get_y >= 1) && (g_all_info == 8))
+		g_text_error = "Close the map";
 	else
-		text_error = "Invalid Text";
+		g_text_error = "Invalid Text";
 	error = 0;
 	if ((ft_line_map(str) == 1) && (info == 1))
 		error = 1;

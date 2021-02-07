@@ -31,7 +31,7 @@ int	main(int argc, char *argv[])
 			{ 
 				if(ft_strcmp(text_save,argv[2]) == 0)
 				{
-					save = 1;
+					g_save = 1;
 				}
 				else
 				{
@@ -44,7 +44,7 @@ int	main(int argc, char *argv[])
 			if(error == 0)
 			{
 				g_get = ft_strdup("");
-				tile_size = 64; 
+				g_tile_size = 64; 
 				while (get_next_line(fd, &line) == 1)
 				{
 					g_entre = 1;
@@ -66,7 +66,7 @@ int	main(int argc, char *argv[])
 				else
 				{
 					write(1,"Error\n",7);
-					write(1,text_error,(int)ft_strlen(text_error));
+					write(1,g_text_error,(int)ft_strlen(g_text_error));
 					write(1,"\n",1);
 				}
 			}

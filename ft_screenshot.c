@@ -61,7 +61,7 @@ void	ft_init_header(unsigned char *header, t_header *info, int i)
 	info->bi_size = 40;
 	info->bf_off_bits = 54;
 	info->file_size = 54 + info->image_size;
-	info->data = (int *)mlx_get_data_addr(img.img, &i, &i, &i);
+	info->data = (int *)mlx_get_data_addr(g_img.img, &i, &i, &i);
 	info->row = info->height - 1;
 	info->col = 0;
 	ft_memcpy(header, "BM", 2);

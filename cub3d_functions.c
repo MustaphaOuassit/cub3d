@@ -82,7 +82,7 @@ int		ft_check_errors(const char *str)
 		{
 			if(str[0] == 'R')
 			{
-				if(duplicate_r == 0)
+				if(g_duplicate_r == 0)
 				{
 					while (i != ft_strlen(str))
 					{
@@ -99,12 +99,12 @@ int		ft_check_errors(const char *str)
 						if(str[ft_strlen(str) - 1] == ' ')
 						{
 							error = 0;
-							text_error = "Info invalid in R";
+							g_text_error = "Info invalid in R";
 						}
 						else
 						{
-							duplicate_r = 1;
-							all_info = all_info + 1;
+							g_duplicate_r = 1;
+							g_all_info = g_all_info + 1;
 						}
 					}
 				}
@@ -112,14 +112,14 @@ int		ft_check_errors(const char *str)
 				{
 					error = 0;
 					if(g_get_y == 0)
-						text_error = "Duplicate the identifier R";
+						g_text_error = "Duplicate the identifier R";
 					else
-						text_error = "Close the map";
+						g_text_error = "Close the map";
 				}
 			}	
 			if(str[0] == 'F')
 			{
-				if(duplicate_f == 0)
+				if(g_duplicate_f == 0)
 				{
 					i = 0;
 					while (i != ft_strlen(str))
@@ -137,13 +137,13 @@ int		ft_check_errors(const char *str)
 						if(str[ft_strlen(str) - 1] == ' ')
 						{
 							error = 0;
-							text_error = "Info invalid in F";
+							g_text_error = "Info invalid in F";
 						}
 						else
 						{
-							check_f = 1;
-							duplicate_f = 1;
-							all_info = all_info + 1;
+							g_check_f = 1;
+							g_duplicate_f = 1;
+							g_all_info = g_all_info + 1;
 						}
 					}
 				}
@@ -151,14 +151,14 @@ int		ft_check_errors(const char *str)
 				{
 					error = 0;
 					if(g_get_y == 0)
-						text_error = "Duplicate the identifier F";
+						g_text_error = "Duplicate the identifier F";
 					else
-						text_error = "Close the map";
+						g_text_error = "Close the map";
 				}
 			}
 			if(str[0] == 'C')
 			{
-				if(duplicate_c == 0)
+				if(g_duplicate_c == 0)
 				{
 					i = 0;
 					while (i != ft_strlen(str))
@@ -176,13 +176,13 @@ int		ft_check_errors(const char *str)
 						if(str[ft_strlen(str) - 1] == ' ')
 						{
 							error = 0;
-							text_error = "Info invalid in C";
+							g_text_error = "Info invalid in C";
 						}
 						else
 						{
-							check_c = 1;
-							duplicate_c = 1;
-							all_info = all_info + 1;
+							g_check_c = 1;
+							g_duplicate_c = 1;
+							g_all_info = g_all_info + 1;
 						}
 					}
 				}
@@ -190,14 +190,14 @@ int		ft_check_errors(const char *str)
 				{
 					error = 0;
 					if(g_get_y == 0)
-						text_error = "Duplicate the identifier C";
+						g_text_error = "Duplicate the identifier C";
 					else
-						text_error = "Close the map";	
+						g_text_error = "Close the map";	
 				}
 			}
 			if((str[0] == 'S') && (str[1] != 'O'))
 			{
-				if(duplicate_s == 0)
+				if(g_duplicate_s == 0)
 				{
 					i = 0;
 					while(no_space[i] != '\0')
@@ -205,32 +205,32 @@ int		ft_check_errors(const char *str)
 					if((i == 2) && (str[ft_strlen(str) - 1] != ' '))
 					{
 						error = 1;
-						check_s = 1;
-						textur_sprite = ft_strdup(no_space[1]);
-						duplicate_s = 1;
-						all_info = all_info + 1;
+						g_check_s = 1;
+						g_textur_sprite = ft_strdup(no_space[1]);
+						g_duplicate_s = 1;
+						g_all_info = g_all_info + 1;
 					}
 					else
 					{
 						error = 0;
 						if(i == 1)
-							text_error = "Entre the file in S";
+							g_text_error = "Entre the file in S";
 						else
-							text_error = "Info invalid in S";
+							g_text_error = "Info invalid in S";
 					}
 				}
 				else
 				{
 					error = 0;
 					if(g_get_y == 0)
-						text_error = "Duplicate the identifier S";
+						g_text_error = "Duplicate the identifier S";
 					else
-						text_error = "Close the map";
+						g_text_error = "Close the map";
 				}
 			}
 			if((str[0] == 'E') && (str[1] == 'A'))
 			{
-				if(duplicate_ea == 0)
+				if(g_duplicate_ea == 0)
 				{
 					i = 0;
 					while(no_space[i] != '\0')
@@ -238,32 +238,32 @@ int		ft_check_errors(const char *str)
 					if((i == 2) && (str[ft_strlen(str) - 1] != ' '))
 					{
 						error = 1;
-						check_ea = 1;
-						textur_ea = ft_strdup(no_space[1]);
-						duplicate_ea = 1;
-						all_info = all_info + 1;
+						g_check_ea = 1;
+						g_textur_ea = ft_strdup(no_space[1]);
+						g_duplicate_ea = 1;
+						g_all_info = g_all_info + 1;
 					}
 					else
 					{
 						error = 0;
 						if(i == 1)
-							text_error = "Entre the file in EA";
+							g_text_error = "Entre the file in EA";
 						else
-							text_error = "Info invalid in EA";
+							g_text_error = "Info invalid in EA";
 					}
 				}
 				else
 				{
 					error = 0;
 					if(g_get_y == 0)
-						text_error = "Duplicate the identifier EA";
+						g_text_error = "Duplicate the identifier EA";
 					else
-						text_error = "Close the map";	
+						g_text_error = "Close the map";	
 				}
 			}
 			if((str[0] == 'W') && (str[1] == 'E'))
 			{
-				if(duplicate_we == 0)
+				if(g_duplicate_we == 0)
 				{
 					i = 0;
 					while(no_space[i] != '\0')
@@ -271,32 +271,32 @@ int		ft_check_errors(const char *str)
 					if((i == 2) && (str[ft_strlen(str) - 1] != ' '))
 					{
 						error = 1;
-						check_we = 1;
-						textur_we = ft_strdup(no_space[1]);
-						duplicate_we = 1;
-						all_info = all_info + 1;
+						g_check_we = 1;
+						g_textur_we = ft_strdup(no_space[1]);
+						g_duplicate_we = 1;
+						g_all_info = g_all_info + 1;
 					}
 					else
 					{
 						error = 0;
 						if(i == 1)
-							text_error = "Entre the file in WE";
+							g_text_error = "Entre the file in WE";
 						else
-							text_error = "Info invalid in WE";
+							g_text_error = "Info invalid in WE";
 					}
 				}
 				else
 				{
 					error = 0;
 					if(g_get_y == 0)
-						text_error = "Duplicate the identifier WE";
+						g_text_error = "Duplicate the identifier WE";
 					else
-						text_error = "Close the map";	
+						g_text_error = "Close the map";	
 				}
 			}
 			if((str[0] == 'S') && (str[1] == 'O'))
 			{
-				if(duplicate_so == 0)
+				if(g_g_duplicate_so == 0)
 				{
 					i = 0;
 					while(no_space[i] != '\0')
@@ -304,32 +304,32 @@ int		ft_check_errors(const char *str)
 					if((i == 2) && (str[ft_strlen(str) - 1] != ' '))
 					{
 						error = 1;
-						check_so = 1;
-						textur_so = ft_strdup(no_space[1]);
-						duplicate_so = 1;
-						all_info = all_info + 1;
+						g_check_so = 1;
+						g_textur_so = ft_strdup(no_space[1]);
+						g_g_duplicate_so = 1;
+						g_all_info = g_all_info + 1;
 					}
 					else
 					{
 						error = 0;
 						if(i == 1)
-							text_error = "Entre the file in SO";
+							g_text_error = "Entre the file in SO";
 						else
-							text_error = "Info invalid in SO";
+							g_text_error = "Info invalid in SO";
 					}
 				}
 				else
 				{
 					error = 0;
 					if(g_get_y == 0)
-						text_error = "Duplicate the identifier SO";
+						g_text_error = "Duplicate the identifier SO";
 					else
-						text_error = "Close the map";
+						g_text_error = "Close the map";
 				}
 			}
 			if((str[0] == 'N') && (str[1] == 'O'))
 			{
-				if(duplicate_no == 0)
+				if(g_duplicate_no == 0)
 				{
 					i = 0;
 					while(no_space[i] != '\0')
@@ -337,33 +337,33 @@ int		ft_check_errors(const char *str)
 					if((i == 2) && (str[ft_strlen(str) - 1] != ' '))
 					{
 						error = 1;
-						check_no = 1;
-						textur_no = ft_strdup(no_space[1]);
-						duplicate_no = 1;
-						all_info = all_info + 1;
+						g_check_no = 1;
+						g_textur_no = ft_strdup(no_space[1]);
+						g_duplicate_no = 1;
+						g_all_info = g_all_info + 1;
 					}
 					else
 					{
 						error = 0;
 						if(i == 1)
-							text_error = "Entre the file in NO";
+							g_text_error = "Entre the file in NO";
 						else
-							text_error = "Info invalid in NO";
+							g_text_error = "Info invalid in NO";
 					}
 				}
 				else
 				{
 					error = 0;
 					if(g_get_y == 0)
-						text_error = "Duplicate the identifier NO";
+						g_text_error = "Duplicate the identifier NO";
 					else
-						text_error = "Close the map";
+						g_text_error = "Close the map";
 				}
 			}
 		}
 		else
 		{
-			text_error = "lack the identifier";
+			g_text_error = "lack the identifier";
 			error = ft_check_line_map(str, g_info);
 		}
 		ft_ptr_ln(no_space);
@@ -401,7 +401,7 @@ int	ft_check_all_errors(const char *str)
 	size_t i;
 	error = 0;
 	i = 0;
-	if((check_f == 1) && (check_c == 1) && (check_s == 1) && (check_ea == 1) && (check_we == 1) && (check_so == 1) && (check_no == 1))
+	if((g_check_f == 1) && (g_check_c == 1) && (g_check_s == 1) && (g_check_ea == 1) && (g_check_we == 1) && (g_check_so == 1) && (g_check_no == 1))
 	{
 		if (ft_check_errors(str) == 1)
 		{
@@ -416,16 +416,16 @@ int	ft_check_all_errors(const char *str)
 				else
 				{
 					error = 1;
-					text_error = "Close the map";
+					g_text_error = "Close the map";
 				}
 			}
 			else
 			{
 				error = 1;
 				if(g_get_y == 0)
-					text_error = "Enter the map";
+					g_text_error = "Enter the map";
 				if((g_get_y != 0) && (g_get_y < 3))
-					text_error = "Minimum lines of the map is 3";
+					g_text_error = "Minimum lines of the map is 3";
 			}
 		}
 		else
@@ -437,15 +437,15 @@ int	ft_check_all_errors(const char *str)
 		no_space = ft_split(str, ' ');
 		no_vrg = ft_split(str, ',');
 		///////////////////////////////////////////////////////////////////////
-		if(all_info == 7)
+		if(g_all_info == 7)
 		{
-				text_error = "lack the identifier";
+				g_text_error = "lack the identifier";
 				if (((str[0] == 'R') || (str[0] == 'F') || (str[0] == 'C') || (str[0] == 'S') || (str[0] == 'E') || (str[0] == 'W') || (str[0] == 'N'))
 			&& (ft_same(no_space[0]) == 0))
 		{
 			if(str[0] == 'R')
 			{
-				if(duplicate_r == 0)
+				if(g_duplicate_r == 0)
 				{
 					while (i != ft_strlen(str))
 					{
@@ -459,22 +459,22 @@ int	ft_check_all_errors(const char *str)
 					error = ft_check_letter(no_space, i);
 					if(error == 1)
 					{
-						duplicate_r = 1;
-						all_info = all_info + 1;
+						g_duplicate_r = 1;
+						g_all_info = g_all_info + 1;
 					}
 				}
 				else
 				{
 					error = 0;
 					if(g_get_y == 0)
-						text_error = "Duplicate the identifier R";
+						g_text_error = "Duplicate the identifier R";
 					else
-						text_error = "Close the map";
+						g_text_error = "Close the map";
 				}
 			}	
 			if(str[0] == 'F')
 			{
-				if(duplicate_f == 0)
+				if(g_duplicate_f == 0)
 				{
 					i = 0;
 					while (i != ft_strlen(str))
@@ -489,23 +489,23 @@ int	ft_check_all_errors(const char *str)
 					error =	ft_continue_vrg_f(no_vrg,i,str);
 					if(error == 1)
 					{
-						check_f = 1;
-						duplicate_f = 1;
-						all_info = all_info + 1;
+						g_check_f = 1;
+						g_duplicate_f = 1;
+						g_all_info = g_all_info + 1;
 					}
 				}
 				else
 				{
 					error = 0;
 					if(g_get_y == 0)
-						text_error = "Duplicate the identifier F";
+						g_text_error = "Duplicate the identifier F";
 					else
-						text_error = "Close the map";
+						g_text_error = "Close the map";
 				}
 			}
 			if(str[0] == 'C')
 			{
-				if(duplicate_c == 0)
+				if(g_duplicate_c == 0)
 				{
 					i = 0;
 					while (i != ft_strlen(str))
@@ -520,23 +520,23 @@ int	ft_check_all_errors(const char *str)
 					error =	ft_continue_vrg_c(no_vrg,i,str);
 					if(error == 1)
 					{
-						check_c = 1;
-						duplicate_c = 1;
-						all_info = all_info + 1;
+						g_check_c = 1;
+						g_duplicate_c = 1;
+						g_all_info = g_all_info + 1;
 					}
 				}
 				else
 				{
 					error = 0;
 					if(g_get_y == 0)
-						text_error = "Duplicate the identifier C";
+						g_text_error = "Duplicate the identifier C";
 					else
-						text_error = "Close the map";	
+						g_text_error = "Close the map";	
 				}
 			}
 			if((str[0] == 'S') && (str[1] != 'O'))
 			{
-				if(duplicate_s == 0)
+				if(g_duplicate_s == 0)
 				{
 					i = 0;
 					while(no_space[i] != '\0')
@@ -544,32 +544,32 @@ int	ft_check_all_errors(const char *str)
 					if((i == 2) && (str[ft_strlen(str) - 1] != ' '))
 					{
 						error = 1;
-						check_s = 1;
-						textur_sprite = ft_strdup(no_space[1]);
-						duplicate_s = 1;
-						all_info = all_info + 1;
+						g_check_s = 1;
+						g_textur_sprite = ft_strdup(no_space[1]);
+						g_duplicate_s = 1;
+						g_all_info = g_all_info + 1;
 					}
 					else
 					{
 						error = 0;
 						if(i == 1)
-							text_error = "Entre the file in S";
+							g_text_error = "Entre the file in S";
 						else
-							text_error = "Info invalid in S";
+							g_text_error = "Info invalid in S";
 					}
 				}
 				else
 				{
 					error = 0;
 					if(g_get_y == 0)
-						text_error = "Duplicate the identifier S";
+						g_text_error = "Duplicate the identifier S";
 					else
-						text_error = "Close the map";
+						g_text_error = "Close the map";
 				}
 			}
 			if((str[0] == 'E') && (str[1] == 'A'))
 			{
-				if(duplicate_ea == 0)
+				if(g_duplicate_ea == 0)
 				{
 					i = 0;
 					while(no_space[i] != '\0')
@@ -577,32 +577,32 @@ int	ft_check_all_errors(const char *str)
 					if((i == 2) && (str[ft_strlen(str) - 1] != ' '))
 					{
 						error = 1;
-						check_ea = 1;
-						textur_ea = ft_strdup(no_space[1]);
-						duplicate_ea = 1;
-						all_info = all_info + 1;
+						g_check_ea = 1;
+						g_textur_ea = ft_strdup(no_space[1]);
+						g_duplicate_ea = 1;
+						g_all_info = g_all_info + 1;
 					}
 					else
 					{
 						error = 0;
 						if(i == 1)
-							text_error = "Entre the file in EA";
+							g_text_error = "Entre the file in EA";
 						else
-							text_error = "Info invalid in EA";
+							g_text_error = "Info invalid in EA";
 					}
 				}
 				else
 				{
 					error = 0;
 					if(g_get_y == 0)
-						text_error = "Duplicate the identifier EA";
+						g_text_error = "Duplicate the identifier EA";
 					else
-						text_error = "Close the map";	
+						g_text_error = "Close the map";	
 				}
 			}
 			if((str[0] == 'W') && (str[1] == 'E'))
 			{
-				if(duplicate_we == 0)
+				if(g_duplicate_we == 0)
 				{
 					i = 0;
 					while(no_space[i] != '\0')
@@ -610,32 +610,32 @@ int	ft_check_all_errors(const char *str)
 					if((i == 2) && (str[ft_strlen(str) - 1] != ' '))
 					{
 						error = 1;
-						check_we = 1;
-						textur_we = ft_strdup(no_space[1]);
-						duplicate_we = 1;
-						all_info = all_info + 1;
+						g_check_we = 1;
+						g_textur_we = ft_strdup(no_space[1]);
+						g_duplicate_we = 1;
+						g_all_info = g_all_info + 1;
 					}
 					else
 					{
 						error = 0;
 						if(i == 1)
-							text_error = "Entre the file in WE";
+							g_text_error = "Entre the file in WE";
 						else
-							text_error = "Info invalid in WE";
+							g_text_error = "Info invalid in WE";
 					}
 				}
 				else
 				{
 					error = 0;
 					if(g_get_y == 0)
-						text_error = "Duplicate the identifier WE";
+						g_text_error = "Duplicate the identifier WE";
 					else
-						text_error = "Close the map";	
+						g_text_error = "Close the map";	
 				}
 			}
 			if((str[0] == 'S') && (str[1] == 'O'))
 			{
-				if(duplicate_so == 0)
+				if(g_g_duplicate_so == 0)
 				{
 					i = 0;
 					while(no_space[i] != '\0')
@@ -643,32 +643,32 @@ int	ft_check_all_errors(const char *str)
 					if((i == 2) && (str[ft_strlen(str) - 1] != ' '))
 					{
 						error = 1;
-						check_so = 1;
-						textur_so = ft_strdup(no_space[1]);
-						duplicate_so = 1;
-						all_info = all_info + 1;
+						g_check_so = 1;
+						g_textur_so = ft_strdup(no_space[1]);
+						g_g_duplicate_so = 1;
+						g_all_info = g_all_info + 1;
 					}
 					else
 					{
 						error = 0;
 						if(i == 1)
-							text_error = "Entre the file in SO";
+							g_text_error = "Entre the file in SO";
 						else
-							text_error = "Info invalid in SO";
+							g_text_error = "Info invalid in SO";
 					}
 				}
 				else
 				{
 					error = 0;
 					if(g_get_y == 0)
-						text_error = "Duplicate the identifier SO";
+						g_text_error = "Duplicate the identifier SO";
 					else
-						text_error = "Close the map";
+						g_text_error = "Close the map";
 				}
 			}
 			if((str[0] == 'N') && (str[1] == 'O'))
 			{
-				if(duplicate_no == 0)
+				if(g_duplicate_no == 0)
 				{
 					i = 0;
 					while(no_space[i] != '\0')
@@ -676,38 +676,38 @@ int	ft_check_all_errors(const char *str)
 					if((i == 2) && (str[ft_strlen(str) - 1] != ' '))
 					{
 						error = 1;
-						check_no = 1;
-						textur_no = ft_strdup(no_space[1]);
-						duplicate_no = 1;
-						all_info = all_info + 1;
+						g_check_no = 1;
+						g_textur_no = ft_strdup(no_space[1]);
+						g_duplicate_no = 1;
+						g_all_info = g_all_info + 1;
 					}
 					else
 					{
 						error = 0;
 						if(i == 1)
-							text_error = "Entre the file in NO";
+							g_text_error = "Entre the file in NO";
 						else
-							text_error = "Info invalid in NO";
+							g_text_error = "Info invalid in NO";
 					}
 				}
 				else
 				{
 					error = 0;
 					if(g_get_y == 0)
-						text_error = "Duplicate the identifier NO";
+						g_text_error = "Duplicate the identifier NO";
 					else
-						text_error = "Close the map";
+						g_text_error = "Close the map";
 				}
 			}
-			if(((check_f == 1) || (check_c == 1) || (check_s == 1) || (check_ea == 1) || (check_we == 1) || (check_so == 1) || (check_no == 1)) && (g_get_y == 0))
-				text_error = "Entre the map";
+			if(((g_check_f == 1) || (g_check_c == 1) || (g_check_s == 1) || (g_check_ea == 1) || (g_check_we == 1) || (g_check_so == 1) || (g_check_no == 1)) && (g_get_y == 0))
+				g_text_error = "Entre the map";
 			else
-				text_error = "lack the identifier";
+				g_text_error = "lack the identifier";
 		}
 
 	}
 	else
-		text_error = "lack the identifier";
+		g_text_error = "lack the identifier";
 	ft_ptr_ln(no_space);
 	ft_ptr_ln(no_vrg);
 }
