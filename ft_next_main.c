@@ -485,3 +485,117 @@ int		ft_check_identifiers(const char *str, char **no_space, char **no_vrg)
 		error = ft_check_no(str,no_space);
 	return(error);
 }
+
+int	ft_continue_one(char **separ_lines)
+{
+	int error;
+
+	if (g_get_y >= 3)
+	{
+		if (ft_check_one_on_line(separ_lines[0],separ_lines[g_get_y - 1]) == 0)
+			error = ft_continue_line(separ_lines);
+		else
+		{
+			error = 1;
+			g_text_error = "Close the map";
+		}
+	}
+	else
+	{
+		error = 1;
+		if(g_get_y == 0)
+			g_text_error = "Enter the map";
+		if((g_get_y != 0) && (g_get_y < 3))
+			g_text_error = "Minimum lines of the map is 3";
+	}
+	return(error);
+}
+
+int	ft_errors_one(const char *str)
+{
+	int error;
+
+	char **separ_lines;
+	
+	if (ft_check_errors(str) == 1)
+	{
+		separ_lines = ft_split_n(g_get, 'c');
+		free(g_get);
+		error = ft_continue_one(separ_lines);
+	}
+	else
+		error = 1;
+	return(error);
+}
+
+int ft_check_id(const char *str, char **no_space, char **no_vrg)
+{
+	int error;
+
+	error = 0;
+	g_text_error = "lack the identifier";
+	if (((str[0] == 'R') || (str[0] == 'F') || (str[0] == 'C') || (str[0] == 'S') || (str[0] == 'E') || (str[0] == 'W') || (str[0] == 'N'))
+		&& (ft_same(no_space[0]) == 0))
+	{
+		error = ft_check_identifiers(str,no_space,no_vrg);
+			if(((g_check_f == 1) || (g_check_c == 1) || (g_check_s == 1) || (g_check_ea == 1) || (g_check_we == 1) || (g_check_so == 1) || (g_check_no == 1)) && (g_get_y == 0))
+				g_text_error = "Entre the map";
+			else
+				g_text_error = "lack the identifier";
+	}
+	return(error);
+}
+
+int		ft_check_one_on_line(char *firstr, char *endstr)
+{
+	int error;
+	size_t i;
+
+	error = 0;
+	i = 0;
+	while (i != ft_strlen(firstr))
+	{
+		if ((firstr[i] != '1') && (firstr[i] != ' '))
+		{
+			error = 1;
+			break;
+		}
+		i++;
+	}
+	if (error == 0)
+		error = ft_endstr(endstr);
+	return (error);
+}
+
+int	ft_check_all_errors(const char *str)
+{
+	char **no_space;
+	char **no_vrg;
+	int		error;
+
+	if((g_check_f == 1) && (g_check_c == 1) && (g_check_s == 1) && (g_check_ea == 1) && (g_check_we == 1) && (g_check_so == 1) && (g_check_no == 1))
+		error = ft_errors_one(str);
+	else
+	{
+		error = 1;
+		no_space = ft_split(str, ' ');
+		no_vrg = ft_split(str, ',');
+		if(g_all_info == 7)
+			error = ft_check_id(str,no_space,no_vrg);
+		else
+			g_text_error = "lack the identifier";
+		ft_ptr_ln(no_space);
+		ft_ptr_ln(no_vrg);
+	}
+	return(error) ;
+}
+
+int		ft_ctn_line(const char *str)
+{
+	int error;
+
+	error = 0;
+	if ((ft_strlen(str) == 0) && (g_check == 0))
+		error = 1;
+	return (error);
+}

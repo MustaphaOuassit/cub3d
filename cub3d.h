@@ -219,4 +219,9 @@ typedef	struct		s_header
 		int		ft_check_so(const char *str, char **no_space);
 		int		ft_check_no(const char *str, char **no_space);
 		int		ft_check_identifiers(const char *str, char **no_space, char **no_vrg);
+		int		ft_errors_one(const char *str);
+		int		ft_check_id(const char *str, char **no_space, char **no_vrg);
+		int		ft_check_all_errors(const char *str);
+		int		ft_check_one_on_line(char *firstr, char *endstr);
+		int		ft_ctn_line(const char *str);
 		#endif
