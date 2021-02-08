@@ -211,4 +211,12 @@ typedef	struct		s_header
 		void    ft_take_informations(int fd,int error);
 		void	ft_write_argv(char *argv);
 		int		ft_check_r(const char *str,char **no_space);
+		int	ft_check_f(const char *str, char **no_vrg);
+		int		ft_check_c(const char *str, char **no_vrg);
+		int		ft_check_s(const char *str,char **no_space);
+		int 	ft_check_ea(const char *str, char **no_space);
+		int		ft_check_we(const char *str, char **no_space);
+		int		ft_check_so(const char *str, char **no_space);
+		int		ft_check_no(const char *str, char **no_space);
+		int		ft_check_identifiers(const char *str, char **no_space, char **no_vrg);
 		#endif
