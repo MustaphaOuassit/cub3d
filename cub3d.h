@@ -224,4 +224,5 @@ typedef	struct		s_header
 		int		ft_check_all_errors(const char *str);
 		int		ft_check_one_on_line(char *firstr, char *endstr);
 		int		ft_ctn_line(const char *str);
+		int	ft_check_vrg(char **no_vrg,size_t i);
 		#endif
