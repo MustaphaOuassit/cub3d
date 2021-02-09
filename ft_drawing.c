@@ -493,7 +493,7 @@ void	ft_drawing()
 }
 
 void	ft_window()
-{
+{ 
 	int error;
 
 	error = 0;

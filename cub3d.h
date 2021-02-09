@@ -122,6 +122,10 @@
 		int			g_color_c ;
 		int g_sprite_height;
 		int g_sprite_width;
+		int g_r;
+		int g_error;
+		int g_sec_error;
+		int g_chose_error;
 		typedef struct		s_sprite
 		{
 		int			x;
@@ -224,5 +228,19 @@ typedef	struct		s_header
 		int		ft_check_all_errors(const char *str);
 		int		ft_check_one_on_line(char *firstr, char *endstr);
 		int		ft_ctn_line(const char *str);
-		int	ft_check_vrg(char **no_vrg,size_t i);
+		int		ft_check_vrg(char **no_vrg,size_t i);
+		int		ft_check_next_vrg(char **no_space, char **no_vrg);
+		int		ft_else();
+		int		ft_else_f();
+		int		ft_check_vrg_f(char **no_vrg,size_t i);
+		int		ft_check_next_vrg_f(char **no_space, char **no_vrg);
+		void	ft_letter(char **no_space, int r);
+		void 	ft_for_r();
+		int		ft_letter_r(char **no_space, int i);
+		void	ft_take_informations_r(char **no_space, int i);
+		int		ft_valid_check(int r, int error);
+		int		ft_valid_check_f(int r, int error);
+		int		ft_check_line_map(const char *str, int info);
+		int		ft_pirmission(const char *str);
+
 		#endif
