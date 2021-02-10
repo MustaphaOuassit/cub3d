@@ -249,4 +249,13 @@ typedef	struct		s_header
 		int		ft_break(char **separ_lines, size_t i, int j, int error);
 		int		ft_check_player_map(char **separ_lines, int i, int j, int error);
 		int		ft_zero_map(char **separ_lines, int i, int j, int error);
+		void	ft_organize();
+		int		ft_texturs(int error);
+		int		ft_colors(int error);
+		void	ft_put_data();
+		void	ft_direction_texturs(int i, int x, float result);
+		int		ft_check_y(int y, int wall_strip_height);
+		void	ft_app_colors(int i, int j, int x, float result);
+		void	ft_color_window();
+		void	ft_mov();
 		#endif
