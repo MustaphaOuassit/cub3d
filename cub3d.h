@@ -242,5 +242,11 @@ typedef	struct		s_header
 		int		ft_valid_check_f(int r, int error);
 		int		ft_check_line_map(const char *str, int info);
 		int		ft_pirmission(const char *str);
-
+		int		ft_check_info_draw(char **separ_lines, int j, int error);
+		int		ft_strcmp(char *s1, const char *s2);
+		int		ft_extention(char *str);
+		int		ft_zero_two(char **separ_lines, int i, int j, int error);
+		int		ft_break(char **separ_lines, size_t i, int j, int error);
+		int		ft_check_player_map(char **separ_lines, int i, int j, int error);
+		int		ft_zero_map(char **separ_lines, int i, int j, int error);
 		#endif

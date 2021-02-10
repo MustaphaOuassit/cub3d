@@ -6,7 +6,7 @@
 /*   By: mouassit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 18:57:32 by mouassit          #+#    #+#             */
-/*   Updated: 2020/12/08 19:55:34 by mouassit         ###   ########.fr       */
+/*   Updated: 2021/02/10 09:18:13 by mouassit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int		ft_break(char **separ_lines, size_t i, int j, int error)
 		error = 1;
 	else
 	{
-		if(((int)(i - 1) >= 0) && ((int)(i + 1) < (int)(ft_strlen(separ_lines[j]))))
+		if (((int)(i - 1) >= 0)
+		&& ((int)(i + 1) < (int)(ft_strlen(separ_lines[j]))))
 		{
 			if ((separ_lines[j][i - 1] == ' ') || (separ_lines[j][i + 1] == ' ')
 			|| (separ_lines[j - 1][i] == ' ') || (separ_lines[j + 1][i] == ' '))
@@ -33,55 +34,18 @@ int		ft_zero_space(char **separ_lines, size_t i, int j, int error)
 {
 	while (i != ft_strlen(separ_lines[j]))
 	{
-		if ((separ_lines[j][i] == '0') || (separ_lines[j][i] == '2'))
-		{
-			if(separ_lines[j][i] == '2')
-				ft_sprite_position(j,i);
-			if (ft_break(separ_lines, i, j, error) == 1)
-			{
-				error = 1;
-				break ;
-			}
-		}
-		if ((separ_lines[j][i] == 'N') || (separ_lines[j][i] == 'S') || (separ_lines[j][i] == 'E') || (separ_lines[j][i] == 'W'))
-		{
-			if(g_duplicate_p == 0)
-			{
-				if (ft_break(separ_lines, i, j, error) == 1)
-				{
-					error = 1;
-					break ;
-				}
-				else
-				{
-					g_duplicate_p = 1;
-					g_side_p = separ_lines[j][i];
-				}
-			}
-			else
-			{
-				error = 1;
-				g_text_error = "Duplicate Player in th map";
-				break;
-			}
-		}
-		if (separ_lines[j][i] == ' ')
-		{
-			if(((int)(i - 1) >= 0) && ((int)(i + 1) < (int)(ft_strlen(separ_lines[j]))) && ((int)(i + 1) < (int)(ft_strlen(separ_lines[j + 1]))) && ((int)(i + 1) < (int)(ft_strlen(separ_lines[j - 1]))))
-			{
-				if ((separ_lines[j][i - 1] == '0')
-					|| (separ_lines[j][i + 1] == '0')
-					|| (separ_lines[j - 1][i] == '0')
-					|| (separ_lines[j + 1][i] == '0'))
-				{
-					error = 1;
-					break ;
-				}
-			}
-		}
+		error = ft_zero_two(separ_lines, i, j, error);
+		if (error == 1)
+			break ;
+		error = ft_check_player_map(separ_lines, i, j, error);
+		if (error == 1)
+			break ;
+		error = ft_zero_map(separ_lines, i, j, error);
+		if (error == 1)
+			break ;
 		i++;
 	}
-	if(error == 0)
+	if (error == 0)
 		g_map = separ_lines;
 	return (error);
 }
@@ -105,7 +69,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-int	ft_atoi(const char *str)
+int		ft_atoi(const char *str)
 {
 	unsigned long	nb;
 	int				is_negatif;
