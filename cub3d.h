@@ -126,6 +126,10 @@
 		int g_error;
 		int g_sec_error;
 		int g_chose_error;
+		float g_dx;
+    	float g_dy;
+		double  g_y1;
+    	double  g_x1;
 		typedef struct		s_sprite
 		{
 		int			x;
@@ -258,4 +262,12 @@ typedef	struct		s_header
 		void	ft_app_colors(int i, int j, int x, float result);
 		void	ft_color_window();
 		void	ft_mov();
+		void	ft_horizontal();
+		int     ft_has_wallat(float i, float j);
+		void	ft_vertical();
+		void	ft_distance();
+		double	ft_between_points(float x1, float y1, float x2, float y2);
+		void	ft_3d_walls(int x);
+		int		deal_key_release();
+		int		deal_key(int key);
 		#endif

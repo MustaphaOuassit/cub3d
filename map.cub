@@ -1,13 +1,12 @@
 R 1920 1080
-NO wall1.xpm
-SO    wall2.xpm
-
+NO ./wall1.xpm
+SO  wall2.xpm
 WE wall3.xpm
 
 EA wall4.xpm
 S ./sprite.xpm
 F  193,138,21
-C 125,     255    , 243
+C 125,     255  , 243
 
         11111111          111111111111
        10000001          1000000000001  
