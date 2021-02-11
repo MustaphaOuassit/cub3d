@@ -6,13 +6,13 @@
 /*   By: mouassit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 12:33:43 by mouassit          #+#    #+#             */
-/*   Updated: 2021/01/24 12:33:46 by mouassit         ###   ########.fr       */
+/*   Updated: 2021/02/11 19:21:51 by mouassit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void			ft_error()
+void	ft_error(void)
 {
 	if (g_mlx_ptr && g_win_ptr)
 		mlx_destroy_window(g_mlx_ptr, g_win_ptr);
@@ -86,44 +86,4 @@ void	fill_image(unsigned char *header, t_header header_info, char *buf)
 	free(header_info.buf);
 	free(header);
 	exit(1);
-}
-
-int		*get_colors(int color)
-{
-	int		*colors;
-
-	if (!(colors = malloc(3 * sizeof(int))))
-		ft_error();
-	colors[0] = ((color >> 16) & 0xFF);
-	colors[1] = ((color >> 8) & 0xFF);
-	colors[2] = ((color) & 0xFF);
-	return (colors);
-}
-
-void	ft_screenshot(void)
-{
-	int				*color;
-	t_header		info;
-	unsigned char	*header;
-	
-	header = ft_calloc(54, sizeof(unsigned char));
-	ft_init_header(header, &info, 10);
-	if (!(info.buf = malloc(info.image_size)))
-		ft_error();
-	while (info.row > 0)
-	{
-		info.col = 0;
-		while (info.col < info.width)
-		{
-			color = get_colors(info.data[(g_height_window - info.row) * \
-				g_width_window + info.col]);
-							info.buf[info.row * info.w_in_b + info.col * 3 + 0] = color[2];
-			info.buf[info.row * info.w_in_b + info.col * 3 + 1] = color[1];
-			info.buf[info.row * info.w_in_b + info.col * 3 + 2] = color[0];
-			free(color);
-			info.col++;
-		}
-		info.row--;
-	}
-	fill_image(header, info, (char *)info.buf);
 }

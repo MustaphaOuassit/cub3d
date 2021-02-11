@@ -270,4 +270,10 @@ typedef	struct		s_header
 		void	ft_3d_walls(int x);
 		int		deal_key_release();
 		int		deal_key(int key);
+		float	distance_two_points(float x_one,float y_one,float x_two,float y_two);
+		void	*ft_calloc(size_t count, size_t size);
+		void	ft_error();
+		void	fill_image(unsigned char *header, t_header header_info, char *buf);
+		void	ft_init_header(unsigned char *header, t_header *info, int i);
+		void	ft_change_dup();
 		#endif
