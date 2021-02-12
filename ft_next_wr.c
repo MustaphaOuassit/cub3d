@@ -59,17 +59,7 @@ void	ft_condition_errors_f()
 {
 	if((g_chose_error == 0) && (g_sec_error == 0))
 		g_text_error = "Wrong number of infos in F";
-	elsesize_t	ft_strlen(const char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-	{
-		i++;
-	}
-	return (i);
-}
+	else
 	{
 		if((g_sec_error == 1) && (g_chose_error == 0))
 			g_text_error = "Minimum numbers for one element in F is 1";
