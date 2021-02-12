@@ -276,4 +276,25 @@ typedef	struct		s_header
 		void	fill_image(unsigned char *header, t_header header_info, char *buf);
 		void	ft_init_header(unsigned char *header, t_header *info, int i);
 		void	ft_change_dup();
+		int		ft_continue_so(const char *str, char **no_space, int i);
+		int		ft_continue(const char *str, int error);
+		int 	ft_check_i(int i);
+		int		ft_get(char **no_space);
+		int		ft_take_color_one(char **no_space);
+		int		ft_take_color_one_f(char **no_space);
+		void	ft_take_color_three_f(char **no_space);
+		void	ft_take_color_three(char **no_space);
+		int		ft_take_color_two(char **no_space);
+		int		ft_take_color_five(char **no_space);
+		int		ft_take_color_four_f(char **no_space);
+		int		ft_take_color_four(char **no_space);
+		void   ft_print_error(int chose_error);
+		 void	ft_condition_errors();
+		 void	ft_info_error(int j, size_t t, char **no_space);
+		 int	ft_cnt_r_f(char **no_space);
+		int		ft_take_color_two_f(char **no_space);
+		int		ft_cnt_vrg_f(char **no_space, int j);
+		void   ft_error_f(int chose_error);
+		void ft_info_error_f(int j, size_t t, char **no_space);
+		void	ft_condition_errors_f();
 		#endif

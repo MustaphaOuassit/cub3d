@@ -26,11 +26,22 @@ SRC = main.c \
 	  ft_sprite.c \
 	  ft_next_main.c \
 	  ft_cnt_main.c \
+	  ft_info.c \
+	  ft_next_info.c \
+	  ft_check.c \
+	  ft_next_check.c \
+	  ft_next_ctn.c \
+	  ft_ctn.c \
+	  ft_wr_info.c \
+	  ft_next_wr_info.c \
+	  ft_wr.c \
+	  ft_next_wr.c \
+	  ft_chek_all.c \
 
 all : $(NAME)
 
 $(NAME):
-	@gcc -Wall -Wextra -Werror -I /Users/mouassit/Desktop/cub3d $(SRC) -D BUFFER_SIZE=1 -L /Users/mouassit/Desktop/cub3d -lmlx  -framework OpenGL -framework AppKit -lz -o $(NAME)
+	@gcc -Wall -Wextra -Werror -g -fsanitize=address -I /Users/mouassit/Desktop/cub3d $(SRC) -D BUFFER_SIZE=1 -L /Users/mouassit/Desktop/cub3d -lmlx  -framework OpenGL -framework AppKit -lz -o $(NAME)
 
 
 clean:
