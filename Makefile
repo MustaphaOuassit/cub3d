@@ -49,6 +49,7 @@ SRC = main.c \
 	  ft_start_sprite.c \
 	  ft_next_sprite.c \
 	  ft_player.c \
+	  ft_draw_player.c \
 
 all : $(NAME)
 
