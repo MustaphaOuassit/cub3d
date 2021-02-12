@@ -3,6 +3,7 @@
         "__node_handle": "c",
         "locale": "cpp",
         "iterator": "c",
-        "__locale": "c"
+        "__locale": "c",
+        "cub3d.h": "c"
     }
 }

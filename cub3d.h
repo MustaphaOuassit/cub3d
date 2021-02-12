@@ -130,6 +130,8 @@
     	float g_dy;
 		double  g_y1;
     	double  g_x1;
+		int g_i;
+		int g_j;
 		typedef struct		s_sprite
 		{
 		int			x;
@@ -297,4 +299,17 @@ typedef	struct		s_header
 		void   ft_error_f(int chose_error);
 		void ft_info_error_f(int j, size_t t, char **no_space);
 		void	ft_condition_errors_f();
+		 int    ft_dot(char **dot, int i, int j, int error);
+		 int		ft_error_cl(int error);
+		 int         ft_close();
+		 void		ft_ctn_ds();
+		 int     ft_has_wallat_p(float i, float j);
+		 int     ft_has_wallat(float i, float j);
+		 void	ft_draw_player();
+		 void	ft_draw_map();
+		 void	ft_draw_rays();
+		 void	ft_sprite_distance();
+		 void	ft_draw_sprite(t_sprite *sprite, int i, int j);
+		void ft_sort_sprites();
+		void ft_render_sprites();
 		#endif

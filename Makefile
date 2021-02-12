@@ -37,6 +37,18 @@ SRC = main.c \
 	  ft_wr.c \
 	  ft_next_wr.c \
 	  ft_chek_all.c \
+	  ft_next_all_check.c \
+	  ft_handle.c \
+	  ft_next_handle.c \
+	  ft_organize.c \
+	  ft_next_organize.c \
+	  ft_walls.c \
+	  ft_next_walls.c \
+	  ft_rays.c \
+	  ft_next_rays.c \
+	  ft_start_sprite.c \
+	  ft_next_sprite.c \
+	  ft_player.c \
 
 all : $(NAME)
 
