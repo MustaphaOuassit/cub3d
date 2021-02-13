@@ -65,22 +65,23 @@ int		ft_check_identifiers(const char *str, char **no_space, char **no_vrg)
 {
 	int error;
 
-	if (str[0] == 'R')
-		error = ft_check_r(str, no_space);
-	if (str[0] == 'F')
-		error = ft_check_f(str, no_vrg);
-	if (str[0] == 'C')
-		error = ft_check_c(str, no_vrg);
-	if ((str[0] == 'S') && (str[1] != 'O'))
-		error = ft_check_s(str, no_space);
-	if ((str[0] == 'E') && (str[1] == 'A'))
-		error = ft_check_ea(str, no_space);
-	if ((str[0] == 'W') && (str[1] == 'E'))
-		error = ft_check_we(str, no_space);
-	if ((str[0] == 'S') && (str[1] == 'O'))
-		error = ft_check_so(str, no_space);
-	if ((str[0] == 'N') && (str[1] == 'O'))
-		error = ft_check_no(str, no_space);
+	if ((ft_strlen(no_space[0]) == 1) || ((ft_strlen(no_space[0]) == 2)))
+	{
+		error = ft_r_s_f_c(str, no_space, no_vrg);
+		if ((str[0] == 'E') && (str[1] == 'A'))
+			error = ft_check_ea(str, no_space);
+		if ((str[0] == 'W') && (str[1] == 'E'))
+			error = ft_check_we(str, no_space);
+		if ((str[0] == 'S') && (str[1] == 'O'))
+			error = ft_check_so(str, no_space);
+		if ((str[0] == 'N') && (str[1] == 'O'))
+			error = ft_check_no(str, no_space);
+	}
+	else
+	{
+		error = 0;
+		g_text_error = "Invalid Text";
+	}
 	return (error);
 }
 

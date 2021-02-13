@@ -319,4 +319,5 @@ void				ft_sprite_distance();
 void				ft_draw_sprite(t_sprite *sprite, int i, int j);
 void				ft_sort_sprites();
 void				ft_render_sprites();
+int					ft_r_s_f_c(const char *str, char **no_space, char **no_vrg);
 #endif
