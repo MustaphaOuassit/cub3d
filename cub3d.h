@@ -12,11 +12,9 @@
 
 #ifndef CUB3D_H
 # define CUB3D_H
-# include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include <stdio.h>
 # include <mlx.h>
 # include <math.h>
 
