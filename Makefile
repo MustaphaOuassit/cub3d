@@ -54,7 +54,7 @@ SRC = main.c \
 all : $(NAME)
 
 $(NAME):
-	@gcc -Wall -Wextra -Werror -g -fsanitize=address -I /Users/mouassit/Desktop/cub3d $(SRC) -D BUFFER_SIZE=1 -L /Users/mouassit/Desktop/cub3d -lmlx  -framework OpenGL -framework AppKit -lz -o $(NAME)
+	@gcc -Wall -Wextra -Werror -I /Users/mouassit/Desktop/cub3d $(SRC) -D BUFFER_SIZE=1 -L /Users/mouassit/Desktop/cub3d -lmlx  -framework OpenGL -framework AppKit -lz -o $(NAME)
 
 
 clean:
