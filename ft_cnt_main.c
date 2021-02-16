@@ -30,7 +30,7 @@ int		ft_continue_r(const char *str, char **no_space)
 	error = ft_check_letter(no_space, i);
 	if (error == 1)
 	{
-		if (str[ft_strlen(str) - 1] == ' ')
+		if ((str[ft_strlen(str) - 1] == ' ') || (str[ft_strlen(str) - 1] == '\t'))
 		{
 			error = 0;
 			g_text_error = "Info invalid in R";
@@ -65,7 +65,7 @@ int		ft_continue_f(char **no_vrg, const char *str, int i)
 	error = ft_continue_vrg_f(no_vrg, i, str);
 	if (error == 1)
 	{
-		if (str[ft_strlen(str) - 1] == ' ')
+		if ((str[ft_strlen(str) - 1] == ' ') || (str[ft_strlen(str) - 1] == '\t'))
 		{
 			error = 0;
 			g_text_error = "Info invalid in F";

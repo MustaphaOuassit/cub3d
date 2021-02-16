@@ -81,7 +81,7 @@ int		ft_check_player_map(char **separ_lines, int i, int j, int error)
 		else
 		{
 			error = 1;
-			g_text_error = "Duplicate Player in th map";
+			g_text_error = "Duplicate Player in the map";
 		}
 	}
 	return (error);

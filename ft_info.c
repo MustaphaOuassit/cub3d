@@ -19,7 +19,7 @@ int		ft_continue_c(char **no_vrg, const char *str, int i)
 	error = ft_continue_vrg_c(no_vrg, i, str);
 	if (error == 1)
 	{
-		if (str[ft_strlen(str) - 1] == ' ')
+		if ((str[ft_strlen(str) - 1] == ' ') || (str[ft_strlen(str) - 1] == '\t'))
 		{
 			error = 0;
 			g_text_error = "Info invalid in C";
@@ -73,7 +73,7 @@ int		ft_continue_s(const char *str, char **no_space, int i)
 {
 	int error;
 
-	if ((i == 2) && (str[ft_strlen(str) - 1] != ' '))
+	if ((i == 2) && (str[ft_strlen(str) - 1] != ' ') && (str[ft_strlen(str) - 1] != '\t'))
 	{
 		error = 1;
 		g_check_s = 1;
