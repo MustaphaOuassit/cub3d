@@ -6,18 +6,16 @@
 /*   By: mouassit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 19:26:54 by mouassit          #+#    #+#             */
-/*   Updated: 2021/02/13 17:08:15 by mouassit         ###   ########.fr       */
+/*   Updated: 2021/02/16 18:57:02 by mouassit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		ft_continue_r(const char *str, char **no_space)
+int		ft_continue_r(const char *str, char **no_space, size_t i)
 {
 	int		error;
-	size_t	i;
 
-	i = 0;
 	while (i != ft_strlen(str))
 	{
 		if (!(no_space[i]))
@@ -30,7 +28,8 @@ int		ft_continue_r(const char *str, char **no_space)
 	error = ft_check_letter(no_space, i);
 	if (error == 1)
 	{
-		if ((str[ft_strlen(str) - 1] == ' ') || (str[ft_strlen(str) - 1] == '\t'))
+		if ((str[ft_strlen(str) - 1] == ' ') ||
+		(str[ft_strlen(str) - 1] == '\t'))
 		{
 			error = 0;
 			g_text_error = "Info invalid in R";
@@ -46,7 +45,7 @@ int		ft_check_r(const char *str, char **no_space)
 	int error;
 
 	if (g_duplicate_r == 0)
-		error = ft_continue_r(str, no_space);
+		error = ft_continue_r(str, no_space, 0);
 	else
 	{
 		error = 0;
@@ -65,7 +64,8 @@ int		ft_continue_f(char **no_vrg, const char *str, int i)
 	error = ft_continue_vrg_f(no_vrg, i, str);
 	if (error == 1)
 	{
-		if ((str[ft_strlen(str) - 1] == ' ') || (str[ft_strlen(str) - 1] == '\t'))
+		if ((str[ft_strlen(str) - 1] == ' ') ||
+		(str[ft_strlen(str) - 1] == '\t'))
 		{
 			error = 0;
 			g_text_error = "Info invalid in F";

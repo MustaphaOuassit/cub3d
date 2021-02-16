@@ -6,7 +6,7 @@
 /*   By: mouassit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 14:05:40 by mouassit          #+#    #+#             */
-/*   Updated: 2021/02/09 18:20:21 by mouassit         ###   ########.fr       */
+/*   Updated: 2021/02/16 19:00:17 by mouassit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,7 @@ int		ft_continue_letter(char **no_space, int i)
 				break ;
 			i++;
 		}
-
-		while (no_space[2][j] != '\0')
-		{
-			if (no_space[1][j] != '0')
-				break ;
-			j++;
-		}
+		j = ft_take_zr(no_space, j);
 		ft_take_informations_r(no_space, i, j);
 	}
 	return (error);

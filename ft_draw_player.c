@@ -6,7 +6,7 @@
 /*   By: mouassit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 16:40:07 by mouassit          #+#    #+#             */
-/*   Updated: 2021/02/13 17:09:16 by mouassit         ###   ########.fr       */
+/*   Updated: 2021/02/16 19:06:34 by mouassit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,15 @@ int		ft_r_s_f_c(const char *str, char **no_space, char **no_vrg)
 	}
 	error = ft_c_s(str, no_space, no_vrg, error);
 	return (error);
+}
+
+int		ft_take_zr(char **no_space, int j)
+{
+	while (no_space[2][j] != '\0')
+	{
+		if (no_space[2][j] != '0')
+			break ;
+		j++;
+	}
+	return (j);
 }

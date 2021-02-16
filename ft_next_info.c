@@ -6,7 +6,7 @@
 /*   By: mouassit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 09:36:18 by mouassit          #+#    #+#             */
-/*   Updated: 2021/02/12 10:03:09 by mouassit         ###   ########.fr       */
+/*   Updated: 2021/02/16 19:09:48 by mouassit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int		ft_continue_ea(const char *str, char **no_space, int i)
 {
 	int error;
 
-	if ((i == 2) && (str[ft_strlen(str) - 1] != ' ') && (str[ft_strlen(str) - 1] != '\t'))
+	if ((i == 2) && (str[ft_strlen(str) - 1] != ' ') &&
+	(str[ft_strlen(str) - 1] != '\t'))
 	{
 		error = 1;
 		g_check_ea = 1;
@@ -62,7 +63,8 @@ int		ft_continue_we(const char *str, char **no_space, int i)
 {
 	int error;
 
-	if ((i == 2) && (str[ft_strlen(str) - 1] != ' ') && (str[ft_strlen(str) - 1] != '\t'))
+	if ((i == 2) && (str[ft_strlen(str) - 1] != ' ') &&
+	(str[ft_strlen(str) - 1] != '\t'))
 	{
 		error = 1;
 		g_check_we = 1;
@@ -108,7 +110,8 @@ int		ft_continue_so(const char *str, char **no_space, int i)
 {
 	int error;
 
-	if ((i == 2) && (str[ft_strlen(str) - 1] != ' ') && (str[ft_strlen(str) - 1] != '\t'))
+	if ((i == 2) && (str[ft_strlen(str) - 1] != ' ') &&
+	(str[ft_strlen(str) - 1] != '\t'))
 	{
 		error = 1;
 		g_check_so = 1;
