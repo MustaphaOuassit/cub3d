@@ -15,6 +15,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <stdio.h>
 # include <mlx.h>
 # include <math.h>
 
@@ -246,7 +247,7 @@ int					ft_check_next_vrg_f(char **no_space, char **no_vrg);
 void				ft_letter(char **no_space, int r);
 void				ft_for_r();
 int					ft_letter_r(char **no_space, int i);
-void				ft_take_informations_r(char **no_space, int i);
+void				ft_take_informations_r(char **no_space, int i, int j);
 int					ft_valid_check(int r, int error);
 int					ft_valid_check_f(int r, int error);
 int					ft_check_line_map(const char *str, int info);

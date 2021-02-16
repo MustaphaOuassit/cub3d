@@ -90,13 +90,13 @@ int		ft_letter_r(char **no_space, int i)
 	return (error);
 }
 
-void	ft_take_informations_r(char **no_space, int i)
+void	ft_take_informations_r(char **no_space, int i, int j)
 {
 	if ((ft_strlen(no_space[1]) - i) >= 5)
 		g_width_window = 2560;
 	else
 		g_width_window = ft_atoi(no_space[1]);
-	if ((ft_strlen(no_space[2]) - i) >= 5)
+	if ((ft_strlen(no_space[2]) - j) >= 5)
 		g_height_window = 1440;
 	else
 		g_height_window = ft_atoi(no_space[2]);

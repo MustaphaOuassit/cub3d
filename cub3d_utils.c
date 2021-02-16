@@ -69,7 +69,9 @@ int		ft_continue_vrg_f(char **no_vrg, size_t i, const char *str)
 int		ft_continue_letter(char **no_space, int i)
 {
 	int	error;
+	int j;
 
+	j = 0;
 	error = 0;
 	while (i != 3)
 	{
@@ -87,7 +89,14 @@ int		ft_continue_letter(char **no_space, int i)
 				break ;
 			i++;
 		}
-		ft_take_informations_r(no_space, i);
+
+		while (no_space[2][j] != '\0')
+		{
+			if (no_space[1][j] != '0')
+				break ;
+			j++;
+		}
+		ft_take_informations_r(no_space, i, j);
 	}
 	return (error);
 }
